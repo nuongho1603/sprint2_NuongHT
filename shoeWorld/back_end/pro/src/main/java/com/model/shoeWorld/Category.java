@@ -1,4 +1,4 @@
-package com.model;
+package com.model.shoeWorld;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,15 +8,15 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
 @Getter
 @Setter
-
-public class Origin {
+@AllArgsConstructor
+@NoArgsConstructor
+public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long idOrigin;
-    private String nameOrigin;
+    @Column(name = "id_category")
+    private Integer idCategory;
+    private String nameCategory;
 
 }

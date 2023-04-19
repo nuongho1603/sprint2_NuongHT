@@ -1,4 +1,4 @@
-package com.model;
+package com.model.shoeWorld;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,15 +8,14 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
 @Getter
 @Setter
-public class Category {
+@AllArgsConstructor
+@NoArgsConstructor
+public class Size {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idCategory;
-    private String name;
-    private boolean flagCategory=false;
-
+    @Column(name = "id_size")
+    private Integer idSize;
+    private String nameSize;
 }

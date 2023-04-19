@@ -1,6 +1,7 @@
-package com.model;
+package com.model.account;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.model.account.Account;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,14 +12,14 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idRole;
+    private Long roleId;
     @Enumerated(EnumType.STRING)
     @NaturalId
     @Column(length = 60)
@@ -26,5 +27,4 @@ public class Role {
     @ManyToMany(mappedBy = "roles")
     @JsonBackReference
     private Set<Account> accountSet;
-
 }
