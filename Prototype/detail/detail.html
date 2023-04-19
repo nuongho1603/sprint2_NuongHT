@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Thông tin chi tiết</title>
+    <link rel="stylesheet" href="detail.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+</head>
+<body>
+<div style="margin-bottom: 50px;margin-top: 9rem; border-radius: 50px" class="container">
+    <div class="card" style=" background-color:#e8d8c6 ">
+        <div class="container-fluid">
+            <div class="wrapper row">
+                <div class="preview col-md-6">
+                    <div class="preview-pic tab-content">
+                        <div class="tab-pane active" id="pic-1">
+                            <img src="https://i.pinimg.com/564x/c6/ab/01/c6ab01cded8b134a4546d8b8347b029d.jpg" style="border-radius: 30px"/>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="details col-md-6 mt-5">
+                    <h3 class="product-title">SNEAKER ZARA</h3>
+                    <div class="rating">
+                        <div class="stars">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star unchecked"></span>
+                            <span class="fa fa-star unchecked"></span>
+                        </div>
+                        <span class="review-no">41 đánh giá</span>
+                    </div>
+                    <p class="product-description">⚠️Cứ 5 phút: lại có 1 Bạn hỏi ” Sneaker ZARA ” ‼️‼️
+
+                        Bán cả #1000_Đôi rồi mà vẫn không đủ trả khách ❤️
+
+                        => Ai bỉu ” CHẤT ” hơn cả hàng Auth lun Giá IU IU lắm?
+
+                    <BR>    ============== <BR>
+
+                        ➡️ Inbox :Tên + Số điện thoại + mã sản phẩm(Bạn sẽ được giảm 10%)
+
+                        Ship toàn quốc (COD) .Nhận hàng – thanh toán
+
+                        ✍️ Hãy nhanh tay đặt hàng, ALENA sẽ giúp bạn có được đôi giày bạn ưng ý nhất ?
+
+                        ☎️Liên Hệ SĐT để được hỗ trợ:
+
+                        #ĐẶTHÀNG ngay để sở hữu Siêu phẩm NHẸ như bay này nhaa?
+
+                        ALENA – Giày Nữ Cao Cấp –
+
+                        Hotline:
+
+                        Buôn sỉ:</p>
+                    <h6 class="price">Giá: <span class="size" title="small">1.200.000đ</span></h6>
+                    <h6 class="sizes">Trọng lượng:
+                        <span class="size" title="small">1kg</span>
+                    </h6>
+                    <h6 class="colors">Số lượng:
+<!--                        <div class="col-md-3 col-lg-3 col-xl-2 d-flex size" title="small">-->
+<!--                            <button class="btn btn-link px-2" style="display: inline;width: 40px; margin-right: 5px"-->
+<!--                                    onclick="this.parentNode.querySelector('input[type=number]').stepDown()">-->
+<!--                                <i class="fas fa-minus"></i>-->
+<!--                            </button>-->
+
+<!--                            <input id="form2" min="1" name="quantity" #qty type="number" value="1"-->
+<!--                                   class="form-control form-control-md" style="width: 60px"/>-->
+
+<!--                            <button class="btn btn-link px-2 " style="display: inline; width: 40px; margin-left: 5px"-->
+<!--                                    onclick="this.parentNode.querySelector('input[type=number]').stepUp()">-->
+<!--                                <i class="fas fa-plus"></i>-->
+<!--                            </button>-->
+<!--                        </div>-->
+                        <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                            <button class="btn btn-link px-2 btn-btn-black"
+                                    onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                                <i class="fas fa-minus" style="background: #9e8ed4"></i>
+                            </button>
+
+                            <input id="form2" min="0" name="quantity" value="1" type="number"
+                                   class="form-control form-control-sm"/>
+
+                            <button class="btn btn-link px-2"
+                                    onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </h6>
+                    <h5 class="colors">
+                        <a style="width: 100%;" class="add-to-cart btn" type="button"  (click)="addToCart(product.idProduct, product.nameProduct, qty.value)">Thêm vào giỏ hàng</a>
+                    </h5>
+                </div>
+            </div>
+        </div>
+        <div class="pt-5" style="text-align: left">
+            <h6 class="mb-0"><a routerLink="/home" class="text-body btn btn-outline-secondary">Quay lại trang chủ</a></h6>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
