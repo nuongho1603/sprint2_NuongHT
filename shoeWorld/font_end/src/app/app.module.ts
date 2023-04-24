@@ -7,6 +7,12 @@ import { HomeComponent } from './component/home/home.component';
 import { LoginComponent } from './component/login/login.component';
 import { CartComponent } from './component/cart/cart.component';
 import { DetailComponent } from './component/detail/detail.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { HeaderComponent } from './component/header/header.component';
+import { FooterComponent } from './component/footer/footer.component';
+import {HttpClientModule} from "@angular/common/http";
+import {AllShoesComponent} from "./component/body/all-shoes/all-shoes.component";
+import { InfoComponent } from './component/info/info.component';
 
 @NgModule({
   declarations: [
@@ -14,11 +20,18 @@ import { DetailComponent } from './component/detail/detail.component';
     HomeComponent,
     LoginComponent,
     CartComponent,
-    DetailComponent
+    DetailComponent,
+    HeaderComponent,
+    FooterComponent,
+    AllShoesComponent,
+    InfoComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

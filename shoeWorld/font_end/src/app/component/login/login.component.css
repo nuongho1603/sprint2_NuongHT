@@ -8149,13 +8149,13 @@ a {
   -webkit-transition: .3s all ease;
   -o-transition: .3s all ease;
   transition: .3s all ease;
-  color: #8d448b; }
+  color: black; }
 a:hover, a:focus {
   text-decoration: none !important;
   outline: none !important;
   -webkit-box-shadow: none;
   box-shadow: none;
-  color: #8d448b; }
+  color: #FF9999; }
 
 h1, h2, h3, h4, h5,
 .h1, .h2, .h3, .h4, .h5 {
@@ -8177,8 +8177,9 @@ h1, h2, h3, h4, h5,
   padding-bottom: 0; }
 
 .heading-section {
-  font-size: 28px;
-  color: #000; }
+  font-size: 30px;
+  color: #333333;
+font-weight: bold}
 
 .img {
   background-size: cover;
@@ -8194,12 +8195,12 @@ h1, h2, h3, h4, h5,
   box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24); }
 .login-wrap h3 {
   font-weight: 700;
-  font-size: 20px;
+  font-size: 26px;
   color: #8d448b; }
 .login-wrap .icon {
   width: 80px;
   height: 80px;
-  background: #8d448b;
+  background: #CC9999;
   border-radius: 50%;
   font-size: 30px;
   margin: 0 auto;
@@ -8247,8 +8248,8 @@ h1, h2, h3, h4, h5,
 .checkbox-wrap {
   display: block;
   position: relative;
-  padding-left: 30px;
-  margin-bottom: 12px;
+  /*padding-left: 30px;*/
+  /*margin-bottom: 12px;*/
   cursor: pointer;
   font-size: 16px;
   font-weight: 500;
@@ -8298,7 +8299,7 @@ h1, h2, h3, h4, h5,
 
 /* Style the checkmark/indicator */
 .checkbox-primary {
-  color: #8d448b; }
+  color: #333333; }
 .checkbox-primary input:checked ~ .checkmark:after {
   color: #8d448b; }
 
@@ -8311,9 +8312,9 @@ h1, h2, h3, h4, h5,
 .btn:hover, .btn:active, .btn:focus {
   outline: none; }
 .btn.btn-primary {
-  background: #8d448b !important;
+  background: #CC9999 !important;
   border: 1px solid #8d448b !important;
-  color: #fff !important; }
+  color: #333333 !important; }
 .btn.btn-primary:hover {
   border: 1px solid #8d448b;
   background: transparent;
