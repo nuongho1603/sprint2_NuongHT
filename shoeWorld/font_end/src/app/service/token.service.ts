@@ -11,6 +11,7 @@ const STORAGE = 'Storage_key';
 export class TokenService {
   json = '';
 
+
   constructor() {
   }
 

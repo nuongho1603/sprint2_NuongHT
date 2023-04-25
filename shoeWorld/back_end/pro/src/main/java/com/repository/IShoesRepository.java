@@ -1,5 +1,6 @@
 package com.repository;
 
+import com.model.account.Account;
 import com.model.shoeWorld.Shoes;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -17,6 +18,8 @@ public interface IShoesRepository extends JpaRepository<Shoes,Integer> {
 
     @Query(value = "select s.* from  `shoes` s where s.id_category = 1 and s.flag_delete = false",nativeQuery = true)
     Page<Shoes> getAllJordan(Pageable pageable);
+
+
 
     @Query(value = "select s.* from  `shoes` s where s.id_category = 2 and s.flag_delete = false",nativeQuery = true)
     Page<Shoes> getAllDior(Pageable pageable);

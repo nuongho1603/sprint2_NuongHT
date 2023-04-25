@@ -3282,7 +3282,7 @@ TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT
   font-size: 15px;
   color: #660033;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  /*letter-spacing: 1px;*/
 }
 
 .txt27 {

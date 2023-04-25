@@ -1,4 +1,14 @@
+a{
+  text-decoration: none;
+}
 
+.rounded-img {
+  object-fit: cover;
+  /*object-fit: none;*/
+  width: 15px; /* Đặt chiều rộng cho ảnh */
+  height: 15px; /* Đặt chiều cao cho ảnh */
+  border-radius: 50%; /* Làm tròn các góc của ảnh */
+}
 /*[ Header ]
 ///////////////////////////////////////////////////////////
 */

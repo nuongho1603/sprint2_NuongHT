@@ -1,0 +1,193 @@
+<app-header></app-header>
+<main id="main-content" class="" style="margin-top: 6%">
+  <div  class="layout-pageContact">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6 col-sm-12 col-xs-12 box-heading-contact">
+
+          <div class="box-map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.9535674349904!2d106.71301411533402!3d10.7380621628357!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f222dc4cac3%3A0xed02c790aba9167a!2zSlVOTyBOZ3V54buFbiBUaOG7iyBUaOG6rXA!5e0!3m2!1svi!2s!4v1555663624868!5m2!1svi!2s" width="100%" height="700" frameborder="0" style="border:0" allowfullscreen></iframe>
+          </div>
+
+
+        </div>
+        <div class="col-md-6 col-sm-12 col-xs-12  wrapbox-content-page-contact">
+          <div class="header-page-contact clearfix">
+            <h1>Liên hệ
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-balloon-fill" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8.48 10.901C11.211 10.227 13 7.837 13 5A5 5 0 0 0 3 5c0 2.837 1.789 5.227 4.52 5.901l-.244.487a.25.25 0 1 0 .448.224l.04-.08c.009.17.024.315.051.45.068.344.208.622.448 1.102l.013.028c.212.422.182.85.05 1.246-.135.402-.366.751-.534 1.003a.25.25 0 0 0 .416.278l.004-.007c.166-.248.431-.646.588-1.115.16-.479.212-1.051-.076-1.629-.258-.515-.365-.732-.419-1.004a2.376 2.376 0 0 1-.037-.289l.008.017a.25.25 0 1 0 .448-.224l-.244-.487ZM4.352 3.356a4.004 4.004 0 0 1 3.15-2.325C7.774.997 8 1.224 8 1.5c0 .276-.226.496-.498.542-.95.162-1.749.78-2.173 1.617a.595.595 0 0 1-.52.341c-.346 0-.599-.329-.457-.644Z"/>
+              </svg>
+            </h1>
+          </div>
+          <div class="box-info-contact">
+            <ul class="list-info">
+              <li>
+                <p>Địa chỉ chúng tôi</p>
+                <p><strong>113-115 Nguyễn Thái Học, Cầu Ông Lãnh, Quận 1, TP. Hồ Chí Minh - 0945 399 861 64 Cao Thắng, Phường 4 , Quận 3, TP. Hồ Chí Minh</strong></p>
+              </li>
+              <li>
+                <p>Email chúng tôi</p>
+                <p><strong>shoe.world@fb.mesa.vn</strong></p>
+              </li>
+              <li>
+                <p>Điện thoại</p>
+                <p><strong>0945 399 860</strong></p>
+              </li>
+              <li>
+                <p>Thời gian làm việc</p>
+                <p><strong>Thứ 2 đến Thứ chủ nhật từ 08:30  – 22:30 </strong></p>
+              </li>
+            </ul>
+          </div>
+          <div class="box-send-contact">
+            <h2>Gửi thắc mắc cho chúng tôi</h2>
+            <div id="col-left contactFormWrapper">
+              <form accept-charset='UTF-8' action='/contact' class='contact-form' method='post'>
+                <input name='form_type' type='hidden' value='contact'>
+                <input name='utf8' type='hidden' value='✓'>
+
+
+                <div class="contact-form">
+                  <div class="row">
+                    <div class="col-sm-12 col-xs-12">
+                      <div class="input-group">
+                        <input required type="text" name="contact[name]" class="form-control" placeholder="Tên của bạn" aria-describedby="basic-addon1">
+                      </div>
+                    </div>
+                    <div class="col-sm-6 col-xs-12" style="margin-top: 2%">
+                      <div class="input-group">
+                        <input required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" type="email" name="contact[email]" class="form-control" placeholder="Email của bạn" aria-describedby="basic-addon1">
+                      </div>
+                    </div>
+                    <div class="col-sm-6 col-xs-12" style="margin-top: 2%">
+                      <div class="input-group">
+                        <input pattern="[0-9]{10,12}" maxlength="10" minlength="10" onkeypress="validate(event)" required type="tel" name="contact[phone]" class="form-control" placeholder="Số điện thoại của bạn" aria-describedby="basic-addon1">
+                      </div>
+                    </div>
+                    <div class="col-sm-12 col-xs-12" style="margin-top: 2%">
+                      <div class="input-group">
+                        <textarea name="contact[body]" placeholder="Nội dung" style="width: 500%"></textarea>
+                      </div>
+                    </div>
+                    <div class="col-xs-12" style="margin-top: 2%">
+<!--                      <button class="button dark">Gửi cho chúng tôi</button>-->
+                      <!-- HTML !-->
+                      <button class="button-57" role="button"><span class="text">Gửi cho chúng tôi</span><span>Gửi thắc mắc</span></button>
+
+                    </div>
+                  </div>
+                </div>
+
+                <input id='078aafa2ad7d4007bb53b11e244f0a0b' name='g-recaptcha-response' type='hidden'><script src='https://www.google.com/recaptcha/api.js?render=6LdD18MUAAAAAHqKl3Avv8W-tREL6LangePxQLM-'></script><script>grecaptcha.ready(function() {grecaptcha.execute('6LdD18MUAAAAAHqKl3Avv8W-tREL6LangePxQLM-', {action: 'submit'}).then(function(token) {document.getElementById('078aafa2ad7d4007bb53b11e244f0a0b').value = token;});});</script></form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    function validate(evt) {
+      var theEvent = evt || window.event;
+
+      // Handle paste
+      if (theEvent.type === 'paste') {
+        key = event.clipboardData.getData('text/plain');
+      } else {
+        // Handle key press
+        var key = theEvent.keyCode || theEvent.which;
+        key = String.fromCharCode(key);
+      }
+      var regex = /[0-9]|\./;
+      if( !regex.test(key) ) {
+        theEvent.returnValue = false;
+        if(theEvent.preventDefault) theEvent.preventDefault();
+      }
+    }
+  </script>
+</main>
+<!--<section id="sectionInfoFooter" class="clearfix">-->
+<!--  <div class="container-fluid clearfix">-->
+<!--    <div class="innerInfoFooter clearfix">-->
+<!--      <div class="col-xs-12 col-sm-4 site-animation">-->
+<!--        <h4>-->
+<!--          GỌI MUA HÀNG ONLINE (08:30 – 22:30 mỗi ngày)-->
+<!--        </h4>-->
+<!--        <div class="infoContent">-->
+<!--          <p>-->
+<!--            <span class="titleHotline"><a class="linkHotline" href="tel:1800 1162">1800 1162</a></span>-->
+<!--            <span class="moreInfoFooter">Tất cả các ngày trong tuần (Trừ tết Âm Lịch)</span>-->
+<!--          </p>-->
+<!--        </div>-->
+
+<!--        <h4 style="margin-top: 50px" class="xxx">-->
+<!--          GÓP Ý & KHIẾU NẠI (08:30 - 22:30)-->
+<!--        </h4>-->
+<!--        <div class="infoContent">-->
+<!--          <p>-->
+<!--            <span class="titleHotline"><a class="linkHotline" href="tel:1800 1160">0945 399 860</a></span>-->
+<!--            <span class="moreInfoFooter">Tất cả các ngày trong tuần (Trừ tết Âm Lịch)</span>-->
+<!--          </p>-->
+<!--        </div>-->
+
+
+<!--      </div>-->
+
+
+<!--      <div class="col-xs-12 col-sm-4 site-animation">-->
+
+
+
+<!--        <h4>-->
+<!--          HỆ THỐNG SHOEWORLD-->
+<!--        </h4>-->
+<!--        <ul>-->
+<!--          <a class="link-showroom-home" href="/blogs/he-thong-cua-hang">-->
+<!--            <img src="https://file.hstatic.net/1000003969/file/chikh_ce44b1a9f11b4cbda1d4d319967d7932.jpg" alt="Store" />-->
+<!--          </a>-->
+<!--          <a class="store_bellow_link" href="/blogs/he-thong-cua-hang">Xem địa chỉ hệ thống 68 showroom<i class="fa fa-caret-right"></i></a>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--      <div class="col-xs-12 col-sm-4 site-animation">-->
+<!--        <h4>-->
+<!--          FANPAGE CỦA CHÚNG TÔI-->
+<!--        </h4>-->
+
+<!--        <a data-eventLabel="facebook" class="link-fp-fb" href="//www.facebook.com/giayjuno">-->
+<!--          <img src="https://file.hstatic.net/1000003969/file/cover__2__f6ba74100fc24187aeceeeeeb50f2bfa.jpg" alt="Fanpage" />-->
+<!--        </a>-->
+<!--        <ul class="navbar-social">-->
+<!--          <li class="social">-->
+<!--            <a data-eventLabel="facebook" class="link-social" href="//www.facebook.com/giayjuno" target="_blank" rel="nofollow">-->
+<!--              <i class="fa fa-facebook"></i>-->
+<!--            </a>-->
+<!--          </li>-->
+<!--          <li class="social">-->
+<!--            <a data-eventLabel="instagram" class="link-social" href="//www.instagram.com/juno.vn/" target="_blank" rel="nofollow">-->
+<!--              <i class="fa fa-instagram"></i>-->
+<!--            </a>-->
+<!--          </li>-->
+<!--          <li class="social">-->
+<!--            <a data-eventLabel="youtube" class="link-social" href="//www.youtube.com/user/JunoShoesVn" target="_blank" rel="nofollow">-->
+<!--              <i class="fa fa-youtube"></i>-->
+<!--            </a>-->
+<!--          </li>-->
+<!--          <li class="social">-->
+<!--            <a data-eventLabel="zalo" class="link-social" href="http://zalo.me/giayjuno" target="_blank" rel="nofollow">-->
+<!--              <i class="fa-zalo"></i>-->
+<!--            </a>-->
+<!--          </li>-->
+<!--          <li class="social">-->
+<!--            <a data-eventLabel="tiktok" class="link-social" href="https://www.tiktok.com/@junoofficial" target="_blank" rel="nofollow">-->
+<!--              <i class="fa" style="margin-left: 5px">-->
+<!--                <svg style="width: 20px; height: 20px;" enable-background="new 0 0 512 512" height="512" viewBox="0 0 512 512" width="512" xmlns="http://www.w3.org/2000/svg"><g><g fill="#f00044"><path d="m182.1 265.4c-40.6 0-73.4 32.8-72.8 73 .4 25.8 14.6 48.2 35.5 60.7-7.1-10.9-11.3-23.8-11.5-37.7-.6-40.2 32.2-73 72.8-73 8 0 15.7 1.3 22.9 3.6v-80.5c-7.5-1.1-15.2-1.7-22.9-1.7-.4 0-.7 0-1.1 0v59.2c-7.2-2.3-14.9-3.6-22.9-3.6z"/><path d="m357.6 24h-.6-20.8c6 30.1 22.9 56.3 46.5 74.1-15.5-20.5-24.9-46.1-25.1-74.1z"/><path d="m480 146.5c-7.9 0-15.5-.8-23-2.2v57.7c-27.2 0-53.6-5.3-78.4-15.9-16-6.8-30.9-15.5-44.6-26l.4 177.9c-.2 40-16 77.5-44.6 105.8-23.3 23-52.8 37.7-84.8 42.4-7.5 1.1-15.2 1.7-22.9 1.7-34.2 0-66.8-11.1-93.3-31.6 3 3.6 6.2 7.1 9.7 10.5 28.8 28.4 67 44.1 107.7 44.1 7.7 0 15.4-.6 22.9-1.7 32-4.7 61.5-19.4 84.8-42.4 28.6-28.3 44.4-65.8 44.6-105.8l-1.5-177.9c13.6 10.5 28.5 19.3 44.6 26 24.9 10.5 51.3 15.9 78.4 15.9"/></g><path d="m98.2 254.1c28.5-28.3 66.4-44 106.8-44.3v-21.3c-7.5-1.1-15.2-1.7-22.9-1.7-40.8 0-79.1 15.7-107.9 44.3-28.3 28.1-44.5 66.5-44.4 106.4 0 40.2 15.9 77.9 44.6 106.4 4.6 4.5 9.3 8.7 14.3 12.5-22.6-26.9-34.9-60.5-35-95.9.1-39.9 16.2-78.3 44.5-106.4z" fill="#08fff9"/><path d="m457 144.3v-21.4h-.2c-27.8 0-53.4-9.2-74-24.8 17.9 23.6 44.1 40.4 74.2 46.2z" fill="#08fff9"/><path d="m202 432.2c9.5.5 18.6-.8 27-3.5 29-9.5 49.9-36.5 49.9-68.3l.1-119v-217.4h57.2c-1.5-7.5-2.3-15.1-2.4-23h-78.8v217.3l-.1 119c0 31.8-20.9 58.8-49.9 68.3-8.4 2.8-17.5 4.1-27 3.5-12.1-.7-23.4-4.3-33.2-10.1 12.3 19 33.3 31.9 57.2 33.2z" fill="#08fff9"/><path d="m205 486.2c32-4.7 61.5-19.4 84.8-42.4 28.6-28.3 44.4-65.8 44.6-105.8l-.4-177.9c13.6 10.5 28.5 19.3 44.6 26 24.9 10.5 51.3 15.9 78.4 15.9v-57.7c-30.1-5.8-56.3-22.6-74.2-46.2-23.6-17.8-40.6-44-46.5-74.1h-57.3v217.3l-.1 119c0 31.8-20.9 58.8-49.9 68.3-8.4 2.8-17.5 4.1-27 3.5-24-1.3-44.9-14.2-57.2-33.1-20.9-12.4-35.1-34.9-35.5-60.7-.6-40.2 32.2-73 72.8-73 8 0 15.7 1.3 22.9 3.6v-59.2c-40.4.3-78.3 16-106.8 44.3-28.3 28.1-44.5 66.5-44.4 106.3 0 35.4 12.3 69 35 95.9 26.6 20.5 59.1 31.6 93.3 31.6 7.7.1 15.4-.5 22.9-1.6z"/></g></svg>-->
+<!--              </i>-->
+<!--            </a>-->
+<!--          </li>-->
+<!--        </ul>-->
+
+<!--      </div>-->
+
+<!--    </div>-->
+<!--  </div>-->
+<!--</section>-->
+<app-footer></app-footer>

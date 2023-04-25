@@ -1,7 +1,9 @@
 package com.controller;
 
 import com.dto.ShoesDto;
+import com.model.account.Account;
 import com.model.shoeWorld.Shoes;
+import com.service.impl.AccountService;
 import com.service.impl.ShoesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -19,6 +21,17 @@ import org.springframework.web.bind.annotation.*;
 public class ShoesRestConntroller {
     @Autowired
     private ShoesService shoesService;
+    @Autowired
+    private AccountService accountService;
+
+    @GetMapping("/name-user/{idAccount}")
+    public ResponseEntity<Account> findNameUser(@PathVariable("idAccount") Long idAccount) {
+        Account account = accountService.getNameUser(idAccount);
+        if (account == null) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(account, HttpStatus.OK);
+    }
 
     @GetMapping("/all-shoes")
     public ResponseEntity<Page<Shoes>> getAllShoes(@PageableDefault(page = 0, size = 9) Pageable pageable) {
@@ -30,7 +43,7 @@ public class ShoesRestConntroller {
     }
 
     @GetMapping("/jordan")
-    public ResponseEntity<Page<Shoes>> getAllJordan(@PageableDefault(page = 0, size = 3) Pageable pageable) {
+    public ResponseEntity<Page<Shoes>> getAllJordan(@PageableDefault(page = 0, size = 6) Pageable pageable) {
         Page<Shoes> jordanPage = shoesService.getAllJordan(pageable);
         if (jordanPage.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -39,7 +52,7 @@ public class ShoesRestConntroller {
     }
 
     @GetMapping("/dior")
-    public ResponseEntity<Page<Shoes>> getAllDior(@PageableDefault(page = 0, size = 3) Pageable pageable) {
+    public ResponseEntity<Page<Shoes>> getAllDior(@PageableDefault(page = 0, size = 9) Pageable pageable) {
         Page<Shoes> diorPage = shoesService.getAllDior(pageable);
         if (diorPage.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -65,7 +78,7 @@ public class ShoesRestConntroller {
         return new ResponseEntity<>(depPage, HttpStatus.OK);
     }
 
-    @GetMapping("/boot")
+    @GetMapping("/sneaker")
     public ResponseEntity<Page<Shoes>> getAllBoot(@PageableDefault(page = 0, size = 3) Pageable pageable) {
         Page<Shoes> bootPage = shoesService.getAllBoot(pageable);
         if (bootPage.isEmpty()) {

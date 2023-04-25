@@ -13,6 +13,13 @@ import { FooterComponent } from './component/footer/footer.component';
 import {HttpClientModule} from "@angular/common/http";
 import {AllShoesComponent} from "./component/body/all-shoes/all-shoes.component";
 import { InfoComponent } from './component/info/info.component';
+import { JordanComponent } from './component/body/jordan/jordan.component';
+import { DiorComponent } from './component/body/dior/dior.component';
+import { SneakerComponent } from './component/body/sneaker/sneaker.component';
+import { SandalComponent } from './component/body/sandal/sandal.component';
+import { DepComponent } from './component/body/dep/dep.component';
+import { AboutUsComponent } from './component/about-us/about-us.component';
+import { ContactComponent } from './component/contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +31,14 @@ import { InfoComponent } from './component/info/info.component';
     HeaderComponent,
     FooterComponent,
     AllShoesComponent,
-    InfoComponent
+    InfoComponent,
+    JordanComponent,
+    DiorComponent,
+    SneakerComponent,
+    SandalComponent,
+    DepComponent,
+    AboutUsComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
