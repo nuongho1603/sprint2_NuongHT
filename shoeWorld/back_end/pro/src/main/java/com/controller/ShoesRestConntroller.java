@@ -35,7 +35,7 @@ public class ShoesRestConntroller {
 
     @GetMapping("/all-shoes")
     public ResponseEntity<Page<Shoes>> getAllShoes(@PageableDefault(page = 0, size = 9) Pageable pageable) {
-        Page<Shoes> shoesPage = shoesService.getAllJordan(pageable);
+        Page<Shoes> shoesPage = shoesService.getAllShoes(pageable);
         if (shoesPage.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
@@ -79,8 +79,17 @@ public class ShoesRestConntroller {
     }
 
     @GetMapping("/sneaker")
+    public ResponseEntity<Page<Shoes>> getAllSneaker(@PageableDefault(page = 0, size = 3) Pageable pageable) {
+        Page<Shoes> bootPage = shoesService.getAllSneaker(pageable);
+        if (bootPage.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(bootPage, HttpStatus.OK);
+    }
+
+    @GetMapping("/giay-suc")
     public ResponseEntity<Page<Shoes>> getAllBoot(@PageableDefault(page = 0, size = 3) Pageable pageable) {
-        Page<Shoes> bootPage = shoesService.getAllBoot(pageable);
+        Page<Shoes> bootPage = shoesService.getAllSuc(pageable);
         if (bootPage.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }

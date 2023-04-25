@@ -34,13 +34,18 @@ public class ShoesService implements IShoesWorldService {
     }
 
     @Override
-    public Page<Shoes> getAllBoot(Pageable pageable) {
-        return iShoesRepository.getAllBoot(pageable);
+    public Page<Shoes> getAllSneaker(Pageable pageable) {
+        return iShoesRepository.getAllSneaker(pageable);
     }
 
     @Override
     public Page<Shoes> getAllShoes(Pageable pageable) {
         return iShoesRepository.getAllShoes(pageable);
+    }
+
+    @Override
+    public Page<Shoes> getAllSuc(Pageable pageable) {
+        return iShoesRepository.getAllSuc(pageable);
     }
 
     @Override

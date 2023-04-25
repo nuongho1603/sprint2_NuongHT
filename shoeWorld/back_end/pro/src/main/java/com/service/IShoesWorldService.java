@@ -10,8 +10,9 @@ public interface IShoesWorldService {
     Page<Shoes> getAllDior(Pageable pageable);
     Page<Shoes> getAllSandal(Pageable pageable);
     Page<Shoes> getAllDep(Pageable pageable);
-    Page<Shoes> getAllBoot(Pageable pageable);
+    Page<Shoes> getAllSneaker(Pageable pageable);
     Page<Shoes> getAllShoes(Pageable pageable);
+    Page<Shoes> getAllSuc(Pageable pageable);
 
 
     Shoes getShoesByID( int idShoes);

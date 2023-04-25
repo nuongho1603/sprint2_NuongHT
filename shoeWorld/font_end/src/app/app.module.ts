@@ -20,6 +20,7 @@ import { SandalComponent } from './component/body/sandal/sandal.component';
 import { DepComponent } from './component/body/dep/dep.component';
 import { AboutUsComponent } from './component/about-us/about-us.component';
 import { ContactComponent } from './component/contact/contact.component';
+import { GiaySucComponent } from './component/body/giay-suc/giay-suc.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { ContactComponent } from './component/contact/contact.component';
     SandalComponent,
     DepComponent,
     AboutUsComponent,
-    ContactComponent
+    ContactComponent,
+    GiaySucComponent
   ],
   imports: [
     BrowserModule,

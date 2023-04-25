@@ -35,6 +35,10 @@ export class ShoesService {
     return this.httpClient.get<Shoes[]>('http://localhost:8080/api-shoes/dep');
   }
 
+  getAllSuc(): Observable<Shoes[]> {
+    return this.httpClient.get<Shoes[]>('http://localhost:8080/api-shoes/giay-suc');
+  }
+
   getNameUser(idAccount: any): Observable<Account> {
     return this.httpClient.get<Account>('http://localhost:8080/api-shoes/name-user/' + idAccount);
   }

@@ -32,7 +32,10 @@ public interface IShoesRepository extends JpaRepository<Shoes,Integer> {
     Page<Shoes> getAllDep(Pageable pageable);
 
     @Query(value = "select s.* from  `shoes` s where s.id_category = 3 and s.flag_delete = false",nativeQuery = true)
-    Page<Shoes> getAllBoot(Pageable pageable);
+    Page<Shoes> getAllSneaker(Pageable pageable);
+
+    @Query(value = "select s.* from  `shoes` s where s.id_category = 6 and s.flag_delete = false",nativeQuery = true)
+    Page<Shoes> getAllSuc(Pageable pageable);
 
     @Query(value = "select s.* from  `shoes` s where s.flag_delete = false",nativeQuery = true)
     Page<Shoes> getAllShoes(Pageable pageable);
