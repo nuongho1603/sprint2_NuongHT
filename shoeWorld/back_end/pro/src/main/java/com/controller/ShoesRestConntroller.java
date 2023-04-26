@@ -43,7 +43,7 @@ public class ShoesRestConntroller {
     }
 
     @GetMapping("/jordan")
-    public ResponseEntity<Page<Shoes>> getAllJordan(@PageableDefault(page = 0, size = 6) Pageable pageable) {
+    public ResponseEntity<Page<Shoes>> getAllJordan(@PageableDefault(page = 0, size = 9) Pageable pageable) {
         Page<Shoes> jordanPage = shoesService.getAllJordan(pageable);
         if (jordanPage.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -61,7 +61,7 @@ public class ShoesRestConntroller {
     }
 
     @GetMapping("/sandal")
-    public ResponseEntity<Page<Shoes>> getAllSandal(@PageableDefault(page = 0, size = 3) Pageable pageable) {
+    public ResponseEntity<Page<Shoes>> getAllSandal(@PageableDefault(page = 0, size = 9) Pageable pageable) {
         Page<Shoes> sandalPage = shoesService.getAllSandal(pageable);
         if (sandalPage.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -70,7 +70,7 @@ public class ShoesRestConntroller {
     }
 
     @GetMapping("/dep")
-    public ResponseEntity<Page<Shoes>> getAllDep(@PageableDefault(page = 0, size = 3) Pageable pageable) {
+    public ResponseEntity<Page<Shoes>> getAllDep(@PageableDefault(page = 0, size = 9) Pageable pageable) {
         Page<Shoes> depPage = shoesService.getAllDep(pageable);
         if (depPage.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -79,7 +79,7 @@ public class ShoesRestConntroller {
     }
 
     @GetMapping("/sneaker")
-    public ResponseEntity<Page<Shoes>> getAllSneaker(@PageableDefault(page = 0, size = 3) Pageable pageable) {
+    public ResponseEntity<Page<Shoes>> getAllSneaker(@PageableDefault(page = 0, size = 9) Pageable pageable) {
         Page<Shoes> bootPage = shoesService.getAllSneaker(pageable);
         if (bootPage.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -88,7 +88,7 @@ public class ShoesRestConntroller {
     }
 
     @GetMapping("/giay-suc")
-    public ResponseEntity<Page<Shoes>> getAllBoot(@PageableDefault(page = 0, size = 3) Pageable pageable) {
+    public ResponseEntity<Page<Shoes>> getAllBoot(@PageableDefault(page = 0, size = 9) Pageable pageable) {
         Page<Shoes> bootPage = shoesService.getAllSuc(pageable);
         if (bootPage.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);

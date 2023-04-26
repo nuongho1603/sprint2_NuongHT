@@ -11,32 +11,32 @@ export class ShoesService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getAllShoes(): Observable<Shoes[]> {
-    return this.httpClient.get<Shoes[]>('http://localhost:8080/api-shoes/all-shoes');
+  getAllShoes(page: number): Observable<Shoes[]> {
+    return this.httpClient.get<Shoes[]>('http://localhost:8080/api-shoes/all-shoes' + '?page=' + page);
   }
 
-  getAllJordan(): Observable<Shoes[]> {
-    return this.httpClient.get<Shoes[]>('http://localhost:8080/api-shoes/jordan');
+  getAllJordan(page: number): Observable<Shoes[]> {
+    return this.httpClient.get<Shoes[]>('http://localhost:8080/api-shoes/jordan' + '?page=' + page);
   }
 
-  getAllDior(): Observable<Shoes[]> {
-    return this.httpClient.get<Shoes[]>('http://localhost:8080/api-shoes/dior');
+  getAllDior(page: number): Observable<Shoes[]> {
+    return this.httpClient.get<Shoes[]>('http://localhost:8080/api-shoes/dior' + '?page=' + page);
   }
 
-  getAllSneaker(): Observable<Shoes[]> {
-    return this.httpClient.get<Shoes[]>('http://localhost:8080/api-shoes/sneaker');
+  getAllSneaker(page: number): Observable<Shoes[]> {
+    return this.httpClient.get<Shoes[]>('http://localhost:8080/api-shoes/sneaker' + '?page=' + page);
   }
 
-  getAllSandal(): Observable<Shoes[]> {
-    return this.httpClient.get<Shoes[]>('http://localhost:8080/api-shoes/sandal');
+  getAllSandal(page: number): Observable<Shoes[]> {
+    return this.httpClient.get<Shoes[]>('http://localhost:8080/api-shoes/sandal' + '?page=' + page);
   }
 
-  getAllDep(): Observable<Shoes[]> {
-    return this.httpClient.get<Shoes[]>('http://localhost:8080/api-shoes/dep');
+  getAllDep(page: number): Observable<Shoes[]> {
+    return this.httpClient.get<Shoes[]>('http://localhost:8080/api-shoes/dep' + '?page=' + page);
   }
 
-  getAllSuc(): Observable<Shoes[]> {
-    return this.httpClient.get<Shoes[]>('http://localhost:8080/api-shoes/giay-suc');
+  getAllSuc(page: number): Observable<Shoes[]> {
+    return this.httpClient.get<Shoes[]>('http://localhost:8080/api-shoes/giay-suc' + '?page=' + page);
   }
 
   getNameUser(idAccount: any): Observable<Account> {

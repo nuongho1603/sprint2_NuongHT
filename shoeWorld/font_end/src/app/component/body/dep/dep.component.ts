@@ -18,12 +18,12 @@ export class DepComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getAllDior();
+    this.getAllDior(0);
     this.title.setTitle('Trang dép');
   }
 
-  getAllDior() {
-    this.shoesService.getAllDep().subscribe(data => {
+  private getAllDior(page : number) {
+    this.shoesService.getAllDep(page).subscribe(data => {
       // @ts-ignore
       this.shoes = data.content;
       // @ts-ignore
@@ -32,4 +32,7 @@ export class DepComponent implements OnInit {
     })
   }
 
+  changePage(page: number) {
+    this.getAllDior(page);
+  }
 }

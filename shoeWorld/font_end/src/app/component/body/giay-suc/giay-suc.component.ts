@@ -11,6 +11,7 @@ import {ShoesService} from "../../../service/shoes.service";
 })
 export class GiaySucComponent implements OnInit {
 
+
   shoes: Shoes[] = [];
   teamPage!: ProjectJson;
 
@@ -18,12 +19,12 @@ export class GiaySucComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getAllShoes();
-    this.title.setTitle('Trang giày sục');
+    this.getAllSuc(0);
+    this.title.setTitle('Trang dép');
   }
 
-  getAllShoes() {
-    this.shoesService.getAllSuc().subscribe(data => {
+  getAllSuc(page : number) {
+    this.shoesService.getAllSuc(page).subscribe(data => {
       // @ts-ignore
       this.shoes = data.content;
       // @ts-ignore
@@ -32,5 +33,8 @@ export class GiaySucComponent implements OnInit {
     })
   }
 
+  changePage(page: number) {
+    this.getAllSuc(page);
+  }
 
 }

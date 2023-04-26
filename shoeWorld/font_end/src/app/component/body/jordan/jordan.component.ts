@@ -18,12 +18,12 @@ export class JordanComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getAllShoes();
-    this.title.setTitle('Trang giày jordan');
+    this.getAllJordan(0);
+    this.title.setTitle('Trang dép');
   }
 
-  getAllShoes() {
-    this.shoesService.getAllJordan().subscribe(data => {
+  getAllJordan(page : number) {
+    this.shoesService.getAllJordan(page).subscribe(data => {
       // @ts-ignore
       this.shoes = data.content;
       // @ts-ignore
@@ -32,4 +32,7 @@ export class JordanComponent implements OnInit {
     })
   }
 
+  changePage(page: number) {
+    this.getAllJordan(page);
+  }
 }

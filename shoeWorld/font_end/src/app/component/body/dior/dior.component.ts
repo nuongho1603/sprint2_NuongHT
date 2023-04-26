@@ -18,18 +18,22 @@ export class DiorComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getAllDior();
-    this.title.setTitle('Trang giày dior');
+    this.getAllDior(0);
+    this.title.setTitle('Trang dép');
   }
 
-  getAllDior() {
-    this.shoesService.getAllDior().subscribe(data => {
+  getAllDior(page : number) {
+    this.shoesService.getAllDior(page).subscribe(data => {
       // @ts-ignore
       this.shoes = data.content;
       // @ts-ignore
       this.teamPage = data;
       console.log(this.shoes);
     })
+  }
+
+  changePage(page: number) {
+    this.getAllDior(page);
   }
 
 

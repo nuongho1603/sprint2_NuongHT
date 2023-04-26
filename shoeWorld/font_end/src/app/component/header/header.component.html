@@ -7,97 +7,188 @@
 
         <!--navbar-->
         <nav class="navbar navbar-expand-lg navbar-light fixed-top text-white"
-             style="background-color: #CC9999; height: 80px">
+             >
           <div class="container">
-            <a class="navbar-brand" href="#" style="margin-left: 5%">SHOE WORLD</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
+            <a class="navbar-brand" href="#" style="margin-left: 5%"></a>
+            <nav class="navbar navbar-light bg-light fixed-top" >
+              <div class="container-fluid" style="background-color: #CC9999; height: 90px">
+                <a class="navbar-brand" href="" style="margin-left: 5%">Shoe World</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                  <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel" style="color: #660033; font-weight: bold; margin-left: 35% ">Shoe World</h5>
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                  </div>
+                  <div class="offcanvas-body justify-content-end" >
+<!--                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">-->
+                      <ul class="navbar-nav ml-auto d-flex align-items-center">
+                        <li class="nav-item pe-3">
+                          <a class="nav-link" href="#">Trang chủ</a>
+                        </li>
+                        <li class="nav-item dropdown pe-3">
+                          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Menu
+                          </a>
+                          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="background: #e7ccc9">
+                            <li><a class="dropdown-item" routerLink="/jordan" >Jordan</a></li>
+                            <li><a class="dropdown-item" href="/suc">Giày sục</a></li>
+                            <li><a class="dropdown-item" href="/dior">Dior</a></li>
+                            <li><a class="dropdown-item" href="/sneaker">Sneaker</a></li>
+                            <li><a class="dropdown-item" href="/dep">Dép</a></li>
+                            <li><a class="dropdown-item" href="/sandal">Sandal</a></li>
+                          </ul>
+                        </li>
 
-            <div class="collapse navbar-collapse justify-content-around" id="navbarSupportedContent" >
-              <ul class="navbar-nav ml-auto d-flex align-items-center">
-                <li class="nav-item pe-3">
-                  <a class="nav-link" href="#">Trang chủ</a>
-                </li>
-                <li class="nav-item pe-3">
-                  <a class="nav-link" href="#">Menu</a>
-                </li>
-                <li class="nav-item pe-3">
-                  <a class="nav-link" routerLink="/aboutUs" >Giới thiệu</a>
-                </li>
-                <li class="nav-item pe-3">
-                  <a class="nav-link" routerLink="/contact">Liên Hệ</a>
-                </li>
-                <li class="nav-item pe-3">
-                  <a class="nav-link" href="#" *ngIf="role == 'ROLE_ADMIN' || role == 'ROLE_USER'">Lịch sử</a>
-                </li>
-                <ng-container *ngIf="role == 'ROLE_ADMIN'">
-                <li class="nav-item pe-3">
-                  <a class="nav-link" href="#" >Danh mục</a>
-                </li>
-                </ng-container>
-                <ng-container *ngIf="role == 'ROLE_ADMIN'">
-                <li class="nav-item pe-3">
-                  <a class="nav-link" href="#" >Quản lí </a>
-                </li>
-                </ng-container>
-                <ng-container *ngIf="role == 'ROLE_USER'">
-                <li class="nav-item pe-3" >
-                  <a class="nav-link" href="#">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                         class="bi bi-cart4" viewBox="0 0 16 16">
-                      <path
-                        d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
-                    </svg>
-                  </a>
-                </li>
-                </ng-container>
-                <li class="nav-item pe-3" >
-                  <a type="button" style="color: white" href="">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                         class="bi bi-search" viewBox="0 0 16 16">
-                      <path
-                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-                    </svg>
-                  </a>
-                </li>
+
+                        <li class="nav-item pe-3">
+                          <a class="nav-link" routerLink="/aboutUs" >Giới thiệu</a>
+                        </li>
+                        <li class="nav-item pe-3">
+                          <a class="nav-link" routerLink="/contact">Liên Hệ</a>
+                        </li>
+                        <li class="nav-item pe-3">
+                          <a class="nav-link" href="#" *ngIf="role == 'ROLE_ADMIN' || role == 'ROLE_USER'">Lịch sử</a>
+                        </li>
+                        <ng-container *ngIf="role == 'ROLE_ADMIN'">
+                          <li class="nav-item pe-3">
+                            <a class="nav-link" href="#" >Danh mục</a>
+                          </li>
+                        </ng-container>
+                        <ng-container *ngIf="role == 'ROLE_ADMIN'">
+                          <li class="nav-item pe-3">
+                            <a class="nav-link" href="#" >Quản lí </a>
+                          </li>
+                        </ng-container>
+                        <ng-container *ngIf="role == 'ROLE_USER'">
+                          <li class="nav-item pe-3" >
+                            <a class="nav-link" href="#">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                   class="bi bi-cart4" viewBox="0 0 16 16">
+                                <path
+                                  d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
+                              </svg>
+                            </a>
+                          </li>
+                        </ng-container>
+                        <li class="nav-item">
+                          <ng-container *ngIf="isLogged == false">
+                            <a class="nav-link" style="color: #660033" routerLink="/login">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                 class="bi bi-person-circle" viewBox="0 0 16 16">
+                              <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                              <path fill-rule="evenodd"
+                                    d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                            </svg>
+                          </a>
+                          </ng-container>
+
+                          <ng-container *ngIf="isLogged == true">
+                            <a class="nav-link"  style="color: #660033" routerLink="/info">
+                              <img class="rounded-img" src="{{account.avatar}}">
+                              <span style="margin-right: 30px; margin-top: 50px;font-weight: bold"> {{account.name}} </span>
+                            </a>
+                          </ng-container>
+
+                        </li>
+                      </ul>
+<!--                    </ul>-->
+<!--                    <form class="d-flex">-->
+<!--                      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">-->
+<!--                      <button class="btn btn-outline-success" type="submit">Search</button>-->
+<!--                    </form>-->
+                  </div>
+                </div>
+              </div>
+            </nav>
+
+
+<!--            <div class="collapse navbar-collapse justify-content-around" id="navbarSupportedContent" >-->
+<!--              <ul class="navbar-nav ml-auto d-flex align-items-center">-->
+<!--                <li class="nav-item pe-3">-->
+<!--                  <a class="nav-link" href="#">Trang chủ</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item pe-3">-->
+<!--                  <a class="nav-link" href="#">Menu</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item pe-3">-->
+<!--                  <a class="nav-link" routerLink="/aboutUs" >Giới thiệu</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item pe-3">-->
+<!--                  <a class="nav-link" routerLink="/contact">Liên Hệ</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item pe-3">-->
+<!--                  <a class="nav-link" href="#" *ngIf="role == 'ROLE_ADMIN' || role == 'ROLE_USER'">Lịch sử</a>-->
+<!--                </li>-->
+<!--                <ng-container *ngIf="role == 'ROLE_ADMIN'">-->
+<!--                <li class="nav-item pe-3">-->
+<!--                  <a class="nav-link" href="#" >Danh mục</a>-->
+<!--                </li>-->
+<!--                </ng-container>-->
+<!--                <ng-container *ngIf="role == 'ROLE_ADMIN'">-->
+<!--                <li class="nav-item pe-3">-->
+<!--                  <a class="nav-link" href="#" >Quản lí </a>-->
+<!--                </li>-->
+<!--                </ng-container>-->
+<!--                <ng-container *ngIf="role == 'ROLE_USER'">-->
 <!--                <li class="nav-item pe-3" >-->
-<!--                  <a type="button" style="color: white" routerLink="product/cart">-->
-
-<!--                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16">-->
-<!--                      <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>-->
+<!--                  <a class="nav-link" href="#">-->
+<!--                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"-->
+<!--                         class="bi bi-cart4" viewBox="0 0 16 16">-->
+<!--                      <path-->
+<!--                        d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>-->
 <!--                    </svg>-->
-<!--                    -->
 <!--                  </a>-->
 <!--                </li>-->
+<!--                </ng-container>-->
+<!--                <li class="nav-item pe-3" >-->
+<!--                  <a type="button" style="color: white" href="">-->
+<!--                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"-->
+<!--                         class="bi bi-search" viewBox="0 0 16 16">-->
+<!--                      <path-->
+<!--                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>-->
+<!--                    </svg>-->
+<!--                  </a>-->
+<!--                </li>-->
+<!--&lt;!&ndash;                <li class="nav-item pe-3" >&ndash;&gt;-->
+<!--&lt;!&ndash;                  <a type="button" style="color: white" routerLink="product/cart">&ndash;&gt;-->
 
-                <li class="nav-item">
-                  <ng-container *ngIf="isLogged == false">
-                  <a  type="button" style="color: white" routerLink="/login">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                         class="bi bi-person-circle" viewBox="0 0 16 16">
-                      <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-                      <path fill-rule="evenodd"
-                            d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-                    </svg>
-                  </a>
-                  </ng-container>
-                  <ng-container *ngIf="isLogged == true">
-                  <a type="button" style="color: white" routerLink="/info">
-                    <img class="rounded-img" src="{{account.avatar}}">
-                    <span style="margin-right: 20px; margin-top: 50px"> {{account.name}} </span>
+<!--&lt;!&ndash;                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16">&ndash;&gt;-->
+<!--&lt;!&ndash;                      <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </svg>&ndash;&gt;-->
+<!--&lt;!&ndash;                    &ndash;&gt;-->
+<!--&lt;!&ndash;                  </a>&ndash;&gt;-->
+<!--&lt;!&ndash;                </li>&ndash;&gt;-->
+
+<!--                <li class="nav-item">-->
+<!--                  <ng-container *ngIf="isLogged == false">-->
+<!--                  <a  type="button" style="color: white" routerLink="/login">-->
 <!--                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"-->
 <!--                         class="bi bi-person-circle" viewBox="0 0 16 16">-->
 <!--                      <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>-->
 <!--                      <path fill-rule="evenodd"-->
 <!--                            d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>-->
 <!--                    </svg>-->
-                  </a>
-                  </ng-container>
-                </li>
-              </ul>
-            </div>
+<!--                  </a>-->
+<!--                  </ng-container>-->
+<!--                  <ng-container *ngIf="isLogged == true">-->
+<!--                  <a type="button" style="color: white" routerLink="/info">-->
+<!--                    <img class="rounded-img" src="{{account.avatar}}">-->
+<!--                    <span style="margin-right: 20px; margin-top: 50px"> {{account.name}} </span>-->
+<!--&lt;!&ndash;                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"&ndash;&gt;-->
+<!--&lt;!&ndash;                         class="bi bi-person-circle" viewBox="0 0 16 16">&ndash;&gt;-->
+<!--&lt;!&ndash;                      <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                      <path fill-rule="evenodd"&ndash;&gt;-->
+<!--&lt;!&ndash;                            d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </svg>&ndash;&gt;-->
+<!--                  </a>-->
+<!--                  </ng-container>-->
+<!--                </li>-->
+<!--              </ul>-->
+<!--            </div>-->
+
+
           </div>
         </nav>
         <!--end navbar-->
@@ -133,4 +224,16 @@
       </div>
     </div>
   </div>
+
+
 </header>
+<div class="scroll-to-top zoom" *ngIf="pageYoffSet > 0">
+      <a class="btn ga" (click)="scrollToTop()" style="background-color: rgba(245,52,18,0.48)">
+  <!--      <i class="fas fa-angle-double-up" style="width: 45px; height: 45px; color: #eeeeee; padding-top:0px"></i>-->
+        <svg  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-double-up" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M7.646 2.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 3.707 2.354 9.354a.5.5 0 1 1-.708-.708l6-6z"/>
+          <path fill-rule="evenodd" d="M7.646 6.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 7.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/>
+        </svg>
+      </a>
+
+</div>

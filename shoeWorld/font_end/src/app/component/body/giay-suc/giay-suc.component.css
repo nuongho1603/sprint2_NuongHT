@@ -732,7 +732,7 @@
 .p-l-22 {padding-left: 22px;}
 .p-l-23 {padding-left: 23px;}
 .p-l-24 {padding-left: 24px;}
-.p-l-25 {padding-left: 25px;}
+.p-l-25 {padding-left: 45px;}
 .p-l-26 {padding-left: 26px;}
 .p-l-27 {padding-left: 27px;}
 .p-l-28 {padding-left: 28px;}
@@ -983,7 +983,7 @@
 .p-r-22 {padding-right: 22px;}
 .p-r-23 {padding-right: 23px;}
 .p-r-24 {padding-right: 24px;}
-.p-r-25 {padding-right: 25px;}
+.p-r-25 {padding-right: 10px;}
 .p-r-26 {padding-right: 26px;}
 .p-r-27 {padding-right: 27px;}
 .p-r-28 {padding-right: 28px;}
@@ -3932,7 +3932,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 */
 * {
   margin: 0px;
-  padding: 0px;
+  /*padding: 0px;*/
   box-sizing: border-box;
 }
 

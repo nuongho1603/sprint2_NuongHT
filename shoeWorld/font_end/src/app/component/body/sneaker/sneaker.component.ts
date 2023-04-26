@@ -18,18 +18,22 @@ export class SneakerComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getAllShoes();
-    this.title.setTitle('Trang giày Sneaker');
+    this.getAllSneaker(0);
+    this.title.setTitle('Trang dép');
   }
 
-  getAllShoes() {
-    this.shoesService.getAllSneaker().subscribe(data => {
+  getAllSneaker(page : number) {
+    this.shoesService.getAllSneaker(page).subscribe(data => {
       // @ts-ignore
       this.shoes = data.content;
       // @ts-ignore
       this.teamPage = data;
       console.log(this.shoes);
     })
+  }
+
+  changePage(page: number) {
+    this.getAllSneaker(page);
   }
 
 }

@@ -11,7 +11,6 @@ import {ShoesService} from "../../../service/shoes.service";
 })
 export class SandalComponent implements OnInit {
 
-
   shoes: Shoes[] = [];
   teamPage!: ProjectJson;
 
@@ -19,12 +18,12 @@ export class SandalComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getAllShoes();
-    this.title.setTitle('Trang Sandal');
+    this.getAllSandal(0);
+    this.title.setTitle('Trang dép');
   }
 
-  getAllShoes() {
-    this.shoesService.getAllSandal().subscribe(data => {
+  getAllSandal(page : number) {
+    this.shoesService.getAllSandal(page).subscribe(data => {
       // @ts-ignore
       this.shoes = data.content;
       // @ts-ignore
@@ -33,4 +32,7 @@ export class SandalComponent implements OnInit {
     })
   }
 
+  changePage(page: number) {
+    this.getAllSandal(page);
+  }
 }

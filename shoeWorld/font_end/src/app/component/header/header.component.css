@@ -1227,7 +1227,7 @@ body {padding-right: 0px !important;}
 }
 
 .navbar-light .navbar-brand {
-  color: #fff;
+  color: #660033;
   font-size: 25px;
   text-transform: uppercase;
   font-weight: bold;
@@ -1239,7 +1239,9 @@ body {padding-right: 0px !important;}
 }
 
 .navbar-light .navbar-nav .nav-link {
-  color: #fff;
+  /*-----------------*/
+  /*color: black;*/
+  font-weight: bold;
 }
 
 .navbar-toggler {
@@ -1293,3 +1295,4 @@ i:hover {
   color:#fff;
   font-size:25px;
 }
+/*scroll to top*/

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {Title} from "@angular/platform-browser";
 import {TokenService} from "../../service/token.service";
 import {ShoesService} from "../../service/shoes.service";
@@ -6,6 +6,8 @@ import {ActivatedRoute} from "@angular/router";
 import {LoginService} from "../../service/login.service";
 import {Shoes} from "../../enity/shoes";
 import {Account} from "../../enity/account";
+import {ViewportScroller} from "@angular/common";
+
 
 @Component({
   selector: 'app-header',
@@ -17,12 +19,12 @@ export class HeaderComponent implements OnInit {
   role = '';
   account: Account;
   idAccount: any;
-
+  pageYoffSet = 0;
 
 
   constructor(private  title: Title,private loginService: LoginService,
               private token: TokenService, private shoesService: ShoesService,
-              private activatedRoute: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute,private scroll: ViewportScroller) {
   // this.activatedRoute.paramMap.subscribe(data=>{
   //   const idAccount = data;
   //   if (idAccount != null){
@@ -76,11 +78,15 @@ export class HeaderComponent implements OnInit {
       )
     }
 
-  //
-  // getNameUser(idAccount: number) {
-  //   this.shoesService.getNameUser(idAccount).subscribe(data => {
-  //     this.account = data;
-  //     console.log(data);
-  //   })
+
  }
+
+
+  @HostListener('window:scroll', ['$event']) onScroll() {
+    this.pageYoffSet = window.pageYOffset;
+  }
+
+  scrollToTop() {
+    this.scroll.scrollToPosition([0, 0]);
+  }
 }
