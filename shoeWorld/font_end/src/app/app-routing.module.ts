@@ -16,6 +16,7 @@ import {DepComponent} from "./component/body/dep/dep.component";
 import {AboutUsComponent} from "./component/about-us/about-us.component";
 import {ContactComponent} from "./component/contact/contact.component";
 import {GiaySucComponent} from "./component/body/giay-suc/giay-suc.component";
+import {BodiiComponent} from "./component/body/bodii/bodii.component";
 
 
 const routes: Routes = [
@@ -32,7 +33,8 @@ const routes: Routes = [
   {path:'dep',component:DepComponent},
   {path:'aboutUs',component:AboutUsComponent},
   {path:'contact',component:ContactComponent},
-  {path:'suc',component:GiaySucComponent}
+  {path:'suc',component:GiaySucComponent},
+  {path:'boo',component:BodiiComponent}
 ];
 
 @NgModule({

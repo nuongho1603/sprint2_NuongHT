@@ -14,183 +14,65 @@
 
 <!-- Gallery -->
 <div class="section-gallery p-t-50 p-b-20">
-  <div
-    class="wrap-label-gallery filter-tope-group size27 flex-w flex-sb-m m-l-r-auto flex-col-c-sm p-l-15 p-r-15 m-b-35">
-    <button class="label-gallery txt26 trans-0-4 is-actived" data-filter="*" routerLink="/body">
-      Tất cả hình ảnh
-    </button>
+  <app-bodii></app-bodii>
+</div>
+<div class="section-header text-center " style="margin-top: 1%">
+  <h2 style="text-align: center">Mọi người nói gì?</h2>
+  <p class="lead">Tổng hợp các ý kiến một số người đánh giá gần đây</p>
+</div>
 
-    <button class="label-gallery txt26 trans-0-4" data-filter=".interior" routerLink="/jordan">
-      Jordan
-    </button>
-    <!--    <a href="/body">jo</a>-->
-
-    <button class="label-gallery txt26 trans-0-4" data-filter=".food" routerLink="/dior">
-      Dior
-    </button>
-
-    <button class="label-gallery txt26 trans-0-4" data-filter=".events" routerLink="/sneaker">
-      Sneakers
-    </button>
-
-    <button class="label-gallery txt26 trans-0-4" data-filter=".guests" routerLink="/sandal">
-      Sandal
-    </button>
-
-    <button class="label-gallery txt26 trans-0-4" data-filter=".guests" routerLink="/dep">
-      Dép
-    </button>
-    <button class="label-gallery txt26 trans-0-4" data-filter=".guests" routerLink="/suc">
-      Giày sục
-    </button>
-
-    <!--<app-all-shoes></app-all-shoes>-->
-  </div>
-
-  <div class="wrap-gallery isotope-grid flex-w p-l-25 p-r-25">
-    <!-- - -->
-    <div class="item-gallery isotope-item bo-rad-10 hov-img-zoom events guests" *ngFor="let s of shoes">
-      <img style="height: 100% " src="{{s.image}}" alt="IMG-GALLERY">
-
-      <div class="overlay-item-gallery trans-0-4 flex-c-m">
-        <a
-          href="{{s.image}}" target="_blank"
-          data-lightbox="gallery">
-          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-search"
-               viewBox="0 0 16 16">
-            <path
-              d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-          </svg>
-        </a>
-        <a href="" data-lightbox="gallery">
-          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-cart4"
-               viewBox="0 0 16 16">
-            <path
-              d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
-          </svg>
-        </a>
-      </div>
-    </div>
-
-
-
-    <!--  phân trang-->
-
-  </div>
-  <div style="margin-top: 12px">
-    <div *ngIf="teamPage" class="d-flex justify-content-center" id="last-row">
-      <nav aria-label="Page navigation example">
-        <ul class="pagination">
-          <li class="page-item" [ngClass]="teamPage.first ? 'disabled': ''">
-            <a role="button" class="page-link" (click)="changePage(0)">Trang đầu</a>
-          </li>
-          <li class="page-item" [ngClass]="teamPage.first ? 'disabled': ''">
-            <a role="button" class="page-link" (click)="changePage(teamPage.number - 1)"><</a>
-          </li>
-          <li class="page-item" *ngIf="teamPage.number - 3 > 0">
-            <a role="button" class="page-link"
-               (click)="changePage(teamPage.number - 4)">{{teamPage.number - 3}}</a>
-          </li>
-          <li class="page-item" *ngIf="teamPage.number - 2 > 0">
-            <a role="button" class="page-link"
-               (click)="changePage(teamPage.number - 3)">{{teamPage.number - 2}}</a>
-          </li>
-          <li class="page-item" *ngIf="teamPage.number - 1 > 0">
-            <a role="button" class="page-link"
-               (click)="changePage(teamPage.number - 2)">{{teamPage.number - 1}}</a>
-          </li>
-          <li class="page-item" *ngIf="teamPage.number > 0">
-            <a role="button" class="page-link"
-               (click)="changePage(teamPage.number - 1)">{{teamPage.number}}</a>
-          </li>
-          <li class="page-item active"><a class="page-link">{{teamPage.number + 1}}</a></li>
-          <li class="page-item" *ngIf="teamPage.number + 2 <= teamPage.totalPages">
-            <a role="button" class="page-link"
-               (click)="changePage(teamPage.number + 1)">{{teamPage.number + 2}}</a>
-          </li>
-          <li class="page-item" *ngIf="teamPage.number + 3 <= teamPage.totalPages">
-            <a role="button" class="page-link"
-               (click)="changePage(teamPage.number + 2)">{{teamPage.number + 3}}</a>
-          </li>
-          <li class="page-item" *ngIf="teamPage.number + 4 <= teamPage.totalPages">
-            <a role="button" class="page-link"
-               (click)="changePage(teamPage.number + 3)">{{teamPage.number + 4}}</a>
-          </li>
-          <li class="page-item" *ngIf="teamPage.number + 5 <= teamPage.totalPages">
-            <a role="button" class="page-link"
-               (click)="changePage(teamPage.number + 4)">{{teamPage.number + 5}}</a>
-          </li>
-          <li class="page-item" [ngClass]="teamPage.last ? 'disabled': ''">
-            <a role="button" class="page-link"
-               (click)="changePage(teamPage.number + 1)">></a>
-          </li>
-          <li class="page-item" [ngClass]="teamPage.last ? 'disabled': ''">
-            <a role="button" class="page-link"
-               (click)="changePage(teamPage.totalPages - 1)">
-              Trang cuối
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  </div>
-  <div class="section-header text-center " style="margin-top: 1%">
-    <h2 style="text-align: center">Mọi người nói gì?</h2>
-    <p class="lead">Tổng hợp các ý kiến một số người đánh giá gần đây</p>
-  </div>
-
-  <!-- Why us -->
-  <div class="section" style="margin-left: 15%">
-    <!-- container -->
-    <div>
-      <!-- row -->
-      <div class="row">
-        <!-- feature -->
-        <div class="col-md-3" style="height: 300px">
-          <div class="feature;w-500 h-400 border border-2 border-danger p-3 rounded ">
-            <img class="rounded-img" src="https://i.pinimg.com/564x/66/3e/4a/663e4ab3ccffc86559236d7f006c0b03.jpg"
-            >
-            <div>
-              <h4>Vân NTC</h4>
-              <p>Với một người cuồng giầy như tôi thì tôi thật sự rất thích trải nghiệm cùng với SHOES WORLD - shop xoay
-                quanh những đôi giầy chất lượng còn hay sale sốc.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- feature -->
-        <div class="col-md-3" style="margin-left: 30px ">
-          <div class="feature;h-500 border border-2 border-danger p-3 rounded">
-            <img class="rounded-img" src="https://i.pinimg.com/564x/6a/43/e6/6a43e67f350af98908004a0838781afb.jpg">
-            <div>
-              <h4>Lan TTN</h4>
-              <p>Một kiểu dáng giày dùng cho tất cả mọi hoạt động trong ngày, SHOES WORLD còn là đại diện cho lối sống
-                Việt Nam không bao giờ bị mai một, đem đến nguồn cảm hứng bất tận từ những đôi giày.</p>
-              <!--            <span class="more-btn">...</span>-->
-            </div>
-          </div>
-        </div>
-
-        <!-- feature -->
-        <div class="col-md-3" style="margin-left:30px">
-          <div class="feature;w-500 border border-2 border-danger p-4 rounded">
-            <img class="rounded-img" src="https://i.pinimg.com/564x/75/d6/de/75d6de7e74085bd07fa1fb8990ccba92.jpg">
-            <div>
-              <h4>Nương HT</h4>
-              <p>Đôi giày này có chất liệu rất tốt độ bền cao, mình đã dùng trong một thời gian khá dài và vẫn còn mới
-                như
-                ban đầu. Hãy đến SHOES WORLD, sẽ không có sự lựa chọn thất vọng.</p>
-            </div>
+<!-- Why us -->
+<div class="section" style="margin-left: 15%">
+  <!-- container -->
+  <div>
+    <!-- row -->
+    <div class="row">
+      <!-- feature -->
+      <div class="col-md-3" style="height: 300px">
+        <div class="feature;w-500 h-400 border border-2 border-danger p-3 rounded ">
+          <img class="rounded-img" src="https://i.pinimg.com/564x/66/3e/4a/663e4ab3ccffc86559236d7f006c0b03.jpg"
+          >
+          <div>
+            <h4>Vân NTC</h4>
+            <p>Với một người cuồng giầy như tôi thì tôi thật sự rất thích trải nghiệm cùng với SHOES WORLD - shop xoay
+              quanh những đôi giầy chất lượng còn hay sale sốc.</p>
           </div>
         </div>
       </div>
-      <hr class="section-hr">
+
+      <!-- feature -->
+      <div class="col-md-3" style="margin-left: 30px ">
+        <div class="feature;h-500 border border-2 border-danger p-3 rounded">
+          <img class="rounded-img" src="https://i.pinimg.com/564x/6a/43/e6/6a43e67f350af98908004a0838781afb.jpg">
+          <div>
+            <h4>Lan TTN</h4>
+            <p>Một kiểu dáng giày dùng cho tất cả mọi hoạt động trong ngày, SHOES WORLD còn là đại diện cho lối sống
+              Việt Nam không bao giờ bị mai một, đem đến nguồn cảm hứng bất tận từ những đôi giày.</p>
+            <!--            <span class="more-btn">...</span>-->
+          </div>
+        </div>
+      </div>
+
+      <!-- feature -->
+      <div class="col-md-3" style="margin-left:30px">
+        <div class="feature;w-500 border border-2 border-danger p-4 rounded">
+          <img class="rounded-img" src="https://i.pinimg.com/564x/75/d6/de/75d6de7e74085bd07fa1fb8990ccba92.jpg">
+          <div>
+            <h4>Nương HT</h4>
+            <p>Đôi giày này có chất liệu rất tốt độ bền cao, mình đã dùng trong một thời gian khá dài và vẫn còn mới
+              như
+              ban đầu. Hãy đến SHOES WORLD, sẽ không có sự lựa chọn thất vọng.</p>
+          </div>
+        </div>
+      </div>
     </div>
+    <hr class="section-hr">
   </div>
-  <!-- Intro -->
-  <section class="section-intro">
-    <div class="header-intro parallax100 t-center p-t-135 p-b-158"
-         style="background-image: url('https://i.pinimg.com/564x/b9/c6/2e/b9c62ec4d8d6be6b95731a42517a22c5.jpg');">
+</div>
+<!-- Intro -->
+<section class="section-intro">
+  <div class="header-intro parallax100 t-center p-t-135 p-b-158"
+       style="background-image: url('https://i.pinimg.com/564x/b9/c6/2e/b9c62ec4d8d6be6b95731a42517a22c5.jpg');">
 			<span class="tit2 p-l-15 p-r-15">
 			SHOP
 		<br>
@@ -203,196 +85,196 @@
        data-caption-delay="300">
       ‘Chân tôi vẫn đang trên mặt đất, và tôi chỉ đang đi những đôi giày tốt hơn.’ – Oprah Winfrey</p>
 	</span>
-    </div>
+  </div>
 
-    <div class="content-intro bg-white p-t-77 p-b-130">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-3 p-t-30 justify-content-center m-l-194">
-            <!-- Block1 -->
-            <div class="blo1">
-              <div class="wrap-pic-blo1 bo-rad-10 hov-img-zoom">
-                <a href="/detail"><img src="https://i.pinimg.com/564x/41/ce/ad/41cead048867bd0b93ca21a53b464d6c.jpg"
-                                       style="height: 350px;width: 300px" alt="IMG-INTRO"></a>
-              </div>
+  <div class="content-intro bg-white p-t-77 p-b-130">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 p-t-30 justify-content-center m-l-194">
+          <!-- Block1 -->
+          <div class="blo1">
+            <div class="wrap-pic-blo1 bo-rad-10 hov-img-zoom">
+              <a href="/detail"><img src="https://i.pinimg.com/564x/41/ce/ad/41cead048867bd0b93ca21a53b464d6c.jpg"
+                                     style="height: 350px;width: 300px" alt="IMG-INTRO"></a>
+            </div>
 
-              <div class="wrap-text-blo1 p-t-35">
-                <a routerLink=""><h4 class="txt5 color0-hov trans-0-4 m-b-13">
-                  Giày Sneaker
-                </h4></a>
+            <div class="wrap-text-blo1 p-t-35">
+              <a routerLink=""><h4 class="txt5 color0-hov trans-0-4 m-b-13">
+                Giày Sneaker
+              </h4></a>
 
-                <p class="m-b-20">
-                  Giày Sneaker nữ độn đế da cao cấp Annie
-                </p>
+              <p class="m-b-20">
+                Giày Sneaker nữ độn đế da cao cấp Annie
+              </p>
 
-                <a routerLink="/detail" class="txt4">
-                  Chi tiết
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                       class="bi bi-arrow-right" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd"
-                          d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
-                  </svg>
-                </a>
-              </div>
+              <a routerLink="/detail" class="txt4">
+                Chi tiết
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                     class="bi bi-arrow-right" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd"
+                        d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                </svg>
+              </a>
             </div>
           </div>
-
-          <div class="col-md-3 p-t-30 " style="margin-left: 50px">
-            <!-- Block1 -->
-            <div class="blo1">
-              <div class="wrap-pic-blo1 bo-rad-10 hov-img-zoom">
-                <a href="#"><img src="https://i.pinimg.com/564x/78/54/93/78549323735d935dc8acd423d0b8cf05.jpg"
-                                 style="height: 350px;width: 300px" alt="IMG-INTRO"></a>
-              </div>
-
-              <div class="wrap-text-blo1 p-t-35">
-                <a href=""><h4 class="txt5 color0-hov trans-0-4 m-b-13">
-                  Giày Sneaker cao cấp
-                </h4></a>
-
-                <p class="m-b-20">
-                  Giày Sneaker nữ cao cáp đế kếp Tiny
-                </p>
-
-                <a routerLink="/detail" class="txt4">
-                  Chi tiết
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                       class="bi bi-arrow-right" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd"
-                          d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-3 p-t-30" style="margin-left: 50px">
-            <!-- Block1 -->
-            <div class="blo1">
-              <div class="wrap-pic-blo1 bo-rad-10 hov-img-zoom">
-                <a href="#"><img src="https://i.pinimg.com/564x/dc/d5/11/dcd511a881b1f1d623c1e77340a7a24f.jpg"
-                                 style="height: 350px;width: 300px" alt="IMG-INTRO"></a>
-              </div>
-
-              <div class="wrap-text-blo1 p-t-35">
-                <a href="#"><h4 class="txt5 color0-hov trans-0-4 m-b-13">
-                  Giày Sneaker thể thao
-                </h4></a>
-
-                <p class="m-b-20">
-                  Giày thể thao nữ AZARA - giày ullzzang màu Trắng, độn đế 4,5cm viền đen bản 2 dây cá tính - M7132
-                </p>
-
-                <a routerLink="/detail" class="txt4">
-                  Chi tiết
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                       class="bi bi-arrow-right" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd"
-                          d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </div>
-
         </div>
+
+        <div class="col-md-3 p-t-30 " style="margin-left: 50px">
+          <!-- Block1 -->
+          <div class="blo1">
+            <div class="wrap-pic-blo1 bo-rad-10 hov-img-zoom">
+              <a href="#"><img src="https://i.pinimg.com/564x/78/54/93/78549323735d935dc8acd423d0b8cf05.jpg"
+                               style="height: 350px;width: 300px" alt="IMG-INTRO"></a>
+            </div>
+
+            <div class="wrap-text-blo1 p-t-35">
+              <a href=""><h4 class="txt5 color0-hov trans-0-4 m-b-13">
+                Giày Sneaker cao cấp
+              </h4></a>
+
+              <p class="m-b-20">
+                Giày Sneaker nữ cao cáp đế kếp Tiny
+              </p>
+
+              <a routerLink="/detail" class="txt4">
+                Chi tiết
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                     class="bi bi-arrow-right" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd"
+                        d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-3 p-t-30" style="margin-left: 50px">
+          <!-- Block1 -->
+          <div class="blo1">
+            <div class="wrap-pic-blo1 bo-rad-10 hov-img-zoom">
+              <a href="#"><img src="https://i.pinimg.com/564x/dc/d5/11/dcd511a881b1f1d623c1e77340a7a24f.jpg"
+                               style="height: 350px;width: 300px" alt="IMG-INTRO"></a>
+            </div>
+
+            <div class="wrap-text-blo1 p-t-35">
+              <a href="#"><h4 class="txt5 color0-hov trans-0-4 m-b-13">
+                Giày Sneaker thể thao
+              </h4></a>
+
+              <p class="m-b-20">
+                Giày thể thao nữ AZARA - giày ullzzang màu Trắng, độn đế 4,5cm viền đen bản 2 dây cá tính - M7132
+              </p>
+
+              <a routerLink="/detail" class="txt4">
+                Chi tiết
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                     class="bi bi-arrow-right" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd"
+                        d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Sign up -->
-  <div class="section-signup bg1-pattern p-t-85 p-b-85">
-    <form class="flex-c-m flex-w flex-col-c-m-lg p-l-5 p-r-5">
+<!-- Sign up -->
+<div class="section-signup bg1-pattern p-t-85 p-b-85">
+  <form class="flex-c-m flex-w flex-col-c-m-lg p-l-5 p-r-5">
 			<span class="txt100 m-10">
         <b> Đặc biệt đăng ký </b>
 			</span>
 
-      <div class="wrap-input-signup size17 bo2 bo-rad-10 bgwhite pos-relative txt10 m-10">
-        <input class="bo-rad-10 sizefull txt10 p-l-20" type="text" name="email-address" placeholder="Email Adrress">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-             class="bi bi-envelope-at-fill"
-             viewBox="0 0 16 16">
-          <path
-            d="M2 2A2 2 0 0 0 .05 3.555L8 8.414l7.95-4.859A2 2 0 0 0 14 2H2Zm-2 9.8V4.698l5.803 3.546L0 11.801Zm6.761-2.97-6.57 4.026A2 2 0 0 0 2 14h6.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.606-3.446l-.367-.225L8 9.586l-1.239-.757ZM16 9.671V4.697l-5.803 3.546.338.208A4.482 4.482 0 0 1 12.5 8c1.414 0 2.675.652 3.5 1.671Z"/>
-          <path
-            d="M15.834 12.244c0 1.168-.577 2.025-1.587 2.025-.503 0-1.002-.228-1.12-.648h-.043c-.118.416-.543.643-1.015.643-.77 0-1.259-.542-1.259-1.434v-.529c0-.844.481-1.4 1.26-1.4.585 0 .87.333.953.63h.03v-.568h.905v2.19c0 .272.18.42.411.42.315 0 .639-.415.639-1.39v-.118c0-1.277-.95-2.326-2.484-2.326h-.04c-1.582 0-2.64 1.067-2.64 2.724v.157c0 1.867 1.237 2.654 2.57 2.654h.045c.507 0 .935-.07 1.18-.18v.731c-.219.1-.643.175-1.237.175h-.044C10.438 16 9 14.82 9 12.646v-.214C9 10.36 10.421 9 12.485 9h.035c2.12 0 3.314 1.43 3.314 3.034v.21Zm-4.04.21v.227c0 .586.227.8.581.8.31 0 .564-.17.564-.743v-.367c0-.516-.275-.708-.572-.708-.346 0-.573.245-.573.791Z"/>
-        </svg>
+    <div class="wrap-input-signup size17 bo2 bo-rad-10 bgwhite pos-relative txt10 m-10">
+      <input class="bo-rad-10 sizefull txt10 p-l-20" type="text" name="email-address" placeholder="Email Adrress">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+           class="bi bi-envelope-at-fill"
+           viewBox="0 0 16 16">
+        <path
+          d="M2 2A2 2 0 0 0 .05 3.555L8 8.414l7.95-4.859A2 2 0 0 0 14 2H2Zm-2 9.8V4.698l5.803 3.546L0 11.801Zm6.761-2.97-6.57 4.026A2 2 0 0 0 2 14h6.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.606-3.446l-.367-.225L8 9.586l-1.239-.757ZM16 9.671V4.697l-5.803 3.546.338.208A4.482 4.482 0 0 1 12.5 8c1.414 0 2.675.652 3.5 1.671Z"/>
+        <path
+          d="M15.834 12.244c0 1.168-.577 2.025-1.587 2.025-.503 0-1.002-.228-1.12-.648h-.043c-.118.416-.543.643-1.015.643-.77 0-1.259-.542-1.259-1.434v-.529c0-.844.481-1.4 1.26-1.4.585 0 .87.333.953.63h.03v-.568h.905v2.19c0 .272.18.42.411.42.315 0 .639-.415.639-1.39v-.118c0-1.277-.95-2.326-2.484-2.326h-.04c-1.582 0-2.64 1.067-2.64 2.724v.157c0 1.867 1.237 2.654 2.57 2.654h.045c.507 0 .935-.07 1.18-.18v.731c-.219.1-.643.175-1.237.175h-.044C10.438 16 9 14.82 9 12.646v-.214C9 10.36 10.421 9 12.485 9h.035c2.12 0 3.314 1.43 3.314 3.034v.21Zm-4.04.21v.227c0 .586.227.8.581.8.31 0 .564-.17.564-.743v-.367c0-.516-.275-.708-.572-.708-.346 0-.573.245-.573.791Z"/>
+      </svg>
+    </div>
+
+    <!-- Button3 -->
+    <button type="submit" class="btn3 flex-c-m size18 txt11 trans-0-4 m-10">
+      Đăng ký
+    </button>
+  </form>
+</div>
+
+
+<!-- Footer -->
+<footer class="bg1">
+  <div class="container p-t-40 p-b-70">
+    <div class="row">
+      <div class="col-sm-6 col-md-4 p-t-50">
+        <!-- - -->
+        <h4 class="txt13 m-b-33">
+          Liên hệ chúng tôi
+        </h4>
+
+        <ul class="m-b-70">
+          <li class="txt14 m-b-14">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                 class="bi bi-shop-window"
+                 viewBox="0 0 16 16">
+              <path
+                d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976l2.61-3.045zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0zM1.5 8.5A.5.5 0 0 1 2 9v6h12V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5zm2 .5a.5.5 0 0 1 .5.5V13h8V9.5a.5.5 0 0 1 1 0V13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5a.5.5 0 0 1 .5-.5z"/>
+            </svg>
+            430 Lê Duẩn, Đà Nẵng
+          </li>
+
+          <li class="txt14 m-b-14">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                 class="bi bi-telephone-forward" viewBox="0 0 16 16">
+              <path
+                d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511zm10.762.135a.5.5 0 0 1 .708 0l2.5 2.5a.5.5 0 0 1 0 .708l-2.5 2.5a.5.5 0 0 1-.708-.708L14.293 4H9.5a.5.5 0 0 1 0-1h4.793l-1.647-1.646a.5.5 0 0 1 0-.708z"/>
+            </svg>
+            (+84) 945399860
+          </li>
+
+          <li class="txt14 m-b-14">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                 class="bi bi-envelope-at"
+                 viewBox="0 0 16 16">
+              <path
+                d="M2 2a2 2 0 0 0-2 2v8.01A2 2 0 0 0 2 14h5.5a.5.5 0 0 0 0-1H2a1 1 0 0 1-.966-.741l5.64-3.471L8 9.583l7-4.2V8.5a.5.5 0 0 0 1 0V4a2 2 0 0 0-2-2H2Zm3.708 6.208L1 11.105V5.383l4.708 2.825ZM1 4.217V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v.217l-7 4.2-7-4.2Z"/>
+              <path
+                d="M14.247 14.269c1.01 0 1.587-.857 1.587-2.025v-.21C15.834 10.43 14.64 9 12.52 9h-.035C10.42 9 9 10.36 9 12.432v.214C9 14.82 10.438 16 12.358 16h.044c.594 0 1.018-.074 1.237-.175v-.73c-.245.11-.673.18-1.18.18h-.044c-1.334 0-2.571-.788-2.571-2.655v-.157c0-1.657 1.058-2.724 2.64-2.724h.04c1.535 0 2.484 1.05 2.484 2.326v.118c0 .975-.324 1.39-.639 1.39-.232 0-.41-.148-.41-.42v-2.19h-.906v.569h-.03c-.084-.298-.368-.63-.954-.63-.778 0-1.259.555-1.259 1.4v.528c0 .892.49 1.434 1.26 1.434.471 0 .896-.227 1.014-.643h.043c.118.42.617.648 1.12.648Zm-2.453-1.588v-.227c0-.546.227-.791.573-.791.297 0 .572.192.572.708v.367c0 .573-.253.744-.564.744-.354 0-.581-.215-.581-.8Z"/>
+            </svg>
+            shoesWorld@site
+          </li>
+        </ul>
+
+        <!-- - -->
+        <h4 class="txt13 m-b-32">
+          Mở cửa
+        </h4>
+
+        <ul>
+          <li class="txt14">
+            08:30 AM – 22:30 AM
+          </li>
+
+          <li class="txt14">
+            Mỗi ngày
+          </li>
+        </ul>
       </div>
 
-      <!-- Button3 -->
-      <button type="submit" class="btn3 flex-c-m size18 txt11 trans-0-4 m-10">
-        Đăng ký
-      </button>
-    </form>
-  </div>
+      <div class="col-sm-6 col-md-4 p-t-50">
+        <!-- - -->
+        <h4 class="txt13 m-b-33">
+          TWITTER MỚI NHẤT
+        </h4>
 
-
-  <!-- Footer -->
-  <footer class="bg1">
-    <div class="container p-t-40 p-b-70">
-      <div class="row">
-        <div class="col-sm-6 col-md-4 p-t-50">
-          <!-- - -->
-          <h4 class="txt13 m-b-33">
-            Liên hệ chúng tôi
-          </h4>
-
-          <ul class="m-b-70">
-            <li class="txt14 m-b-14">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                   class="bi bi-shop-window"
-                   viewBox="0 0 16 16">
-                <path
-                  d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976l2.61-3.045zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0zM1.5 8.5A.5.5 0 0 1 2 9v6h12V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5zm2 .5a.5.5 0 0 1 .5.5V13h8V9.5a.5.5 0 0 1 1 0V13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5a.5.5 0 0 1 .5-.5z"/>
-              </svg>
-              430 Lê Duẩn, Đà Nẵng
-            </li>
-
-            <li class="txt14 m-b-14">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                   class="bi bi-telephone-forward" viewBox="0 0 16 16">
-                <path
-                  d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511zm10.762.135a.5.5 0 0 1 .708 0l2.5 2.5a.5.5 0 0 1 0 .708l-2.5 2.5a.5.5 0 0 1-.708-.708L14.293 4H9.5a.5.5 0 0 1 0-1h4.793l-1.647-1.646a.5.5 0 0 1 0-.708z"/>
-              </svg>
-              (+84) 945399860
-            </li>
-
-            <li class="txt14 m-b-14">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                   class="bi bi-envelope-at"
-                   viewBox="0 0 16 16">
-                <path
-                  d="M2 2a2 2 0 0 0-2 2v8.01A2 2 0 0 0 2 14h5.5a.5.5 0 0 0 0-1H2a1 1 0 0 1-.966-.741l5.64-3.471L8 9.583l7-4.2V8.5a.5.5 0 0 0 1 0V4a2 2 0 0 0-2-2H2Zm3.708 6.208L1 11.105V5.383l4.708 2.825ZM1 4.217V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v.217l-7 4.2-7-4.2Z"/>
-                <path
-                  d="M14.247 14.269c1.01 0 1.587-.857 1.587-2.025v-.21C15.834 10.43 14.64 9 12.52 9h-.035C10.42 9 9 10.36 9 12.432v.214C9 14.82 10.438 16 12.358 16h.044c.594 0 1.018-.074 1.237-.175v-.73c-.245.11-.673.18-1.18.18h-.044c-1.334 0-2.571-.788-2.571-2.655v-.157c0-1.657 1.058-2.724 2.64-2.724h.04c1.535 0 2.484 1.05 2.484 2.326v.118c0 .975-.324 1.39-.639 1.39-.232 0-.41-.148-.41-.42v-2.19h-.906v.569h-.03c-.084-.298-.368-.63-.954-.63-.778 0-1.259.555-1.259 1.4v.528c0 .892.49 1.434 1.26 1.434.471 0 .896-.227 1.014-.643h.043c.118.42.617.648 1.12.648Zm-2.453-1.588v-.227c0-.546.227-.791.573-.791.297 0 .572.192.572.708v.367c0 .573-.253.744-.564.744-.354 0-.581-.215-.581-.8Z"/>
-              </svg>
-              shoesWorld@site
-            </li>
-          </ul>
-
-          <!-- - -->
-          <h4 class="txt13 m-b-32">
-            Mở cửa
-          </h4>
-
-          <ul>
-            <li class="txt14">
-              08:30 AM – 22:30 AM
-            </li>
-
-            <li class="txt14">
-              Mỗi ngày
-            </li>
-          </ul>
-        </div>
-
-        <div class="col-sm-6 col-md-4 p-t-50">
-          <!-- - -->
-          <h4 class="txt13 m-b-33">
-            TWITTER MỚI NHẤT
-          </h4>
-
-          <div class="m-b-25">
+        <div class="m-b-25">
 						<span class="fs-13 color2 m-r-5">
 							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter"
                    viewBox="0 0 16 16">
@@ -400,23 +282,23 @@
     d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
 </svg>
 						</span>
+          <a href="#" class="txt15">
+            @shoeWorld
+          </a>
+
+          <p class="txt14 m-b-18">
+            Shoe World là một lựa chọn tốt. Nó có một thanh trượt tích hợp để hiển thị
             <a href="#" class="txt15">
-              @shoeWorld
+              https://shoeWorld/createbyMe.twitter
             </a>
+          </p>
 
-            <p class="txt14 m-b-18">
-              Shoe World là một lựa chọn tốt. Nó có một thanh trượt tích hợp để hiển thị
-              <a href="#" class="txt15">
-                https://shoeWorld/createbyMe.twitter
-              </a>
-            </p>
-
-            <span class="txt16">
+          <span class="txt16">
 						11 12 1996
 						</span>
-          </div>
+        </div>
 
-          <div>
+        <div>
 						<span class="fs-13 color2 m-r-5">
 							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter"
                    viewBox="0 0 16 16">
@@ -424,156 +306,156 @@
     d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
 </svg>
 						</span>
+          <a href="#" class="txt15">
+            @shoeWorld
+          </a>
+
+          <p class="txt14 m-b-18">
+            Shoe World là một lựa chọn tốt. Nó có một thanh trượt tích hợp để hiển thị
             <a href="#" class="txt15">
-              @shoeWorld
+              https://shoeWorld/createbyme.twitter
             </a>
+          </p>
 
-            <p class="txt14 m-b-18">
-              Shoe World là một lựa chọn tốt. Nó có một thanh trượt tích hợp để hiển thị
-              <a href="#" class="txt15">
-                https://shoeWorld/createbyme.twitter
-              </a>
-            </p>
-
-            <span class="txt16">
+          <span class="txt16">
 							16 03 2004
 						</span>
-          </div>
-        </div>
-
-        <div class="col-sm-6 col-md-4 p-t-50">
-          <!-- - -->
-          <h4 class="txt13 m-b-38">
-            Bộ sưu tập
-          </h4>
-
-          <!-- Gallery footer -->
-          <div class="wrap-gallery-footer flex-w">
-            <a class="item-gallery-footer wrap-pic-w"
-               href="https://i.pinimg.com/564x/80/8c/59/808c59fb5cc3fdaedaafdbe8809dce14.jpg"
-               data-lightbox="gallery-footer">
-              <img src="https://i.pinimg.com/564x/80/8c/59/808c59fb5cc3fdaedaafdbe8809dce14.jpg" alt="GALLERY">
-            </a>
-
-            <a class="item-gallery-footer wrap-pic-w"
-               href="https://i.pinimg.com/564x/80/8c/59/808c59fb5cc3fdaedaafdbe8809dce14.jpg"
-               data-lightbox="gallery-footer">
-              <img src="https://i.pinimg.com/564x/80/8c/59/808c59fb5cc3fdaedaafdbe8809dce14.jpg" alt="GALLERY">
-            </a>
-
-            <a class="item-gallery-footer wrap-pic-w"
-               href="https://i.pinimg.com/564x/80/8c/59/808c59fb5cc3fdaedaafdbe8809dce14.jpg"
-               data-lightbox="gallery-footer">
-              <img src="https://i.pinimg.com/564x/80/8c/59/808c59fb5cc3fdaedaafdbe8809dce14.jpg" alt="GALLERY">
-            </a>
-
-            <a class="item-gallery-footer wrap-pic-w"
-               href="https://i.pinimg.com/564x/80/8c/59/808c59fb5cc3fdaedaafdbe8809dce14.jpg"
-               data-lightbox="gallery-footer">
-              <img src="https://i.pinimg.com/564x/80/8c/59/808c59fb5cc3fdaedaafdbe8809dce14.jpg" alt="GALLERY">
-            </a>
-
-            <a class="item-gallery-footer wrap-pic-w"
-               href="https://i.pinimg.com/564x/80/8c/59/808c59fb5cc3fdaedaafdbe8809dce14.jpg"
-               data-lightbox="gallery-footer">
-              <img src="https://i.pinimg.com/564x/80/8c/59/808c59fb5cc3fdaedaafdbe8809dce14.jpg" alt="GALLERY">
-            </a>
-
-            <a class="item-gallery-footer wrap-pic-w"
-               href="https://i.pinimg.com/564x/80/8c/59/808c59fb5cc3fdaedaafdbe8809dce14.jpg"
-               data-lightbox="gallery-footer">
-              <img src="https://i.pinimg.com/564x/80/8c/59/808c59fb5cc3fdaedaafdbe8809dce14.jpg" alt="GALLERY">
-            </a>
-
-            <a class="item-gallery-footer wrap-pic-w"
-               href="https://i.pinimg.com/564x/80/8c/59/808c59fb5cc3fdaedaafdbe8809dce14.jpg"
-               data-lightbox="gallery-footer">
-              <img src="https://i.pinimg.com/564x/80/8c/59/808c59fb5cc3fdaedaafdbe8809dce14.jpg" alt="GALLERY">
-            </a>
-
-            <a class="item-gallery-footer wrap-pic-w"
-               href="https://i.pinimg.com/564x/80/8c/59/808c59fb5cc3fdaedaafdbe8809dce14.jpg"
-               data-lightbox="gallery-footer">
-              <img src="https://i.pinimg.com/564x/80/8c/59/808c59fb5cc3fdaedaafdbe8809dce14.jpg" alt="GALLERY">
-            </a>
-
-            <a class="item-gallery-footer wrap-pic-w"
-               href="https://i.pinimg.com/564x/80/8c/59/808c59fb5cc3fdaedaafdbe8809dce14.jpg"
-               data-lightbox="gallery-footer">
-              <img src="https://i.pinimg.com/564x/80/8c/59/808c59fb5cc3fdaedaafdbe8809dce14.jpg" alt="GALLERY">
-            </a>
-
-            <a class="item-gallery-footer wrap-pic-w"
-               href="https://i.pinimg.com/564x/80/8c/59/808c59fb5cc3fdaedaafdbe8809dce14.jpg"
-               data-lightbox="gallery-footer">
-              <img src="https://i.pinimg.com/564x/80/8c/59/808c59fb5cc3fdaedaafdbe8809dce14.jpg" alt="GALLERY">
-            </a>
-
-            <a class="item-gallery-footer wrap-pic-w"
-               href="https://i.pinimg.com/564x/80/8c/59/808c59fb5cc3fdaedaafdbe8809dce14.jpg"
-               data-lightbox="gallery-footer">
-              <img src="https://i.pinimg.com/564x/80/8c/59/808c59fb5cc3fdaedaafdbe8809dce14.jpg" alt="GALLERY">
-            </a>
-
-            <a class="item-gallery-footer wrap-pic-w"
-               href="https://i.pinimg.com/564x/80/8c/59/808c59fb5cc3fdaedaafdbe8809dce14.jpg"
-               data-lightbox="gallery-footer">
-              <img src="https://i.pinimg.com/564x/80/8c/59/808c59fb5cc3fdaedaafdbe8809dce14.jpg" alt="GALLERY">
-            </a>
-          </div>
-
         </div>
       </div>
+
+      <div class="col-sm-6 col-md-4 p-t-50">
+        <!-- - -->
+        <h4 class="txt13 m-b-38">
+          Bộ sưu tập
+        </h4>
+
+        <!-- Gallery footer -->
+        <div class="wrap-gallery-footer flex-w">
+          <a class="item-gallery-footer wrap-pic-w"
+             href="https://i.pinimg.com/564x/80/8c/59/808c59fb5cc3fdaedaafdbe8809dce14.jpg"
+             data-lightbox="gallery-footer">
+            <img src="https://i.pinimg.com/564x/80/8c/59/808c59fb5cc3fdaedaafdbe8809dce14.jpg" alt="GALLERY">
+          </a>
+
+          <a class="item-gallery-footer wrap-pic-w"
+             href="https://i.pinimg.com/564x/80/8c/59/808c59fb5cc3fdaedaafdbe8809dce14.jpg"
+             data-lightbox="gallery-footer">
+            <img src="https://i.pinimg.com/564x/80/8c/59/808c59fb5cc3fdaedaafdbe8809dce14.jpg" alt="GALLERY">
+          </a>
+
+          <a class="item-gallery-footer wrap-pic-w"
+             href="https://i.pinimg.com/564x/80/8c/59/808c59fb5cc3fdaedaafdbe8809dce14.jpg"
+             data-lightbox="gallery-footer">
+            <img src="https://i.pinimg.com/564x/80/8c/59/808c59fb5cc3fdaedaafdbe8809dce14.jpg" alt="GALLERY">
+          </a>
+
+          <a class="item-gallery-footer wrap-pic-w"
+             href="https://i.pinimg.com/564x/80/8c/59/808c59fb5cc3fdaedaafdbe8809dce14.jpg"
+             data-lightbox="gallery-footer">
+            <img src="https://i.pinimg.com/564x/80/8c/59/808c59fb5cc3fdaedaafdbe8809dce14.jpg" alt="GALLERY">
+          </a>
+
+          <a class="item-gallery-footer wrap-pic-w"
+             href="https://i.pinimg.com/564x/80/8c/59/808c59fb5cc3fdaedaafdbe8809dce14.jpg"
+             data-lightbox="gallery-footer">
+            <img src="https://i.pinimg.com/564x/80/8c/59/808c59fb5cc3fdaedaafdbe8809dce14.jpg" alt="GALLERY">
+          </a>
+
+          <a class="item-gallery-footer wrap-pic-w"
+             href="https://i.pinimg.com/564x/80/8c/59/808c59fb5cc3fdaedaafdbe8809dce14.jpg"
+             data-lightbox="gallery-footer">
+            <img src="https://i.pinimg.com/564x/80/8c/59/808c59fb5cc3fdaedaafdbe8809dce14.jpg" alt="GALLERY">
+          </a>
+
+          <a class="item-gallery-footer wrap-pic-w"
+             href="https://i.pinimg.com/564x/80/8c/59/808c59fb5cc3fdaedaafdbe8809dce14.jpg"
+             data-lightbox="gallery-footer">
+            <img src="https://i.pinimg.com/564x/80/8c/59/808c59fb5cc3fdaedaafdbe8809dce14.jpg" alt="GALLERY">
+          </a>
+
+          <a class="item-gallery-footer wrap-pic-w"
+             href="https://i.pinimg.com/564x/80/8c/59/808c59fb5cc3fdaedaafdbe8809dce14.jpg"
+             data-lightbox="gallery-footer">
+            <img src="https://i.pinimg.com/564x/80/8c/59/808c59fb5cc3fdaedaafdbe8809dce14.jpg" alt="GALLERY">
+          </a>
+
+          <a class="item-gallery-footer wrap-pic-w"
+             href="https://i.pinimg.com/564x/80/8c/59/808c59fb5cc3fdaedaafdbe8809dce14.jpg"
+             data-lightbox="gallery-footer">
+            <img src="https://i.pinimg.com/564x/80/8c/59/808c59fb5cc3fdaedaafdbe8809dce14.jpg" alt="GALLERY">
+          </a>
+
+          <a class="item-gallery-footer wrap-pic-w"
+             href="https://i.pinimg.com/564x/80/8c/59/808c59fb5cc3fdaedaafdbe8809dce14.jpg"
+             data-lightbox="gallery-footer">
+            <img src="https://i.pinimg.com/564x/80/8c/59/808c59fb5cc3fdaedaafdbe8809dce14.jpg" alt="GALLERY">
+          </a>
+
+          <a class="item-gallery-footer wrap-pic-w"
+             href="https://i.pinimg.com/564x/80/8c/59/808c59fb5cc3fdaedaafdbe8809dce14.jpg"
+             data-lightbox="gallery-footer">
+            <img src="https://i.pinimg.com/564x/80/8c/59/808c59fb5cc3fdaedaafdbe8809dce14.jpg" alt="GALLERY">
+          </a>
+
+          <a class="item-gallery-footer wrap-pic-w"
+             href="https://i.pinimg.com/564x/80/8c/59/808c59fb5cc3fdaedaafdbe8809dce14.jpg"
+             data-lightbox="gallery-footer">
+            <img src="https://i.pinimg.com/564x/80/8c/59/808c59fb5cc3fdaedaafdbe8809dce14.jpg" alt="GALLERY">
+          </a>
+        </div>
+
+      </div>
     </div>
+  </div>
 
-    <div class="end-footer bg2" style="background-color: #CC9999">
-      <div class="container">
-        <div class="flex-sb-m flex-w p-t-22 p-b-22">
-          <div class="p-t-5 p-b-5">
-            <a href="#" class=" c-white">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                   class="bi bi-chat-left-quote" viewBox="0 0 16 16">
-                <path
-                  d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
-                <path
-                  d="M7.066 4.76A1.665 1.665 0 0 0 4 5.668a1.667 1.667 0 0 0 2.561 1.406c-.131.389-.375.804-.777 1.22a.417.417 0 1 0 .6.58c1.486-1.54 1.293-3.214.682-4.112zm4 0A1.665 1.665 0 0 0 8 5.668a1.667 1.667 0 0 0 2.561 1.406c-.131.389-.375.804-.777 1.22a.417.417 0 1 0 .6.58c1.486-1.54 1.293-3.214.682-4.112z"/>
-              </svg>
-            </a>
-            <a href="#" class=" c-white">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook"
-                   viewBox="0 0 16 16">
-                <path
-                  d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
-              </svg>
-            </a>
-            <a href="#" class="fs-15 c-white">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter"
-                   viewBox="0 0 16 16">
-                <path
-                  d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
-              </svg>
-            </a>
-          </div>
-
-          <div class="txt17 p-r-20 p-t-5 p-b-5" style="color: white">
-            Copyright &copy; 2018 All rights reserved | This template is made with
+  <div class="end-footer bg2" style="background-color: #CC9999">
+    <div class="container">
+      <div class="flex-sb-m flex-w p-t-22 p-b-22">
+        <div class="p-t-5 p-b-5">
+          <a href="#" class=" c-white">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                 class="bi bi-person-hearts"
-                 viewBox="0 0 16 16">
-              <path fill-rule="evenodd"
-                    d="M11.5 1.246c.832-.855 2.913.642 0 2.566-2.913-1.924-.832-3.421 0-2.566ZM9 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm-9 8c0 1 1 1 1 1h10s1 0 1-1-1-4-6-4-6 3-6 4Zm13.5-8.09c1.387-1.425 4.855 1.07 0 4.277-4.854-3.207-1.387-5.702 0-4.276ZM15 2.165c.555-.57 1.942.428 0 1.711-1.942-1.283-.555-2.281 0-1.71Z"/>
+                 class="bi bi-chat-left-quote" viewBox="0 0 16 16">
+              <path
+                d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+              <path
+                d="M7.066 4.76A1.665 1.665 0 0 0 4 5.668a1.667 1.667 0 0 0 2.561 1.406c-.131.389-.375.804-.777 1.22a.417.417 0 1 0 .6.58c1.486-1.54 1.293-3.214.682-4.112zm4 0A1.665 1.665 0 0 0 8 5.668a1.667 1.667 0 0 0 2.561 1.406c-.131.389-.375.804-.777 1.22a.417.417 0 1 0 .6.58c1.486-1.54 1.293-3.214.682-4.112z"/>
             </svg>
-            by <a
-            href="https://colorlib.com" target="_blank">Shoe World</a>
-          </div>
+          </a>
+          <a href="#" class=" c-white">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook"
+                 viewBox="0 0 16 16">
+              <path
+                d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
+            </svg>
+          </a>
+          <a href="#" class="fs-15 c-white">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter"
+                 viewBox="0 0 16 16">
+              <path
+                d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class="txt17 p-r-20 p-t-5 p-b-5" style="color: white">
+          Copyright &copy; 2018 All rights reserved | This template is made with
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+               class="bi bi-person-hearts"
+               viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+                  d="M11.5 1.246c.832-.855 2.913.642 0 2.566-2.913-1.924-.832-3.421 0-2.566ZM9 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm-9 8c0 1 1 1 1 1h10s1 0 1-1-1-4-6-4-6 3-6 4Zm13.5-8.09c1.387-1.425 4.855 1.07 0 4.277-4.854-3.207-1.387-5.702 0-4.276ZM15 2.165c.555-.57 1.942.428 0 1.711-1.942-1.283-.555-2.281 0-1.71Z"/>
+          </svg>
+          by <a
+          href="https://colorlib.com" target="_blank">Shoe World</a>
         </div>
       </div>
     </div>
-  </footer>
+  </div>
+</footer>
 
 
-  <!-- Back to top -->
-  <div class="btn-back-to-top bg0-hov" id="myBtn">
+<!-- Back to top -->
+<div class="btn-back-to-top bg0-hov" id="myBtn">
 		<span class="symbol-btn-back-to-top">
 			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-double-up"
            viewBox="0 0 16 16">
@@ -583,6 +465,6 @@
         d="M7.646 6.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 7.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/>
 </svg>
 		</span>
-  </div>
-
 </div>
+
+

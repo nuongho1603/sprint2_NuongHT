@@ -22,20 +22,19 @@ export class HeaderComponent implements OnInit {
   pageYoffSet = 0;
 
 
-  constructor(private  title: Title,private loginService: LoginService,
+  constructor(private  title: Title, private loginService: LoginService,
               private token: TokenService, private shoesService: ShoesService,
-              private activatedRoute: ActivatedRoute,private scroll: ViewportScroller) {
-  // this.activatedRoute.paramMap.subscribe(data=>{
-  //   const idAccount = data;
-  //   if (idAccount != null){
-  //     this.shoesService.getNameUser(this.idAccount).subscribe(data =>{
-  //       this.account = data;
-  //     })
-  //   }
-  // })
+              private activatedRoute: ActivatedRoute, private scroll: ViewportScroller) {
+    // this.activatedRoute.paramMap.subscribe(data=>{
+    //   const idAccount = data;
+    //   if (idAccount != null){
+    //     this.shoesService.getNameUser(this.idAccount).subscribe(data =>{
+    //       this.account = data;
+    //     })
+    //   }
+    // })
 
     this.activatedRoute.paramMap.subscribe(data => {
-      debugger
       if (data != null) {
         this.idAccount = data.get('idAccount');
         console.log(this.idAccount);
@@ -52,7 +51,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.isLogged = this.token.isLogger();
     this.loadUser()
-    this.loginService.getClickEvent().subscribe( next => {
+    this.loginService.getClickEvent().subscribe(next => {
       this.isLogged = this.token.isLogger();
       this.loadUser()
     })
@@ -63,13 +62,15 @@ export class HeaderComponent implements OnInit {
     if (this.isLogged) {
       this.role = this.token.getRole();
     }
-
+    // window.onload;
     // this.getNameUser(this.idAccount);
 
   }
 
+
+
   loadUser() {
-    if(this.isLogged) {
+    if (this.isLogged) {
       this.shoesService.getNameUser(this.token.getId()).subscribe(
         next => {
           this.account = next;
@@ -79,7 +80,7 @@ export class HeaderComponent implements OnInit {
     }
 
 
- }
+  }
 
 
   @HostListener('window:scroll', ['$event']) onScroll() {

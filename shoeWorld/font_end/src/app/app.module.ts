@@ -21,6 +21,7 @@ import { DepComponent } from './component/body/dep/dep.component';
 import { AboutUsComponent } from './component/about-us/about-us.component';
 import { ContactComponent } from './component/contact/contact.component';
 import { GiaySucComponent } from './component/body/giay-suc/giay-suc.component';
+import { BodiiComponent } from './component/body/bodii/bodii.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { GiaySucComponent } from './component/body/giay-suc/giay-suc.component';
     DepComponent,
     AboutUsComponent,
     ContactComponent,
-    GiaySucComponent
+    GiaySucComponent,
+    BodiiComponent
   ],
   imports: [
     BrowserModule,

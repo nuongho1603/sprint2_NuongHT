@@ -43,5 +43,7 @@ export class ShoesService {
     return this.httpClient.get<Account>('http://localhost:8080/api-shoes/name-user/' + idAccount);
   }
 
-
+  getShoesByID(idShoes: number): Observable<Shoes> {
+    return this.httpClient.get<Shoes>('http://localhost:8080/api-shoes/' + idShoes);
+  }
 }

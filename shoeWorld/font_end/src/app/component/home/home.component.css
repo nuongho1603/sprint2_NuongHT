@@ -3932,7 +3932,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 */
 * {
   margin: 0px;
-  padding: 0px;
+  /*padding: 0px;*/
   box-sizing: border-box;
 }
 
@@ -3962,7 +3962,7 @@ a:focus {
 
 a:hover {
   text-decoration: none;
-  color: #ec1d25;
+  color: #660033;
 }
 
 /* ------------------------------------ */
@@ -3997,11 +3997,11 @@ textarea {
 
 textarea:focus, input:focus {
   border-color: transparent !important;
-  box-shadow: 0 0 0px 2px #ec1d25;
-  -moz-box-shadow: 0 0 0px 2px #ec1d25;
-  -webkit-box-shadow: 0 0 0px 2px #ec1d25;
-  -o-box-shadow: 0 0 0px 2px #ec1d25;
-  -ms-box-shadow: 0 0 0px 2px #ec1d25;
+  /*box-shadow: 0 0 0px 2px #ec1d25;*/
+  /*-moz-box-shadow: 0 0 0px 2px #ec1d25;*/
+  /*-webkit-box-shadow: 0 0 0px 2px #ec1d25;*/
+  /*-o-box-shadow: 0 0 0px 2px #ec1d25;*/
+  /*-ms-box-shadow: 0 0 0px 2px #ec1d25;*/
 }
 
 input:focus::-webkit-input-placeholder { color:transparent; }
@@ -5616,4 +5616,46 @@ i:hover {
   100% {
     transform: translateY(-15px);
   }
+}
+
+
+#body {
+  display: flex;
+  justify-content: right;
+  /*background: #48dbfb;*/
+  margin-top: 1rem;
+  padding: 1rem;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 100px;
+
+}
+
+.search-box {
+  background: whitesmoke;
+  border-radius: 20px;
+}
+
+.search-box #search-text {
+  border: none;
+  outline: none;
+  background: none;
+  padding: 10px 15px;
+  font-size: 15px;
+  width: 0;
+  padding: 0;
+  transition: all 0.25s ease-in-out ;
+}
+.search-box:hover #search-text,.search-box #earch-text:valid{
+  width: 300px;
+  padding: 10px 2px 15px;
+}
+.search-box #search-btn {
+  background-color:#660033;
+  color: white;
+  cursor: pointer;
+  border: none;
+  padding:15px 17px;
+  border-radius: 30px;
+  font-size: 10px;
 }

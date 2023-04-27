@@ -22,7 +22,7 @@ export class DepComponent implements OnInit {
     this.title.setTitle('Trang dép');
   }
 
-  private getAllDior(page : number) {
+  getAllDior(page : number) {
     this.shoesService.getAllDep(page).subscribe(data => {
       // @ts-ignore
       this.shoes = data.content;
