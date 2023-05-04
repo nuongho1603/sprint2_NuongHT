@@ -23,13 +23,13 @@ export class DiorComponent implements OnInit {
   }
 
   getAllDior(page : number) {
-    this.shoesService.getAllDior(page).subscribe(data => {
-      // @ts-ignore
-      this.shoes = data.content;
-      // @ts-ignore
-      this.teamPage = data;
-      console.log(this.shoes);
-    })
+    // this.shoesService.getAllDior(page).subscribe(data => {
+    //   // @ts-ignore
+    //   this.shoes = data.content;
+    //   // @ts-ignore
+    //   this.teamPage = data;
+    //   console.log(this.shoes);
+    // })
   }
 
   changePage(page: number) {

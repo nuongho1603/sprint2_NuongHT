@@ -1,34 +1,34 @@
 <!-- Gallery -->
 <div class="section-gallery p-t-50 p-b-20">
   <div class="d-flex justify-content-evenly align-items-center ">
-    <div class="me-2">
-      <button class="label-gallery txt26 trans-0-4 " data-filter="*" (click)="getAllShoes(0)">
-        Tất cả hình ảnh
+    <div class="me-2" *ngFor="let c of category">
+      <button class="label-gallery txt26 trans-0-4 " data-filter="*">
+        {{c.nameCategory}}
       </button>
 
-      <button class="label-gallery txt26 trans-0-4" data-filter=".interior" (click)="getAllJordan(0)">
-        Jordan
-      </button>
-      <!--    <a href="/body">jo</a>-->
+      <!--      <button class="label-gallery txt26 trans-0-4" data-filter=".interior" (click)="getAllJordan(0)">-->
+      <!--        Jordan-->
+      <!--      </button>-->
+      <!--      &lt;!&ndash;    <a href="/body">jo</a>&ndash;&gt;-->
 
-      <button class="label-gallery txt26 trans-0-4" data-filter=".food" (click)="getAllDior(0)">
-        Dior
-      </button>
+      <!--      <button class="label-gallery txt26 trans-0-4" data-filter=".food" (click)="getAllDior(0)">-->
+      <!--        Dior-->
+      <!--      </button>-->
 
-      <button class="label-gallery txt26 trans-0-4" data-filter=".events" (click)="getAllSneaker(0)">
-        Sneakers
-      </button>
+      <!--      <button class="label-gallery txt26 trans-0-4" data-filter=".events" (click)="getAllSneaker(0)">-->
+      <!--        Sneakers-->
+      <!--      </button>-->
 
-      <button class="label-gallery txt26 trans-0-4" data-filter=".guests" (click)="getAllSandal(0)">
-        Sandal
-      </button>
+      <!--      <button class="label-gallery txt26 trans-0-4" data-filter=".guests" (click)="getAllSandal(0)">-->
+      <!--        Sandal-->
+      <!--      </button>-->
 
-      <button class="label-gallery txt26 trans-0-4" data-filter=".guests" (click)="getAllDep(0)" >
-        Dép
-      </button>
-      <button class="label-gallery txt26 trans-0-4" data-filter=".guests" (click)="getAllSuc(0)">
-        Giày sục
-      </button>
+      <!--      <button class="label-gallery txt26 trans-0-4" data-filter=".guests" (click)="getAllDep(0)" >-->
+      <!--        Dép-->
+      <!--      </button>-->
+      <!--      <button class="label-gallery txt26 trans-0-4" data-filter=".guests" (click)="getAllSuc(0)">-->
+      <!--        Giày sục-->
+      <!--      </button>-->
     </div>
     <div id="body">
       <form action="" class="search-box d-flex justify-content-end ps-4">
@@ -71,7 +71,8 @@
     </div>
 
     <!-- Modal -->
-    <div class="modal fade m-l-600" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade m-l-600" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-xl">
         <div class="modal-content">
           <div class="modal-header">
@@ -94,12 +95,12 @@
                 </div>
                 <div class="col-md-6">
                   <div class="card-body">
-                    <h5 class="card-title m-l-10"> <b>{{s.nameProduct}}</b></h5>
+                    <h5 class="card-title m-l-10"><b>{{s.nameProduct}}</b></h5>
                     <p class="card-text m-t-10 m-l-10"><b>Mô tả:</b> {{s.description}}</p>
                     <p class="card-text m-t-10 m-l-10">
                       <small class="text-muted m-l-10"><b>Giá:</b> {{s.price}} <b>đ</b></small>
                     </p>
-                    <div d-flex class="row m-t-30" >
+                    <div d-flex class="row m-t-30">
                       <div class="col-6">
                         <a routerLink="/cart" class="m-l-6">
                           <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
@@ -109,7 +110,8 @@
                           </svg>
                         </a></div>
                       <div class="col-6">
-                        <button type="submit" class="btn btn-outline-danger">Mua ngay</button></div>
+                        <button type="submit" class="btn btn-outline-danger">Mua ngay</button>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -127,176 +129,203 @@
     <!--  phân trang -->
 
   </div>
-  <div style="margin-top: 12px">
-    <div *ngIf="teamPage" class="d-flex justify-content-center" id="last-row">
-      <nav aria-label="Page navigation example">
-        <ul class="pagination">
-          <li class="page-item" [ngClass]="teamPage.first ? 'disabled': ''">
-            <a role="button" class="page-link" (click)="changePage(0)">Trang đầu</a>
-          </li>
-          <li class="page-item" [ngClass]="teamPage.first ? 'disabled': ''">
-            <a role="button" class="page-link" (click)="changePage(teamPage.number - 1)"><</a>
-          </li>
-          <li class="page-item" *ngIf="teamPage.number - 3 > 0">
-            <a role="button" class="page-link"
-               (click)="changePage(teamPage.number - 4)">{{teamPage.number - 3}}</a>
-          </li>
-          <li class="page-item" *ngIf="teamPage.number - 2 > 0">
-            <a role="button" class="page-link"
-               (click)="changePage(teamPage.number - 3)">{{teamPage.number - 2}}</a>
-          </li>
-          <li class="page-item" *ngIf="teamPage.number - 1 > 0">
-            <a role="button" class="page-link"
-               (click)="changePage(teamPage.number - 2)">{{teamPage.number - 1}}</a>
-          </li>
-          <li class="page-item" *ngIf="teamPage.number > 0">
-            <a role="button" class="page-link"
-               (click)="changePage(teamPage.number - 1)">{{teamPage.number}}</a>
-          </li>
-          <li class="page-item active"><a class="page-link">{{teamPage.number + 1}}</a></li>
-          <li class="page-item" *ngIf="teamPage.number + 2 <= teamPage.totalPages">
-            <a role="button" class="page-link"
-               (click)="changePage(teamPage.number + 1)">{{teamPage.number + 2}}</a>
-          </li>
-          <li class="page-item" *ngIf="teamPage.number + 3 <= teamPage.totalPages">
-            <a role="button" class="page-link"
-               (click)="changePage(teamPage.number + 2)">{{teamPage.number + 3}}</a>
-          </li>
-          <li class="page-item" *ngIf="teamPage.number + 4 <= teamPage.totalPages">
-            <a role="button" class="page-link"
-               (click)="changePage(teamPage.number + 3)">{{teamPage.number + 4}}</a>
-          </li>
-          <li class="page-item" *ngIf="teamPage.number + 5 <= teamPage.totalPages">
-            <a role="button" class="page-link"
-               (click)="changePage(teamPage.number + 4)">{{teamPage.number + 5}}</a>
-          </li>
-          <li class="page-item" [ngClass]="teamPage.last ? 'disabled': ''">
-            <a role="button" class="page-link"
-               (click)="changePage(teamPage.number + 1)">></a>
-          </li>
-          <li class="page-item" [ngClass]="teamPage.last ? 'disabled': ''">
-            <a role="button" class="page-link"
-               (click)="changePage(teamPage.totalPages - 1)">
-              Trang cuối
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </div>
 
-<!--    <div *ngIf="getAllDior(0)" class="d-flex justify-content-center" id="last-row1">-->
-<!--      <nav aria-label="Page navigation example">-->
-<!--        <ul class="pagination">-->
-<!--          <li class="page-item" [ngClass]="teamPage.first ? 'disabled': ''">-->
-<!--            <a role="button" class="page-link" (click)="changePage_1(0)">Trang đầu</a>-->
-<!--          </li>-->
-<!--          <li class="page-item" [ngClass]="teamPage.first ? 'disabled': ''">-->
-<!--            <a role="button" class="page-link" (click)="changePage_1(teamPage.number - 1)"><</a>-->
-<!--          </li>-->
-<!--          <li class="page-item" *ngIf="teamPage.number - 3 > 0">-->
-<!--            <a role="button" class="page-link"-->
-<!--               (click)="changePage_1(teamPage.number - 4)">{{teamPage.number - 3}}</a>-->
-<!--          </li>-->
-<!--          <li class="page-item" *ngIf="teamPage.number - 2 > 0">-->
-<!--            <a role="button" class="page-link"-->
-<!--               (click)="changePage_1(teamPage.number - 3)">{{teamPage.number - 2}}</a>-->
-<!--          </li>-->
-<!--          <li class="page-item" *ngIf="teamPage.number - 1 > 0">-->
-<!--            <a role="button" class="page-link"-->
-<!--               (click)="changePage_1(teamPage.number - 2)">{{teamPage.number - 1}}</a>-->
-<!--          </li>-->
-<!--          <li class="page-item" *ngIf="teamPage.number > 0">-->
-<!--            <a role="button" class="page-link"-->
-<!--               (click)="changePage_1(teamPage.number - 1)">{{teamPage.number}}</a>-->
-<!--          </li>-->
-<!--          <li class="page-item active"><a class="page-link">{{teamPage.number + 1}}</a></li>-->
-<!--          <li class="page-item" *ngIf="teamPage.number + 2 <= teamPage.totalPages">-->
-<!--            <a role="button" class="page-link"-->
-<!--               (click)="changePage_1(teamPage.number + 1)">{{teamPage.number + 2}}</a>-->
-<!--          </li>-->
-<!--          <li class="page-item" *ngIf="teamPage.number + 3 <= teamPage.totalPages">-->
-<!--            <a role="button" class="page-link"-->
-<!--               (click)="changePage_1(teamPage.number + 2)">{{teamPage.number + 3}}</a>-->
-<!--          </li>-->
-<!--          <li class="page-item" *ngIf="teamPage.number + 4 <= teamPage.totalPages">-->
-<!--            <a role="button" class="page-link"-->
-<!--               (click)="changePage_1(teamPage.number + 3)">{{teamPage.number + 4}}</a>-->
-<!--          </li>-->
-<!--          <li class="page-item" *ngIf="teamPage.number + 5 <= teamPage.totalPages">-->
-<!--            <a role="button" class="page-link"-->
-<!--               (click)="changePage_1(teamPage.number + 4)">{{teamPage.number + 5}}</a>-->
-<!--          </li>-->
-<!--          <li class="page-item" [ngClass]="teamPage.last ? 'disabled': ''">-->
-<!--            <a role="button" class="page-link"-->
-<!--               (click)="changePage_1(teamPage.number + 1)">></a>-->
-<!--          </li>-->
-<!--          <li class="page-item" [ngClass]="teamPage.last ? 'disabled': ''">-->
-<!--            <a role="button" class="page-link"-->
-<!--               (click)="changePage_1(teamPage.totalPages - 1)">-->
-<!--              Trang cuối-->
-<!--            </a>-->
-<!--          </li>-->
-<!--        </ul>-->
-<!--      </nav>-->
-<!--    </div>-->
-
+  <div class="d-flex justify-content-center">
+    <button type="button" class="btn btn-outline-primary mr-2 mx-3" [hidden]="flagMore || shoes.length === 0"
+            (click)="loadMore()">Xem thêm
+    </button>
+    <button type="button" class="btn btn-outline-primary ml-auto" [hidden]="flagHidden" (click)="hidden()">Ẩn</button>
   </div>
+  <!--  <div class="mb-4 mt-2 text-center">-->
+  <!--    <a style="cursor: pointer; color: #151414; text-decoration: none" type="button"-->
+  <!--       (click)="searchProductByName(size+3)" *ngIf="!last ">-->
+  <!--      Xem thêm-->
+  <!--      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"-->
+  <!--           class="bi bi-caret-down" viewBox="0 0 16 16">-->
+  <!--        <path-->
+  <!--          d="M3.204 5h9.592L8 10.481 3.204 5zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659z"/>-->
+  <!--      </svg>-->
+  <!--    </a>-->
+  <!--    <a style="cursor: pointer; color: #151414; text-decoration: none" type="button"-->
+  <!--       (click)="searchProductByName(size=3)" *ngIf="last && pageProduct.length > 3">-->
+  <!--      Ẩn bớt-->
+  <!--      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"-->
+  <!--           class="bi bi-caret-up" viewBox="0 0 16 16">-->
+  <!--        <path-->
+  <!--          d="M3.204 11h9.592L8 5.519 3.204 11zm-.753-.659 4.796-5.48a1 1 0 0 1 1.506 0l4.796 5.48c.566.647.106 1.659-.753 1.659H3.204a1 1 0 0 1-.753-1.659z"/>-->
+  <!--      </svg>-->
+  <!--    </a>-->
+  <!--  </div>-->
+  <!--  <div style="margin-top: 12px">-->
+  <!--    <div *ngIf="teamPage" class="d-flex justify-content-center" id="last-row">-->
+  <!--      <nav aria-label="Page navigation example">-->
+  <!--        <ul class="pagination">-->
+  <!--          <li class="page-item" [ngClass]="teamPage.first ? 'disabled': ''">-->
+  <!--            <a role="button" class="page-link" (click)="changePage(0)">Trang đầu</a>-->
+  <!--          </li>-->
+  <!--          <li class="page-item" [ngClass]="teamPage.first ? 'disabled': ''">-->
+  <!--            <a role="button" class="page-link" (click)="changePage(teamPage.number - 1)"><</a>-->
+  <!--          </li>-->
+  <!--          <li class="page-item" *ngIf="teamPage.number - 3 > 0">-->
+  <!--            <a role="button" class="page-link"-->
+  <!--               (click)="changePage(teamPage.number - 4)">{{teamPage.number - 3}}</a>-->
+  <!--          </li>-->
+  <!--          <li class="page-item" *ngIf="teamPage.number - 2 > 0">-->
+  <!--            <a role="button" class="page-link"-->
+  <!--               (click)="changePage(teamPage.number - 3)">{{teamPage.number - 2}}</a>-->
+  <!--          </li>-->
+  <!--          <li class="page-item" *ngIf="teamPage.number - 1 > 0">-->
+  <!--            <a role="button" class="page-link"-->
+  <!--               (click)="changePage(teamPage.number - 2)">{{teamPage.number - 1}}</a>-->
+  <!--          </li>-->
+  <!--          <li class="page-item" *ngIf="teamPage.number > 0">-->
+  <!--            <a role="button" class="page-link"-->
+  <!--               (click)="changePage(teamPage.number - 1)">{{teamPage.number}}</a>-->
+  <!--          </li>-->
+  <!--          <li class="page-item active"><a class="page-link">{{teamPage.number + 1}}</a></li>-->
+  <!--          <li class="page-item" *ngIf="teamPage.number + 2 <= teamPage.totalPages">-->
+  <!--            <a role="button" class="page-link"-->
+  <!--               (click)="changePage(teamPage.number + 1)">{{teamPage.number + 2}}</a>-->
+  <!--          </li>-->
+  <!--          <li class="page-item" *ngIf="teamPage.number + 3 <= teamPage.totalPages">-->
+  <!--            <a role="button" class="page-link"-->
+  <!--               (click)="changePage(teamPage.number + 2)">{{teamPage.number + 3}}</a>-->
+  <!--          </li>-->
+  <!--          <li class="page-item" *ngIf="teamPage.number + 4 <= teamPage.totalPages">-->
+  <!--            <a role="button" class="page-link"-->
+  <!--               (click)="changePage(teamPage.number + 3)">{{teamPage.number + 4}}</a>-->
+  <!--          </li>-->
+  <!--          <li class="page-item" *ngIf="teamPage.number + 5 <= teamPage.totalPages">-->
+  <!--            <a role="button" class="page-link"-->
+  <!--               (click)="changePage(teamPage.number + 4)">{{teamPage.number + 5}}</a>-->
+  <!--          </li>-->
+  <!--          <li class="page-item" [ngClass]="teamPage.last ? 'disabled': ''">-->
+  <!--            <a role="button" class="page-link"-->
+  <!--               (click)="changePage(teamPage.number + 1)">></a>-->
+  <!--          </li>-->
+  <!--          <li class="page-item" [ngClass]="teamPage.last ? 'disabled': ''">-->
+  <!--            <a role="button" class="page-link"-->
+  <!--               (click)="changePage(teamPage.totalPages - 1)">-->
+  <!--              Trang cuối-->
+  <!--            </a>-->
+  <!--          </li>-->
+  <!--        </ul>-->
+  <!--      </nav>-->
+  <!--    </div>-->
 
-<!--  <div style="margin-top: 12px">-->
-<!--    <div *ngIf="teamPage" class="d-flex justify-content-center" id="last-row1">-->
-<!--      <nav aria-label="Page navigation example">-->
-<!--        <ul class="pagination">-->
-<!--          <li class="page-item" [ngClass]="teamPage.first ? 'disabled': ''">-->
-<!--            <a role="button" class="page-link" (click)="changePage_1(0)">Trang đầu</a>-->
-<!--          </li>-->
-<!--          <li class="page-item" [ngClass]="teamPage.first ? 'disabled': ''">-->
-<!--            <a role="button" class="page-link" (click)="changePage_1(teamPage.number - 1)"><</a>-->
-<!--          </li>-->
-<!--          <li class="page-item" *ngIf="teamPage.number - 3 > 0">-->
-<!--            <a role="button" class="page-link"-->
-<!--               (click)="changePage_1(teamPage.number - 4)">{{teamPage.number - 3}}</a>-->
-<!--          </li>-->
-<!--          <li class="page-item" *ngIf="teamPage.number - 2 > 0">-->
-<!--            <a role="button" class="page-link"-->
-<!--               (click)="changePage_1(teamPage.number - 3)">{{teamPage.number - 2}}</a>-->
-<!--          </li>-->
-<!--          <li class="page-item" *ngIf="teamPage.number - 1 > 0">-->
-<!--            <a role="button" class="page-link"-->
-<!--               (click)="changePage_1(teamPage.number - 2)">{{teamPage.number - 1}}</a>-->
-<!--          </li>-->
-<!--          <li class="page-item" *ngIf="teamPage.number > 0">-->
-<!--            <a role="button" class="page-link"-->
-<!--               (click)="changePage_1(teamPage.number - 1)">{{teamPage.number}}</a>-->
-<!--          </li>-->
-<!--          <li class="page-item active"><a class="page-link">{{teamPage.number + 1}}</a></li>-->
-<!--          <li class="page-item" *ngIf="teamPage.number + 2 <= teamPage.totalPages">-->
-<!--            <a role="button" class="page-link"-->
-<!--               (click)="changePage_1(teamPage.number + 1)">{{teamPage.number + 2}}</a>-->
-<!--          </li>-->
-<!--          <li class="page-item" *ngIf="teamPage.number + 3 <= teamPage.totalPages">-->
-<!--            <a role="button" class="page-link"-->
-<!--               (click)="changePage_1(teamPage.number + 2)">{{teamPage.number + 3}}</a>-->
-<!--          </li>-->
-<!--          <li class="page-item" *ngIf="teamPage.number + 4 <= teamPage.totalPages">-->
-<!--            <a role="button" class="page-link"-->
-<!--               (click)="changePage_1(teamPage.number + 3)">{{teamPage.number + 4}}</a>-->
-<!--          </li>-->
-<!--          <li class="page-item" *ngIf="teamPage.number + 5 <= teamPage.totalPages">-->
-<!--            <a role="button" class="page-link"-->
-<!--               (click)="changePage_1(teamPage.number + 4)">{{teamPage.number + 5}}</a>-->
-<!--          </li>-->
-<!--          <li class="page-item" [ngClass]="teamPage.last ? 'disabled': ''">-->
-<!--            <a role="button" class="page-link"-->
-<!--               (click)="changePage_1(teamPage.number + 1)">></a>-->
-<!--          </li>-->
-<!--          <li class="page-item" [ngClass]="teamPage.last ? 'disabled': ''">-->
-<!--            <a role="button" class="page-link"-->
-<!--               (click)="changePage_1(teamPage.totalPages - 1)">-->
-<!--              Trang cuối-->
-<!--            </a>-->
-<!--          </li>-->
-<!--        </ul>-->
-<!--      </nav>-->
-<!--    </div>-->
-<!--  </div>-->
+  <!--    <div *ngIf="getAllDior(0)" class="d-flex justify-content-center" id="last-row1">-->
+  <!--      <nav aria-label="Page navigation example">-->
+  <!--        <ul class="pagination">-->
+  <!--          <li class="page-item" [ngClass]="teamPage.first ? 'disabled': ''">-->
+  <!--            <a role="button" class="page-link" (click)="changePage_1(0)">Trang đầu</a>-->
+  <!--          </li>-->
+  <!--          <li class="page-item" [ngClass]="teamPage.first ? 'disabled': ''">-->
+  <!--            <a role="button" class="page-link" (click)="changePage_1(teamPage.number - 1)"><</a>-->
+  <!--          </li>-->
+  <!--          <li class="page-item" *ngIf="teamPage.number - 3 > 0">-->
+  <!--            <a role="button" class="page-link"-->
+  <!--               (click)="changePage_1(teamPage.number - 4)">{{teamPage.number - 3}}</a>-->
+  <!--          </li>-->
+  <!--          <li class="page-item" *ngIf="teamPage.number - 2 > 0">-->
+  <!--            <a role="button" class="page-link"-->
+  <!--               (click)="changePage_1(teamPage.number - 3)">{{teamPage.number - 2}}</a>-->
+  <!--          </li>-->
+  <!--          <li class="page-item" *ngIf="teamPage.number - 1 > 0">-->
+  <!--            <a role="button" class="page-link"-->
+  <!--               (click)="changePage_1(teamPage.number - 2)">{{teamPage.number - 1}}</a>-->
+  <!--          </li>-->
+  <!--          <li class="page-item" *ngIf="teamPage.number > 0">-->
+  <!--            <a role="button" class="page-link"-->
+  <!--               (click)="changePage_1(teamPage.number - 1)">{{teamPage.number}}</a>-->
+  <!--          </li>-->
+  <!--          <li class="page-item active"><a class="page-link">{{teamPage.number + 1}}</a></li>-->
+  <!--          <li class="page-item" *ngIf="teamPage.number + 2 <= teamPage.totalPages">-->
+  <!--            <a role="button" class="page-link"-->
+  <!--               (click)="changePage_1(teamPage.number + 1)">{{teamPage.number + 2}}</a>-->
+  <!--          </li>-->
+  <!--          <li class="page-item" *ngIf="teamPage.number + 3 <= teamPage.totalPages">-->
+  <!--            <a role="button" class="page-link"-->
+  <!--               (click)="changePage_1(teamPage.number + 2)">{{teamPage.number + 3}}</a>-->
+  <!--          </li>-->
+  <!--          <li class="page-item" *ngIf="teamPage.number + 4 <= teamPage.totalPages">-->
+  <!--            <a role="button" class="page-link"-->
+  <!--               (click)="changePage_1(teamPage.number + 3)">{{teamPage.number + 4}}</a>-->
+  <!--          </li>-->
+  <!--          <li class="page-item" *ngIf="teamPage.number + 5 <= teamPage.totalPages">-->
+  <!--            <a role="button" class="page-link"-->
+  <!--               (click)="changePage_1(teamPage.number + 4)">{{teamPage.number + 5}}</a>-->
+  <!--          </li>-->
+  <!--          <li class="page-item" [ngClass]="teamPage.last ? 'disabled': ''">-->
+  <!--            <a role="button" class="page-link"-->
+  <!--               (click)="changePage_1(teamPage.number + 1)">></a>-->
+  <!--          </li>-->
+  <!--          <li class="page-item" [ngClass]="teamPage.last ? 'disabled': ''">-->
+  <!--            <a role="button" class="page-link"-->
+  <!--               (click)="changePage_1(teamPage.totalPages - 1)">-->
+  <!--              Trang cuối-->
+  <!--            </a>-->
+  <!--          </li>-->
+  <!--        </ul>-->
+  <!--      </nav>-->
+  <!--    </div>-->
+
+  <!--  </div>-->
+
+  <!--  <div style="margin-top: 12px">-->
+  <!--    <div *ngIf="teamPage" class="d-flex justify-content-center" id="last-row1">-->
+  <!--      <nav aria-label="Page navigation example">-->
+  <!--        <ul class="pagination">-->
+  <!--          <li class="page-item" [ngClass]="teamPage.first ? 'disabled': ''">-->
+  <!--            <a role="button" class="page-link" (click)="changePage_1(0)">Trang đầu</a>-->
+  <!--          </li>-->
+  <!--          <li class="page-item" [ngClass]="teamPage.first ? 'disabled': ''">-->
+  <!--            <a role="button" class="page-link" (click)="changePage_1(teamPage.number - 1)"><</a>-->
+  <!--          </li>-->
+  <!--          <li class="page-item" *ngIf="teamPage.number - 3 > 0">-->
+  <!--            <a role="button" class="page-link"-->
+  <!--               (click)="changePage_1(teamPage.number - 4)">{{teamPage.number - 3}}</a>-->
+  <!--          </li>-->
+  <!--          <li class="page-item" *ngIf="teamPage.number - 2 > 0">-->
+  <!--            <a role="button" class="page-link"-->
+  <!--               (click)="changePage_1(teamPage.number - 3)">{{teamPage.number - 2}}</a>-->
+  <!--          </li>-->
+  <!--          <li class="page-item" *ngIf="teamPage.number - 1 > 0">-->
+  <!--            <a role="button" class="page-link"-->
+  <!--               (click)="changePage_1(teamPage.number - 2)">{{teamPage.number - 1}}</a>-->
+  <!--          </li>-->
+  <!--          <li class="page-item" *ngIf="teamPage.number > 0">-->
+  <!--            <a role="button" class="page-link"-->
+  <!--               (click)="changePage_1(teamPage.number - 1)">{{teamPage.number}}</a>-->
+  <!--          </li>-->
+  <!--          <li class="page-item active"><a class="page-link">{{teamPage.number + 1}}</a></li>-->
+  <!--          <li class="page-item" *ngIf="teamPage.number + 2 <= teamPage.totalPages">-->
+  <!--            <a role="button" class="page-link"-->
+  <!--               (click)="changePage_1(teamPage.number + 1)">{{teamPage.number + 2}}</a>-->
+  <!--          </li>-->
+  <!--          <li class="page-item" *ngIf="teamPage.number + 3 <= teamPage.totalPages">-->
+  <!--            <a role="button" class="page-link"-->
+  <!--               (click)="changePage_1(teamPage.number + 2)">{{teamPage.number + 3}}</a>-->
+  <!--          </li>-->
+  <!--          <li class="page-item" *ngIf="teamPage.number + 4 <= teamPage.totalPages">-->
+  <!--            <a role="button" class="page-link"-->
+  <!--               (click)="changePage_1(teamPage.number + 3)">{{teamPage.number + 4}}</a>-->
+  <!--          </li>-->
+  <!--          <li class="page-item" *ngIf="teamPage.number + 5 <= teamPage.totalPages">-->
+  <!--            <a role="button" class="page-link"-->
+  <!--               (click)="changePage_1(teamPage.number + 4)">{{teamPage.number + 5}}</a>-->
+  <!--          </li>-->
+  <!--          <li class="page-item" [ngClass]="teamPage.last ? 'disabled': ''">-->
+  <!--            <a role="button" class="page-link"-->
+  <!--               (click)="changePage_1(teamPage.number + 1)">></a>-->
+  <!--          </li>-->
+  <!--          <li class="page-item" [ngClass]="teamPage.last ? 'disabled': ''">-->
+  <!--            <a role="button" class="page-link"-->
+  <!--               (click)="changePage_1(teamPage.totalPages - 1)">-->
+  <!--              Trang cuối-->
+  <!--            </a>-->
+  <!--          </li>-->
+  <!--        </ul>-->
+  <!--      </nav>-->
+  <!--    </div>-->
+  <!--  </div>-->
 </div>

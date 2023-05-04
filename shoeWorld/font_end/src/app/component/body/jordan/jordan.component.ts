@@ -25,13 +25,13 @@ export class JordanComponent implements OnInit {
   }
 
   getAllJordan(page: number) {
-    this.shoesService.getAllJordan(page).subscribe(data => {
-      // @ts-ignore
-      this.shoes = data.content;
-      // @ts-ignore
-      this.teamPage = data;
-      console.log(this.shoes);
-    })
+    // this.shoesService.getAllJordan(page).subscribe(data => {
+    //   // @ts-ignore
+    //   this.shoes = data.content;
+    //   // @ts-ignore
+    //   this.teamPage = data;
+    //   console.log(this.shoes);
+    // })
   }
 
   changePage(page: number) {

@@ -1,0 +1,108 @@
+<app-header></app-header>
+<main id="main-content" class="" style="margin-top: 7%">
+  <div  class="layout-pageContact">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6 col-sm-12 col-xs-12 box-heading-contact">
+
+          <div class="box-map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.9535674349904!2d106.71301411533402!3d10.7380621628357!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f222dc4cac3%3A0xed02c790aba9167a!2zSlVOTyBOZ3V54buFbiBUaOG7iyBUaOG6rXA!5e0!3m2!1svi!2s!4v1555663624868!5m2!1svi!2s" width="100%" height="700" frameborder="0" style="border:0" allowfullscreen></iframe>
+          </div>
+
+
+        </div>
+        <div class="col-md-6 col-sm-12 col-xs-12  wrapbox-content-page-contact">
+          <div class="header-page-contact clearfix">
+            <h1>Liên hệ
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-balloon-fill" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8.48 10.901C11.211 10.227 13 7.837 13 5A5 5 0 0 0 3 5c0 2.837 1.789 5.227 4.52 5.901l-.244.487a.25.25 0 1 0 .448.224l.04-.08c.009.17.024.315.051.45.068.344.208.622.448 1.102l.013.028c.212.422.182.85.05 1.246-.135.402-.366.751-.534 1.003a.25.25 0 0 0 .416.278l.004-.007c.166-.248.431-.646.588-1.115.16-.479.212-1.051-.076-1.629-.258-.515-.365-.732-.419-1.004a2.376 2.376 0 0 1-.037-.289l.008.017a.25.25 0 1 0 .448-.224l-.244-.487ZM4.352 3.356a4.004 4.004 0 0 1 3.15-2.325C7.774.997 8 1.224 8 1.5c0 .276-.226.496-.498.542-.95.162-1.749.78-2.173 1.617a.595.595 0 0 1-.52.341c-.346 0-.599-.329-.457-.644Z"/>
+              </svg>
+            </h1>
+          </div>
+          <div class="box-info-contact">
+            <ul class="list-info">
+              <li>
+                <p>Địa chỉ chúng tôi</p>
+                <p><strong>113-115 Nguyễn Thái Học, Cầu Ông Lãnh, Quận 1, TP. Hồ Chí Minh - 0945 399 861 64 Cao Thắng, Phường 4 , Quận 3, TP. Hồ Chí Minh</strong></p>
+              </li>
+              <li>
+                <p>Email chúng tôi</p>
+                <p><strong>shoe.world@fb.mesa.vn</strong></p>
+              </li>
+              <li>
+                <p>Điện thoại</p>
+                <p><strong>0945 399 860</strong></p>
+              </li>
+              <li>
+                <p>Thời gian làm việc</p>
+                <p><strong>Thứ 2 đến Thứ chủ nhật từ 08:30  – 22:30 </strong></p>
+              </li>
+            </ul>
+          </div>
+          <div class="box-send-contact">
+            <h2>Gửi thắc mắc cho chúng tôi</h2>
+            <div id="col-left contactFormWrapper">
+              <form accept-charset='UTF-8' action='/contact' class='contact-form' method='post'>
+                <input name='form_type' type='hidden' value='contact'>
+                <input name='utf8' type='hidden' value='✓'>
+
+
+                <div class="contact-form">
+                  <div class="row">
+                    <div class="col-sm-12 col-xs-12">
+                      <div class="input-group">
+                        <input required type="text" name="contact[name]" class="form-control" placeholder="Tên của bạn" aria-describedby="basic-addon1">
+                      </div>
+                    </div>
+                    <div class="col-sm-6 col-xs-12" style="margin-top: 2%">
+                      <div class="input-group">
+                        <input required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" type="email" name="contact[email]" class="form-control" placeholder="Email của bạn" aria-describedby="basic-addon1">
+                      </div>
+                    </div>
+                    <div class="col-sm-6 col-xs-12" style="margin-top: 2%">
+                      <div class="input-group">
+                        <input pattern="[0-9]{10,12}" maxlength="10" minlength="10" onkeypress="validate(event)" required type="tel" name="contact[phone]" class="form-control" placeholder="Số điện thoại của bạn" aria-describedby="basic-addon1">
+                      </div>
+                    </div>
+                    <div class="col-sm-12 col-xs-12" style="margin-top: 2%">
+                      <div class="input-group">
+                        <textarea name="contact[body]" placeholder="Nội dung" style="width: 500%"></textarea>
+                      </div>
+                    </div>
+                    <div class="col-xs-12" style="margin-top: 2%">
+                      <!--                      <button class="button dark">Gửi cho chúng tôi</button>-->
+                      <!-- HTML !-->
+                      <button class="button-57" role="button"><span class="text">Gửi cho chúng tôi</span><span>Gửi thắc mắc</span></button>
+
+                    </div>
+                  </div>
+                </div>
+
+                <input id='078aafa2ad7d4007bb53b11e244f0a0b' name='g-recaptcha-response' type='hidden'><script src='https://www.google.com/recaptcha/api.js?render=6LdD18MUAAAAAHqKl3Avv8W-tREL6LangePxQLM-'></script><script>grecaptcha.ready(function() {grecaptcha.execute('6LdD18MUAAAAAHqKl3Avv8W-tREL6LangePxQLM-', {action: 'submit'}).then(function(token) {document.getElementById('078aafa2ad7d4007bb53b11e244f0a0b').value = token;});});</script></form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    function validate(evt) {
+      var theEvent = evt || window.event;
+
+      // Handle paste
+      if (theEvent.type === 'paste') {
+        key = event.clipboardData.getData('text/plain');
+      } else {
+        // Handle key press
+        var key = theEvent.keyCode || theEvent.which;
+        key = String.fromCharCode(key);
+      }
+      var regex = /[0-9]|\./;
+      if( !regex.test(key) ) {
+        theEvent.returnValue = false;
+        if(theEvent.preventDefault) theEvent.preventDefault();
+      }
+    }
+  </script>
+</main>
+

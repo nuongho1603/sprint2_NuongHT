@@ -49,6 +49,16 @@ public class ShoesService implements IShoesWorldService {
     }
 
     @Override
+    public Page<Shoes> getShoes(int idCategory,String nameSearch, Pageable pageable) {
+        return iShoesRepository.getShoes(idCategory,nameSearch, pageable);
+    }
+
+    @Override
+    public Page<Shoes> getAllSearchJordan(String nameSearch, Pageable pageable) {
+        return iShoesRepository.getAllSearchJordan(nameSearch, pageable);
+    }
+
+    @Override
     public Shoes getShoesByID(int idShoes) {
         return iShoesRepository.getShoesByID(idShoes);
     }

@@ -23,13 +23,13 @@ export class SandalComponent implements OnInit {
   }
 
   getAllSandal(page : number) {
-    this.shoesService.getAllSandal(page).subscribe(data => {
-      // @ts-ignore
-      this.shoes = data.content;
-      // @ts-ignore
-      this.teamPage = data;
-      console.log(this.shoes);
-    })
+    // this.shoesService.getAllSandal(page).subscribe(data => {
+    //   // @ts-ignore
+    //   this.shoes = data.content;
+    //   // @ts-ignore
+    //   this.teamPage = data;
+    //   console.log(this.shoes);
+    // })
   }
 
   changePage(page: number) {

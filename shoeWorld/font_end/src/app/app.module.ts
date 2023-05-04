@@ -23,6 +23,7 @@ import { ContactComponent } from './component/contact/contact.component';
 import { GiaySucComponent } from './component/body/giay-suc/giay-suc.component';
 import { BodiiComponent } from './component/body/bodii/bodii.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +43,8 @@ import { BodiiComponent } from './component/body/bodii/bodii.component';
     AboutUsComponent,
     ContactComponent,
     GiaySucComponent,
-    BodiiComponent
+    BodiiComponent,
+
   ],
   imports: [
     BrowserModule,

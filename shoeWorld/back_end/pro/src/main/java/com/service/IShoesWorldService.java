@@ -13,11 +13,13 @@ public interface IShoesWorldService {
     Page<Shoes> getAllSneaker(Pageable pageable);
     Page<Shoes> getAllShoes(Pageable pageable);
     Page<Shoes> getAllSuc(Pageable pageable);
+    Page<Shoes> getShoes(int idCategory,String nameSearch, Pageable pageable);
 
+    Page<Shoes> getAllSearchJordan(String nameSearch,Pageable pageable);
 
     Shoes getShoesByID( int idShoes);
 
-    void deleteShoesById(@Param("idShoes") int idShoes);
+    void deleteShoesById( int idShoes);
 
     void updateShoes(String code, String nameProduct, String description, double price, String promotionalPrice, String image, String origin,int idCategory, int idSize, int idShoes);
 }

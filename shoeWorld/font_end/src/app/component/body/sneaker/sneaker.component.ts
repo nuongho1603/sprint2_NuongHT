@@ -23,13 +23,13 @@ export class SneakerComponent implements OnInit {
   }
 
   getAllSneaker(page : number) {
-    this.shoesService.getAllSneaker(page).subscribe(data => {
-      // @ts-ignore
-      this.shoes = data.content;
-      // @ts-ignore
-      this.teamPage = data;
-      console.log(this.shoes);
-    })
+    // this.shoesService.getAllSneaker(page).subscribe(data => {
+    //   // @ts-ignore
+    //   this.shoes = data.content;
+    //   // @ts-ignore
+    //   this.teamPage = data;
+    //   console.log(this.shoes);
+    // })
   }
 
   changePage(page: number) {

@@ -2,8 +2,10 @@ package com.controller;
 
 import com.dto.ShoesDto;
 import com.model.account.Account;
+import com.model.shoeWorld.Category;
 import com.model.shoeWorld.Shoes;
 import com.service.impl.AccountService;
+import com.service.impl.CategoryService;
 import com.service.impl.ShoesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -15,6 +17,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api-shoes")
 @CrossOrigin("*")
@@ -23,16 +27,37 @@ public class ShoesRestConntroller {
     private ShoesService shoesService;
     @Autowired
     private AccountService accountService;
+    @Autowired
+    private CategoryService categoryService;
 
-    @GetMapping("/name-user/{idAccount}")
-    public ResponseEntity<Account> findNameUser(@PathVariable("idAccount") Long idAccount) {
-        Account account = accountService.getNameUser(idAccount);
-        if (account == null) {
+//    @GetMapping("/s/{idCategory}")
+//    public ResponseEntity<Page<?>> getShoes(@PathVariable("idCategory") int idCategory,@RequestParam(defaultValue = "") String nameSearch,
+//                                            @PageableDefault(page = 0, size = 3) Pageable pageable) {
+//        Page<Shoes> shoes = shoesService.getShoes(idCategory,nameSearch,pageable);
+//        if (shoes.isEmpty()) {
+//            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//        }
+//        return new ResponseEntity<>(shoes, HttpStatus.OK);
+//    }
+    @GetMapping("/s/{idCategory}")
+    public ResponseEntity<Page<?>> getShoes(@PathVariable("idCategory") int idCategory,@RequestParam(defaultValue = "") String nameSearch,
+                                          int totalElement) {
+        Pageable pageable = Pageable.ofSize(totalElement);
+        Page<Shoes> shoes = shoesService.getShoes(idCategory,nameSearch,pageable);
+        if (shoes.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<>(account, HttpStatus.OK);
+        return new ResponseEntity<>(shoes, HttpStatus.OK);
     }
 
+    @GetMapping("/category")
+    public ResponseEntity<List<Category>> getCate() {
+        List<Category> categories = categoryService.listCate();
+        if (categories.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(categories, HttpStatus.OK);
+    }
     @GetMapping("/all-shoes")
     public ResponseEntity<Page<Shoes>> getAllShoes(@PageableDefault(page = 0, size = 9) Pageable pageable) {
         Page<Shoes> shoesPage = shoesService.getAllShoes(pageable);
@@ -42,59 +67,82 @@ public class ShoesRestConntroller {
         return new ResponseEntity<>(shoesPage, HttpStatus.OK);
     }
 
-    @GetMapping("/jordan")
-    public ResponseEntity<Page<Shoes>> getAllJordan(@PageableDefault(page = 0, size = 9) Pageable pageable) {
-        Page<Shoes> jordanPage = shoesService.getAllJordan(pageable);
-        if (jordanPage.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    @GetMapping("/search")
+    public ResponseEntity<Page<Shoes>> getListNewProduct(@RequestParam(defaultValue = "") String nameSearch,
+                                                               @PageableDefault(size = 3) Pageable pageable) {
+        Page<Shoes> jorPage;
+        jorPage = shoesService.getAllSearchJordan(nameSearch, pageable);
+        if (jorPage.isEmpty()) {
+            return new ResponseEntity<>(jorPage, HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<>(jordanPage, HttpStatus.OK);
+        return new ResponseEntity<>(jorPage, HttpStatus.OK);
     }
 
-    @GetMapping("/dior")
-    public ResponseEntity<Page<Shoes>> getAllDior(@PageableDefault(page = 0, size = 9) Pageable pageable) {
-        Page<Shoes> diorPage = shoesService.getAllDior(pageable);
-        if (diorPage.isEmpty()) {
+    @GetMapping("/name-user/{idAccount}")
+    public ResponseEntity<Account> findNameUser(@PathVariable("idAccount") Long idAccount) {
+        Account account = accountService.getNameUser(idAccount);
+        if (account == null) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<>(diorPage, HttpStatus.OK);
+        return new ResponseEntity<>(account, HttpStatus.OK);
     }
+//
 
-    @GetMapping("/sandal")
-    public ResponseEntity<Page<Shoes>> getAllSandal(@PageableDefault(page = 0, size = 9) Pageable pageable) {
-        Page<Shoes> sandalPage = shoesService.getAllSandal(pageable);
-        if (sandalPage.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-        return new ResponseEntity<>(sandalPage, HttpStatus.OK);
-    }
-
-    @GetMapping("/dep")
-    public ResponseEntity<Page<Shoes>> getAllDep(@PageableDefault(page = 0, size = 9) Pageable pageable) {
-        Page<Shoes> depPage = shoesService.getAllDep(pageable);
-        if (depPage.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-        return new ResponseEntity<>(depPage, HttpStatus.OK);
-    }
-
-    @GetMapping("/sneaker")
-    public ResponseEntity<Page<Shoes>> getAllSneaker(@PageableDefault(page = 0, size = 9) Pageable pageable) {
-        Page<Shoes> bootPage = shoesService.getAllSneaker(pageable);
-        if (bootPage.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-        return new ResponseEntity<>(bootPage, HttpStatus.OK);
-    }
-
-    @GetMapping("/giay-suc")
-    public ResponseEntity<Page<Shoes>> getAllBoot(@PageableDefault(page = 0, size = 9) Pageable pageable) {
-        Page<Shoes> bootPage = shoesService.getAllSuc(pageable);
-        if (bootPage.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-        return new ResponseEntity<>(bootPage, HttpStatus.OK);
-    }
+//
+//    @GetMapping("/jordan")
+//    public ResponseEntity<Page<Shoes>> getAllJordan(int totalElement) {
+//        Pageable pageable = Pageable.ofSize(totalElement);
+//        Page<Shoes> jordanPage = shoesService.getAllJordan(pageable);
+//        if (jordanPage.isEmpty()) {
+//            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//        }
+//        return new ResponseEntity<>(jordanPage, HttpStatus.OK);
+//    }
+//
+//    @GetMapping("/dior")
+//    public ResponseEntity<Page<Shoes>> getAllDior(@PageableDefault(page = 0, size = 9) Pageable pageable) {
+//        Page<Shoes> diorPage = shoesService.getAllDior(pageable);
+//        if (diorPage.isEmpty()) {
+//            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//        }
+//        return new ResponseEntity<>(diorPage, HttpStatus.OK);
+//    }
+//
+//    @GetMapping("/sandal")
+//    public ResponseEntity<Page<Shoes>> getAllSandal(@PageableDefault(page = 0, size = 9) Pageable pageable) {
+//        Page<Shoes> sandalPage = shoesService.getAllSandal(pageable);
+//        if (sandalPage.isEmpty()) {
+//            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//        }
+//        return new ResponseEntity<>(sandalPage, HttpStatus.OK);
+//    }
+//
+//    @GetMapping("/dep")
+//    public ResponseEntity<Page<Shoes>> getAllDep(@PageableDefault(page = 0, size = 9) Pageable pageable) {
+//        Page<Shoes> depPage = shoesService.getAllDep(pageable);
+//        if (depPage.isEmpty()) {
+//            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//        }
+//        return new ResponseEntity<>(depPage, HttpStatus.OK);
+//    }
+//
+//    @GetMapping("/sneaker")
+//    public ResponseEntity<Page<Shoes>> getAllSneaker(@PageableDefault(page = 0, size = 9) Pageable pageable) {
+//        Page<Shoes> bootPage = shoesService.getAllSneaker(pageable);
+//        if (bootPage.isEmpty()) {
+//            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//        }
+//        return new ResponseEntity<>(bootPage, HttpStatus.OK);
+//    }
+//
+//    @GetMapping("/giay-suc")
+//    public ResponseEntity<Page<Shoes>> getAllBoot(@PageableDefault(page = 0, size = 9) Pageable pageable) {
+//        Page<Shoes> bootPage = shoesService.getAllSuc(pageable);
+//        if (bootPage.isEmpty()) {
+//            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//        }
+//        return new ResponseEntity<>(bootPage, HttpStatus.OK);
+//    }
 
     @GetMapping("/{idShoes}")
     public ResponseEntity<Shoes> findShoesById(@PathVariable("idShoes") int idShoes) {
