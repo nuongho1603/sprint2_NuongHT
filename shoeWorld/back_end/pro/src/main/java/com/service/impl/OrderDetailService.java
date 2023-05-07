@@ -1,0 +1,36 @@
+package com.service.impl;
+
+import com.dto.order.OrderDetailDto;
+import com.dto.order.TotalPay;
+import com.repository.IOrderDetailRepository;
+import com.service.IOrderDetailService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class OrderDetailService implements IOrderDetailService {
+    @Autowired
+    private IOrderDetailRepository iOrderDetailRepository;
+
+    @Override
+    public List<OrderDetailDto> getOrderDetailByIdOrder(Integer idOrder) {
+        return iOrderDetailRepository.getOrderDetailByIdOrder(idOrder);
+    }
+
+    @Override
+    public void addOrderDetail(Integer idOrder, Integer idShoes, Integer quantity) {
+        iOrderDetailRepository.addOrderDetail(idOrder, idShoes, quantity);
+    }
+
+    @Override
+    public void updateQuantity(Integer idOrder, Integer idShoes, Integer quantity) {
+        iOrderDetailRepository.updateQuantity(idOrder, idShoes, quantity);
+    }
+
+    @Override
+    public TotalPay getTotal(Integer idUser) {
+        return iOrderDetailRepository.getTotal(idUser);
+    }
+}

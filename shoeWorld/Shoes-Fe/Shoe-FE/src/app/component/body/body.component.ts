@@ -4,6 +4,13 @@ import {Category} from "../../enity/category";
 import {ShoesService} from "../../service/shoes.service";
 import {Shoes} from "../../enity/shoes";
 import Swal from "sweetalert2";
+import {FormControl, FormGroup} from "@angular/forms";
+import {ActivatedRoute, Router} from "@angular/router";
+import {TokenService} from "../../service/token.service";
+import {LoginService} from "../../service/login.service";
+import {Title} from "@angular/platform-browser";
+import {OrderService} from "../../service/order.service";
+import {ShareService} from "../../service/share.service";
 
 @Component({
   selector: 'app-body',
@@ -14,16 +21,48 @@ export class BodyComponent implements OnInit {
   cate: Category[] = [];
   shoes: Shoes[] = [];
   idCategory: number;
-  nameSearch: '';
+  nameSearch: string = '';
   idShoes: number;
   s: any;
+  isLogin = false;
 
-  totalElement = 4;
+  totalElement = 6;
   maxElement = 0;
   flagHidden = true;
   flagMore = false;
+  formGroup: FormGroup;
 
-  constructor(private categoryService: CategoryService, private shoesService: ShoesService) {
+  idOrder = 0;
+  idUser = 0;
+  product: Shoes = {idShoes: 0, price: 0, nameProduct: '', image: '', description: ''};
+
+
+  constructor(private categoryService: CategoryService, private shoesService: ShoesService,
+              // private productService: ShoesService,
+              private activatedRoute: ActivatedRoute,
+              private tokenStorageService: TokenService,
+              private shareService: LoginService,
+              private title: Title,
+              private orderService: OrderService,
+              private router: Router,
+              private share: ShareService) {
+    this.formGroup = new FormGroup({
+      nameSearch: new FormControl(''),
+    });
+
+    this.title.setTitle('Chi tiết sản phẩm');
+    this.isLogin = this.tokenStorageService.isLogger();
+    this.idUser = Number(this.tokenStorageService.getId());
+
+    // this.orderService.getOrderByIdAccount(parseInt(this.tokenStorageService.getId())).subscribe(next => {
+    //   this.idOrder = next.idOrder;
+    // })
+    // this.shoesService.getNameUser(parseInt(this.tokenStorageService.getId())).subscribe(next => {
+    //   // @ts-ignore
+    //   this.idOrder = next.idOrder;
+    //
+    //   console.log(this.idOrder)
+    // })
   }
 
   ngOnInit(): void {
@@ -31,6 +70,53 @@ export class BodyComponent implements OnInit {
     this.getAllShoes(0)
     // @ts-ignore
     this.getAllCategory(this.totalElement);
+
+
+    this.getOrderID();
+    this.changeQuantity();
+  }
+
+  getOrderID() {
+    this.orderService.getOrderByIdAccount(this.idUser).subscribe(next => {
+      if (next) {
+        this.idOrder = next.idOrder;
+        // this.changeQuantity();
+        // console.log(this.idOrder)
+      } else {
+        this.orderService.addOrderByIdAccount(this.idUser).subscribe(next => {
+          this.orderService.getOrderByIdAccount(this.idUser).subscribe(next => {
+            this.idOrder = next.idOrder;
+            // console.log(this.idOrder)
+            //   this.changeQuantity();
+          })
+        })
+      }
+
+    })
+  }
+
+  changeQuantity() {
+    this.isLogin = this.tokenStorageService.isLogger();
+    if (this.isLogin) {
+      this.idUser = Number(this.tokenStorageService.getId());
+      this.orderService.getTotalQuantity(this.idUser).subscribe(data => {
+        if (data) {
+          console.log(data.totalQuantity + "hiiiil")
+          this.share.changeData({
+            quantity: data.totalQuantity,
+          });
+        } else {
+          this.share.changeData({
+            quantity: 0,
+          });
+        }
+      }, error => {
+      });
+    } else {
+      this.share.changeData({
+        quantity: this.tokenStorageService.getTotalQuantity(),
+      });
+    }
   }
 
   getAllCategory() {
@@ -58,15 +144,40 @@ export class BodyComponent implements OnInit {
   // });
   // }
 
-  getCateById(idCategory: number, totalElement: number, nameSearch: any) {
+  // getCateById(idCategory: number, totalElement: number) {
+  //   this.idCategory = idCategory;
+  //   console.log(idCategory)
+  //
+  //
+  //   this.shoesService.getShoesByID(this.idCategory, this.totalElement).subscribe(data => {
+  //     // @ts-ignore
+  //     this.shoes = data.content;
+  //     console.log(data)
+  //     // @ts-ignore
+  //     this.maxElement = data.totalElements;
+  //   }, error => {
+  //     Swal.fire({
+  //       position: 'center',
+  //       icon: 'error',
+  //       title: 'Danh sách rỗng',
+  //       showConfirmButton: true,
+  //       timer: 1500,
+  //     },)
+  //   });
+  //
+  // }
+
+
+  getShoesSearch(idCategory: number, totalElement: number, nameSearch: any) {
     this.idCategory = idCategory;
     console.log(idCategory)
     this.nameSearch = nameSearch;
-
+    console.log(nameSearch)
+    // if (this.nameSearch === undefined) {
+    //   this.nameSearch = '';
+    // }
     this.shoesService.getShoesByID(this.idCategory, this.totalElement, this.nameSearch).subscribe(data => {
-      // @ts-ignore
-      this.nameSearch = data.nameSearch;
-      // console.log(nameSearch)
+
       // @ts-ignore
       this.shoes = data.content;
       console.log(data)
@@ -78,7 +189,7 @@ export class BodyComponent implements OnInit {
         icon: 'error',
         title: 'Danh sách rỗng',
         showConfirmButton: true,
-        timer: 1500,
+        timer: 1200,
       },)
     });
 
@@ -96,7 +207,7 @@ export class BodyComponent implements OnInit {
     console.log(this.flagHidden + 'aa');
     console.log(this.totalElement + 'aa');
 
-    this.getCateById(this.idCategory, this.totalElement, this.nameSearch);
+    this.getShoesSearch(this.idCategory, this.totalElement, this.nameSearch);
   }
 
   loadMore() {
@@ -111,7 +222,7 @@ export class BodyComponent implements OnInit {
     }
     console.log(this.flagMore + 'a');
 
-    this.getCateById(this.idCategory, this.totalElement, this.nameSearch);
+    this.getShoesSearch(this.idCategory, this.totalElement, this.nameSearch);
   }
 
   getShoesById(idShoes: number) {
@@ -124,7 +235,64 @@ export class BodyComponent implements OnInit {
     });
   }
 
-  search() {
-    this.ngOnInit();
+  searchNameProduct() {
+    this.shoes = [];
+    if (this.nameSearch === undefined) {
+      this.nameSearch = '';
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Danh sách rỗng',
+        showConfirmButton: true,
+        timer: 1200,
+      },)
+    }
+    this.shoesService.getShoesByID(this.idCategory, this.totalElement, this.formGroup.value.nameSearch.trim()).subscribe(data => {
+
+      // @ts-ignore
+      this.shoes = data.content;
+      console.log(data)
+      // @ts-ignore
+      this.maxElement = data.totalElements;
+
+
+    }, error => {
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Danh sách rỗng',
+        showConfirmButton: true,
+        timer: 1200,
+      },)
+    });
   }
+
+  addToCart(idShoes: any, nameProduct: any, qty: any) {
+    console.log(idShoes + '123/' + nameProduct)
+    if (this.isLogin) {
+      this.orderService.addOrderDetailByIdOrder(this.idOrder, idShoes, parseInt(qty)).subscribe(data => {
+        this.shareService.sendClickEvent();
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Đã thêm sản phẩm ' + nameProduct + ' vào giỏ hàng',
+          showConfirmButton: false,
+          timer: 1000
+        })
+
+        this.changeQuantity();
+      })
+    } else {
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Vui lòng đăng nhập để mua hàng!',
+        showConfirmButton: false,
+        timer: 1000
+      })
+      this.router.navigateByUrl('/login')
+
+    }
+  }
+
 }

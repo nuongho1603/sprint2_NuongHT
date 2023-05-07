@@ -2,9 +2,12 @@ package com.controller;
 
 import com.dto.request.SignInForm;
 import com.dto.response.JwtResponse;
+import com.model.account.Account;
 import com.security.jwt.JWTProvider;
 import com.security.principle.UserPrinciple;
+import com.service.impl.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -23,6 +26,8 @@ public class AuthController {
     private AuthenticationManager authenticationManager;
     @Autowired
     private JWTProvider jwtProvider;
+    @Autowired
+    private AccountService accountService;
 
     @PostMapping("/login")
 
@@ -40,6 +45,15 @@ public class AuthController {
                 userPrinciple.getPassword(),
                 userPrinciple.getAvatar(),
                 userPrinciple.getAuthorities()));
+    }
+
+    @GetMapping("/info/{idAccount}")
+    public ResponseEntity<?> getInfoByIdAccount(@PathVariable Long idAccount) {
+        Account account = accountService.getNameUser(idAccount);
+        if (account == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(account, HttpStatus.OK);
     }
 
 

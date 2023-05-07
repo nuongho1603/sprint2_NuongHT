@@ -15,7 +15,11 @@ export class ShoesService {
     return this.httpClient.get<Account>('http://localhost:8080/api-shoes/name-user/' + idAccount);
   }
 
-  getShoesByID(idCategory: number,totalElement: number,nameSearch: any): Observable<Page<Shoes[]>> {
+  // getShoesByID(idCategory: number,totalElement: number): Observable<Page<Shoes[]>> {
+  //   return this.httpClient.get<Page<Shoes[]>>('http://localhost:8080/api-shoes/s/' + idCategory + '?totalElement=' + totalElement );
+  // }
+
+  getShoesByID(idCategory: number,totalElement: number,nameSearch: string): Observable<Page<Shoes[]>> {
     return this.httpClient.get<Page<Shoes[]>>('http://localhost:8080/api-shoes/s/' + idCategory + '?totalElement=' + totalElement +'&nameSearch=' + nameSearch);
   }
 

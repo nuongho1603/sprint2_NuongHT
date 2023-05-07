@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Title} from "@angular/platform-browser";
 import {LoginService} from "../../service/login.service";
 import {TokenService} from "../../service/token.service";
@@ -6,6 +6,7 @@ import {ShoesService} from "../../service/shoes.service";
 import {ActivatedRoute} from "@angular/router";
 import {ViewportScroller} from "@angular/common";
 import {Account} from "../../enity/account";
+import {ShareService} from "../../service/share.service";
 
 @Component({
   selector: 'app-header',
@@ -18,10 +19,12 @@ export class HeaderComponent implements OnInit {
   account: Account;
   idAccount: any;
 
+  totalQuantity = 0;
 
   constructor(private  title: Title, private loginService: LoginService,
               private token: TokenService, private shoesService: ShoesService,
-              private activatedRoute: ActivatedRoute, private scroll: ViewportScroller) {
+              private activatedRoute: ActivatedRoute, private scroll: ViewportScroller,
+              private share: ShareService) {
     // this.activatedRoute.paramMap.subscribe(data=>{
     //   const idAccount = data;
     //   if (idAccount != null){
@@ -61,9 +64,14 @@ export class HeaderComponent implements OnInit {
     }
     // window.onload;
     // this.getNameUser(this.idAccount);
-
+    this.getQuantityByShare();
   }
 
+  getQuantityByShare() {
+    this.share.getData.subscribe(data => {
+      this.totalQuantity = data.quantity;
+    });
+  }
 
 
   loadUser() {

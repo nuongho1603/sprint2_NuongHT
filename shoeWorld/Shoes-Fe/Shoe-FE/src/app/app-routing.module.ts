@@ -10,6 +10,7 @@ import {ContactComponent} from "./component/contact/contact.component";
 import {AboutUsComponent} from "./component/about-us/about-us.component";
 import {DetailComponent} from "./component/detail/detail.component";
 import {CartComponent} from "./component/cart/cart.component";
+import {ProfileComponent} from "./component/profile/profile.component";
 
 
 const routes: Routes = [
@@ -20,7 +21,8 @@ const routes: Routes = [
   {path:'body',component: BodyComponent},
   {path:'info',component: InfoComponent},
   {path:'detail',component: DetailComponent},
-  {path:'cart' ,component: CartComponent}
+  {path:'cart' ,component: CartComponent},
+  {path:'profile' ,component: ProfileComponent}
 ];
 
 @NgModule({

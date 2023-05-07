@@ -7,4 +7,6 @@ export interface OrderDetail {
   shoes?: Shoes;
   quantity?: number;
   flagDelete?: boolean;
+
+
 }

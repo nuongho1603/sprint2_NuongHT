@@ -19,4 +19,16 @@ export class LoginService {
   getClickEvent(): Observable<any> {
     return this.subject.asObservable();
   }
+
+  sendClickEvent() {
+    this.subject.next();
+  }
+
+  // getClickEvent(): Observable<any>{
+  //   return this.subject.asObservable();
+  // }
+
+  getInfoCustomer(idAccount: number): Observable<Account> {
+    return this.http.get<Account>('http://localhost:8080/api/auth/info/'+ idAccount);
+  }
 }

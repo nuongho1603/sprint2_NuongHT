@@ -9,6 +9,14 @@ a{
   height: 15px; /* Đặt chiều cao cho ảnh */
   border-radius: 50%; /* Làm tròn các góc của ảnh */
 }
+
+.bor-total {
+  background: white;
+  object-fit: cover;
+  width: 16px; /* Đặt chiều rộng cho ảnh */
+  height: 16px; /* Đặt chiều cao cho ảnh */
+  border-radius: 50%; /* Làm tròn các góc của ảnh */
+}
 /*[ Header ]
 ///////////////////////////////////////////////////////////
 */
