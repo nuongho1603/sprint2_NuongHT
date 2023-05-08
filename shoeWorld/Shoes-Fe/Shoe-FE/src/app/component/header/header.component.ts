@@ -7,6 +7,7 @@ import {ActivatedRoute} from "@angular/router";
 import {ViewportScroller} from "@angular/common";
 import {Account} from "../../enity/account";
 import {ShareService} from "../../service/share.service";
+import {OrderService} from "../../service/order.service";
 
 @Component({
   selector: 'app-header',
@@ -24,7 +25,8 @@ export class HeaderComponent implements OnInit {
   constructor(private  title: Title, private loginService: LoginService,
               private token: TokenService, private shoesService: ShoesService,
               private activatedRoute: ActivatedRoute, private scroll: ViewportScroller,
-              private share: ShareService) {
+              private share: ShareService,
+              private orderService: OrderService) {
     // this.activatedRoute.paramMap.subscribe(data=>{
     //   const idAccount = data;
     //   if (idAccount != null){
@@ -65,6 +67,7 @@ export class HeaderComponent implements OnInit {
     // window.onload;
     // this.getNameUser(this.idAccount);
     this.getQuantityByShare();
+    this.changeQuantity();
   }
 
   getQuantityByShare() {
@@ -85,5 +88,29 @@ export class HeaderComponent implements OnInit {
     }
 
 
+  }
+
+  changeQuantity() {
+    this.isLogged = this.token.isLogger();
+    if (this.isLogged) {
+      this.idAccount = Number(this.token.getId());
+      this.orderService.getTotalQuantity(this.idAccount).subscribe(data => {
+        if (data) {
+          console.log(data.totalQuantity + "hiiiil")
+          this.share.changeData({
+            quantity: data.totalQuantity,
+          });
+        } else {
+          this.share.changeData({
+            quantity: 0,
+          });
+        }
+      }, error => {
+      });
+    } else {
+      this.share.changeData({
+        quantity: this.token.getTotalQuantity(),
+      });
+    }
   }
 }

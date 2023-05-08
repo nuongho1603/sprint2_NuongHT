@@ -20,7 +20,7 @@ const routes: Routes = [
   {path:'login',component: LoginComponent},
   {path:'body',component: BodyComponent},
   {path:'info',component: InfoComponent},
-  {path:'detail',component: DetailComponent},
+  {path:'detail/:idShoes',component: DetailComponent},
   {path:'cart' ,component: CartComponent},
   {path:'profile' ,component: ProfileComponent}
 ];

@@ -35,6 +35,7 @@ export class BodyComponent implements OnInit {
   idOrder = 0;
   idUser = 0;
   product: Shoes = {idShoes: 0, price: 0, nameProduct: '', image: '', description: ''};
+  role: string = '';
 
 
   constructor(private categoryService: CategoryService, private shoesService: ShoesService,
@@ -54,6 +55,7 @@ export class BodyComponent implements OnInit {
     this.isLogin = this.tokenStorageService.isLogger();
     this.idUser = Number(this.tokenStorageService.getId());
 
+
     // this.orderService.getOrderByIdAccount(parseInt(this.tokenStorageService.getId())).subscribe(next => {
     //   this.idOrder = next.idOrder;
     // })
@@ -67,6 +69,11 @@ export class BodyComponent implements OnInit {
 
   ngOnInit(): void {
     window.scroll(0, 0);
+    this.isLogin = this.tokenStorageService.isLogger();
+    if (this.isLogin) {
+      this.role = this.tokenStorageService.getRole();
+      // console.log(this.role)
+    }
     this.getAllShoes(0)
     // @ts-ignore
     this.getAllCategory(this.totalElement);
@@ -77,22 +84,21 @@ export class BodyComponent implements OnInit {
   }
 
   getOrderID() {
-    this.orderService.getOrderByIdAccount(this.idUser).subscribe(next => {
-      if (next) {
-        this.idOrder = next.idOrder;
-        // this.changeQuantity();
-        // console.log(this.idOrder)
-      } else {
-        this.orderService.addOrderByIdAccount(this.idUser).subscribe(next => {
-          this.orderService.getOrderByIdAccount(this.idUser).subscribe(next => {
-            this.idOrder = next.idOrder;
-            // console.log(this.idOrder)
-            //   this.changeQuantity();
+    if (this.role == 'ROLE_USER'){
+      this.orderService.getOrderByIdAccount(this.idUser).subscribe(next => {
+        if (next) {
+          this.idOrder = next.idOrder;
+        } else {
+          this.orderService.addOrderByIdAccount(this.idUser).subscribe(next => {
+            this.orderService.getOrderByIdAccount(this.idUser).subscribe(next => {
+              this.idOrder = next.idOrder;
+            })
           })
-        })
-      }
+        }
 
-    })
+      })
+    }
+
   }
 
   changeQuantity() {
@@ -101,7 +107,7 @@ export class BodyComponent implements OnInit {
       this.idUser = Number(this.tokenStorageService.getId());
       this.orderService.getTotalQuantity(this.idUser).subscribe(data => {
         if (data) {
-          console.log(data.totalQuantity + "hiiiil")
+          console.log(data.totalQuantity + "hiiiilo")
           this.share.changeData({
             quantity: data.totalQuantity,
           });
@@ -173,9 +179,9 @@ export class BodyComponent implements OnInit {
     console.log(idCategory)
     this.nameSearch = nameSearch;
     console.log(nameSearch)
-    // if (this.nameSearch === undefined) {
-    //   this.nameSearch = '';
-    // }
+    if (this.nameSearch === undefined) {
+      this.nameSearch = '';
+    }
     this.shoesService.getShoesByID(this.idCategory, this.totalElement, this.nameSearch).subscribe(data => {
 
       // @ts-ignore
@@ -239,16 +245,20 @@ export class BodyComponent implements OnInit {
     this.shoes = [];
     if (this.nameSearch === undefined) {
       this.nameSearch = '';
-      Swal.fire({
-        position: 'center',
-        icon: 'error',
-        title: 'Danh sách rỗng',
-        showConfirmButton: true,
-        timer: 1200,
-      },)
     }
+    console.log(this.nameSearch + "namesearch")
     this.shoesService.getShoesByID(this.idCategory, this.totalElement, this.formGroup.value.nameSearch.trim()).subscribe(data => {
+      if (data == null  || this.nameSearch == '@' || this.nameSearch == '#') {
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: 'Danh sách rỗng',
+          showConfirmButton: true,
+          timer: 1500,
+        },)
 
+
+      }
       // @ts-ignore
       this.shoes = data.content;
       console.log(data)
@@ -257,18 +267,12 @@ export class BodyComponent implements OnInit {
 
 
     }, error => {
-      Swal.fire({
-        position: 'center',
-        icon: 'error',
-        title: 'Danh sách rỗng',
-        showConfirmButton: true,
-        timer: 1200,
-      },)
+
     });
   }
 
   addToCart(idShoes: any, nameProduct: any, qty: any) {
-    console.log(idShoes + '123/' + nameProduct)
+    // console.log(idShoes + '123/' + nameProduct)
     if (this.isLogin) {
       this.orderService.addOrderDetailByIdOrder(this.idOrder, idShoes, parseInt(qty)).subscribe(data => {
         this.shareService.sendClickEvent();
@@ -277,7 +281,7 @@ export class BodyComponent implements OnInit {
           icon: 'success',
           title: 'Đã thêm sản phẩm ' + nameProduct + ' vào giỏ hàng',
           showConfirmButton: false,
-          timer: 1000
+          timer: 1500
         })
 
         this.changeQuantity();
@@ -288,7 +292,7 @@ export class BodyComponent implements OnInit {
         icon: 'error',
         title: 'Vui lòng đăng nhập để mua hàng!',
         showConfirmButton: false,
-        timer: 1000
+        timer: 1500
       })
       this.router.navigateByUrl('/login')
 

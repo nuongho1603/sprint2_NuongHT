@@ -1,8 +1,9 @@
 package com.service;
 
 
+import com.dto.order.IODetailDto;
 import com.dto.order.OrderDetailDto;
-import com.dto.order.TotalPay;
+import com.dto.order.Total;
 import org.springframework.data.repository.query.Param;
 
 
@@ -20,5 +21,13 @@ public interface IOrderDetailService {
                         Integer idShoes,
                         Integer quantity);
 
-    TotalPay getTotal( Integer idUser);
+    Total getTotal(Integer idUser);
+
+    List<IODetailDto> getOdByIdAcc( Long idAccount);
+
+    Total getTotalPay( Integer idOrder);
+
+    void updateCart( Long idAccount);
+
+    void deleteOrderDetail(Integer idOrder, Integer idShoes);
 }

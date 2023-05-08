@@ -1,2 +1,36 @@
-<p style="margin-top: 200px">info works!</p>
-<button type="submit" class="btn btn-danger" (click)="logout()">Log out hehehheheheh</button>
+<div class="d-flex content-intro bg-white p-t-77 p-b-130 justify-content-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 p-t-30 mx-20" *ngFor="let s of sneakers">
+        <!-- Block1 -->
+        <div class="blo1" >
+          <div class="wrap-pic-blo1 bo-rad-10 hov-img-zoom">
+            <a [routerLink]="['/detail',s.idShoes]">
+              <img src="{{s.image}}"
+                                   style="height: 350px;width: 350px" alt="IMG-INTRO"></a>
+          </div>
+
+          <div class="wrap-text-blo1 p-t-35">
+            <a routerLink=""><h4 class="txt5 color0-hov trans-0-4 m-b-13">
+              {{s.category?.nameCategory}}
+            </h4></a>
+
+            <p class="m-b-20">
+              {{s.nameProduct}}
+            </p>
+
+            <a [routerLink]="['/detail',s.idShoes]" class="txt4">
+              Chi tiết
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                   class="bi bi-arrow-right" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                      d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

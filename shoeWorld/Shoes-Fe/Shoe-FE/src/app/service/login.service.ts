@@ -29,6 +29,6 @@ export class LoginService {
   // }
 
   getInfoCustomer(idAccount: number): Observable<Account> {
-    return this.http.get<Account>('http://localhost:8080/api/auth/info/'+ idAccount);
+    return this.http.get<Account>('http://localhost:8080/api/info/'+ idAccount);
   }
 }

@@ -1,9 +1,6 @@
 package com.controller;
 
-import com.dto.order.OrderDetailDto;
-import com.dto.order.OrdersDetailAdd;
-import com.dto.order.OrdersDto;
-import com.dto.order.TotalPay;
+import com.dto.order.*;
 import com.model.order.Orders;
 import com.service.impl.OrderDetailService;
 import com.service.impl.OrderService;
@@ -47,11 +44,25 @@ public class OderRestController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @PostMapping("/update-cart/{idAccount}")
+    public ResponseEntity<?> updateCart(@PathVariable("idAccount") Long idAccount) {
+
+        orderDetailService.updateCart(idAccount);
+        return new ResponseEntity<>(HttpStatus.OK);
+
+    }
+
+
+    @PostMapping("/update-detail")
+    public ResponseEntity<?> update(@RequestBody OrdersDetailAdd ordersDetailAdd) {
+        orderDetailService.updateQuantity(ordersDetailAdd.getIdOrder(), ordersDetailAdd.getIdShoes(), ordersDetailAdd.getQuantity());
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 
     @GetMapping("/total/{idUser}")
-    public ResponseEntity<TotalPay> getTotalByIdOrder(@PathVariable("idUser") Integer idUser) {
-        TotalPay totalPay = orderDetailService.getTotal(idUser);
-        return new ResponseEntity<>(totalPay, HttpStatus.OK);
+    public ResponseEntity<Total> getTotalByIdOrder(@PathVariable("idUser") Integer idUser) {
+        Total total = orderDetailService.getTotal(idUser);
+        return new ResponseEntity<>(total, HttpStatus.OK);
     }
 
     @GetMapping("/{idAccount}")
@@ -60,5 +71,27 @@ public class OderRestController {
         return new ResponseEntity<>(orders, HttpStatus.OK);
     }
 
+
+    @GetMapping("/list-order-detail/{idAccount}")
+    public ResponseEntity<?> getListOrderDetail(@PathVariable("idAccount") Long idAccount) {
+        List<IODetailDto> orderDetailList = orderDetailService.getOdByIdAcc(idAccount);
+        if (orderDetailList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(orderDetailList, HttpStatus.OK);
+    }
+
+    @GetMapping("/total-pay/{idOrder}")
+    public ResponseEntity<Total> getTotalPay(@PathVariable("idOrder") Integer idOrder) {
+        Total total = orderDetailService.getTotalPay(idOrder);
+        return new ResponseEntity<>(total, HttpStatus.OK);
+    }
+
+
+    @DeleteMapping("/delete")
+    public ResponseEntity<?> removeOrderDetail(@RequestParam Integer idOrder, @RequestParam Integer idShoes) {
+        orderDetailService.deleteOrderDetail(idOrder, idShoes);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 
 }

@@ -34,4 +34,8 @@ export class ShoesService {
   getAllShoes(page: number): Observable<Shoes[]> {
     return this.httpClient.get<Shoes[]>('http://localhost:8080/api-shoes/all-shoes' + '?page=' + page);
   }
+
+  getAllSneaker(): Observable<Shoes[]> {
+    return this.httpClient.get<Shoes[]>('http://localhost:8080/api-shoes/sneaker' );
+  }
 }

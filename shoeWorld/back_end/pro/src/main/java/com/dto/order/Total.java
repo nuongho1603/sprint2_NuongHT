@@ -1,6 +1,6 @@
 package com.dto.order;
 
-public interface TotalPay {
-//    Integer getTotalPay();
+public interface Total {
+    Integer getTotalPay();
     Integer getTotalQuantity();
 }

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {TokenService} from "../../service/token.service";
+import {Shoes} from "../../enity/shoes";
+import {ShoesService} from "../../service/shoes.service";
 
 @Component({
   selector: 'app-info',
@@ -7,14 +9,19 @@ import {TokenService} from "../../service/token.service";
   styleUrls: ['./info.component.css']
 })
 export class InfoComponent implements OnInit {
+  sneakers: Shoes[] = [];
 
-  constructor(private token: TokenService) { }
+  constructor(private shoesService: ShoesService) { }
 
   ngOnInit(): void {
+    this.getAllSneakers()
   }
 
-  logout() {
-    this.token.logout();
-    location.href = ('http://localhost:4200');
+  getAllSneakers(){
+    this.shoesService.getAllSneaker().subscribe(data => {
+      // @ts-ignore
+      this.sneakers = data.content;
+      console.log(data)
+    })
   }
 }

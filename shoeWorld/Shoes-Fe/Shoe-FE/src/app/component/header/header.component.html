@@ -68,7 +68,7 @@
                       </ng-container>
                       <ng-container *ngIf="role == 'ROLE_USER'">
                         <li class="nav-item pe-3">
-                          <a class="nav-link" href="#" style="font-size: 15px">
+                          <a class="nav-link" href="/cart" style="font-size: 15px">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                                  class="bi bi-cart4" viewBox="0 0 16 16">
                               <path
@@ -90,7 +90,7 @@
                         </ng-container>
 
                         <ng-container *ngIf="isLogged == true">
-                          <A class="nav-link" style="color: #660033" routerLink="/info">
+                          <A class="nav-link" style="color: #660033" routerLink="/profile">
                             <img class="rounded-img" src="{{account.avatar}}">
                             <span style="margin-right: 40px; margin-top: 50px;font-weight: bold">{{account.name}}</span>
                           </A>

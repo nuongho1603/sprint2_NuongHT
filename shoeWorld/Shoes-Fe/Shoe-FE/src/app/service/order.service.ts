@@ -34,7 +34,20 @@ export class OrderService {
     return this.httpClient.post(this.URL_ORDER + '/add-order-detail', {idOrder: idOrder, idShoes: idShoes, quantity: qty});
   }
 
+  updateCart(idAccount: number) {
+    // @ts-ignore
+    return this.httpClient.post(this.URL_ORDER+'/update-cart/'+ idAccount);
+  }
+
   getTotalQuantity(idUser: number): Observable<TotalPay>{
     return this.httpClient.get<TotalPay>(this.URL_ORDER+'/total/'+ idUser);
+  }
+
+updateQuatity(idOrder: number, idShoes: number, qty: number) {
+    return this.httpClient.post(this.URL_ORDER + '/update-detail', {idOrder: idOrder, idShoes: idShoes, quantity: qty});
+  }
+
+  removeOrderDetail(idOrder: number, idShoes: number) {
+    return this.httpClient.delete(this.URL_ORDER + '/delete?idOrder='+ idOrder + '&idShoes=' + idShoes);
   }
 }

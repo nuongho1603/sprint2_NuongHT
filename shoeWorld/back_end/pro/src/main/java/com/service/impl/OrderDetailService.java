@@ -1,7 +1,8 @@
 package com.service.impl;
 
+import com.dto.order.IODetailDto;
 import com.dto.order.OrderDetailDto;
-import com.dto.order.TotalPay;
+import com.dto.order.Total;
 import com.repository.IOrderDetailRepository;
 import com.service.IOrderDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,27 @@ public class OrderDetailService implements IOrderDetailService {
     }
 
     @Override
-    public TotalPay getTotal(Integer idUser) {
+    public Total getTotal(Integer idUser) {
         return iOrderDetailRepository.getTotal(idUser);
+    }
+
+    @Override
+    public List<IODetailDto> getOdByIdAcc(Long idAccount) {
+        return iOrderDetailRepository.getOdByIdAcc(idAccount);
+    }
+
+    @Override
+    public Total getTotalPay(Integer idOrder) {
+        return iOrderDetailRepository.getTotalPay(idOrder);
+    }
+
+    @Override
+    public void updateCart(Long idAccount) {
+        iOrderDetailRepository.updateCart(idAccount);
+    }
+
+    @Override
+    public void deleteOrderDetail(Integer idOrder, Integer idShoes) {
+        iOrderDetailRepository.deleteOrderDetail(idOrder, idShoes);
     }
 }

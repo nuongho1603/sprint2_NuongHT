@@ -1,7 +1,10 @@
 export interface Cart {
+  idOrderDetail: number;
   idShoes: number;
+  image?: string;
   nameProduct?: string;
   price: number;
-  image?: string;
+  idCategory:number;
+  nameCategory: string;
   quantity: number;
 }

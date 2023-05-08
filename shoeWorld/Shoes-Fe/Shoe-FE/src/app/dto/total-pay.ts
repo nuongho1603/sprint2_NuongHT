@@ -1,4 +1,4 @@
 export interface TotalPay {
-  // totalPay: number;
+  totalPay: number;
   totalQuantity: number;
 }

@@ -126,14 +126,14 @@ public class ShoesRestConntroller {
 //        return new ResponseEntity<>(depPage, HttpStatus.OK);
 //    }
 //
-//    @GetMapping("/sneaker")
-//    public ResponseEntity<Page<Shoes>> getAllSneaker(@PageableDefault(page = 0, size = 9) Pageable pageable) {
-//        Page<Shoes> bootPage = shoesService.getAllSneaker(pageable);
-//        if (bootPage.isEmpty()) {
-//            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-//        }
-//        return new ResponseEntity<>(bootPage, HttpStatus.OK);
-//    }
+    @GetMapping("/sneaker")
+    public ResponseEntity<Page<Shoes>> getAllSneaker(@PageableDefault(page = 0, size = 4) Pageable pageable) {
+        Page<Shoes> bootPage = shoesService.getAllSneaker(pageable);
+        if (bootPage.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(bootPage, HttpStatus.OK);
+    }
 //
 //    @GetMapping("/giay-suc")
 //    public ResponseEntity<Page<Shoes>> getAllBoot(@PageableDefault(page = 0, size = 9) Pageable pageable) {
