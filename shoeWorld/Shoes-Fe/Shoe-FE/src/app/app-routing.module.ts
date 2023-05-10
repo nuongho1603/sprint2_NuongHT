@@ -11,6 +11,7 @@ import {AboutUsComponent} from "./component/about-us/about-us.component";
 import {DetailComponent} from "./component/detail/detail.component";
 import {CartComponent} from "./component/cart/cart.component";
 import {ProfileComponent} from "./component/profile/profile.component";
+import {PurchaseHistoryComponent} from "./component/purchase-history/purchase-history.component";
 
 
 const routes: Routes = [
@@ -22,7 +23,8 @@ const routes: Routes = [
   {path:'info',component: InfoComponent},
   {path:'detail/:idShoes',component: DetailComponent},
   {path:'cart' ,component: CartComponent},
-  {path:'profile' ,component: ProfileComponent}
+  {path:'profile' ,component: ProfileComponent},
+  {path:'purchase' ,component: PurchaseHistoryComponent}
 ];
 
 @NgModule({

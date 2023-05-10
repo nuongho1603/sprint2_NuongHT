@@ -1,0 +1,104 @@
+<body style=" height: 100vh; margin-top: 50px;margin-top: 7% ;background-color:#ebebeb">
+<div style="position: relative">
+  <div class="justify-content-center">
+    <div>
+      <div>
+        <h1 class="text-uppercase" style="size:32px; margin-bottom: 2rem; padding-top: 1rem; text-align: center">Lịch sử mua hàng</h1>
+      </div>
+      <div>
+        <div class="col-1"></div>
+        <div class="col-10 container-fluid" *ngIf="purchaseHistoryJson?.content?.length != 0; else elseBlockPagination">
+          <button class="btn btn-color" style="margin-bottom: 1rem; text-align: right"
+                  routerLink="/"> Quay lại trang chủ
+          </button>
+          <table class="table table-bordered table-hover table-striped" style="box-shadow: 0 0 20px 0 #CC9999; width:100%">
+            <thead class="table-co">
+            <tr style="text-align: center">
+              <th scope="col" >STT</th>
+              <th scope="col" >Tên mặt hàng</th>
+              <th scope="col">Số lượng</th>
+              <th scope="col">Thành tiền</th>
+              <th scope="col" >Ngày đặt hàng</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let item of purchaseHistoryJson.content; let i = index">
+              <td class="text-center">{{(page * 5) + (i + 1)}}</td>
+              <td style="margin-left: 10%">{{item.nameProduct}}</td>
+              <td class="text-center">{{item.quantity}}</td>
+              <td class="text-center">{{item.total | number}} đ</td>
+              <td class="text-center">{{item.dateOrder | date: 'dd/MM/yyyy hh:mm:ss'}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <ng-template #elseBlockPagination>
+          Bạn chưa có đơn hàng nào!
+        </ng-template>
+        <div class="col-1"></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="position: absolute; top: 650px; left: 50%" *ngIf="purchaseHistoryJson">
+    <div style="float: right">
+      <div *ngIf="purchaseHistoryJson" class="d-flex justify-content-center" id="last-row">
+        <div>
+          <nav aria-label="Page navigation example">
+            <ul class="pagination">
+              <li class="page-item" [ngClass]="purchaseHistoryJson.first ? 'disabled': ''">
+                <a role="button" class="page-link" (click)="gotoPage(0)">Trang đầu</a>
+              </li>
+              <li class="page-item" [ngClass]="purchaseHistoryJson.first ? 'disabled': ''">
+                <a role="button" class="page-link" (click)="gotoPage(purchaseHistoryJson.number - 1)"><</a>
+              </li>
+              <li class="page-item" *ngIf="purchaseHistoryJson.number - 3 > 0">
+                <a role="button" class="page-link"
+                   (click)="gotoPage(purchaseHistoryJson.number - 4)">{{purchaseHistoryJson.number - 3}}</a>
+              </li>
+              <li class="page-item" *ngIf="purchaseHistoryJson.number - 2 > 0">
+                <a role="button" class="page-link"
+                   (click)="gotoPage(purchaseHistoryJson.number - 3)">{{purchaseHistoryJson.number - 2}}</a>
+              </li>
+              <li class="page-item" *ngIf="purchaseHistoryJson.number - 1 > 0">
+                <a role="button" class="page-link"
+                   (click)="gotoPage(purchaseHistoryJson.number - 2)">{{purchaseHistoryJson.number - 1}}</a>
+              </li>
+              <li class="page-item" *ngIf="purchaseHistoryJson.number > 0">
+                <a role="button" class="page-link"
+                   (click)="gotoPage(purchaseHistoryJson.number - 1)">{{purchaseHistoryJson.number}}</a>
+              </li>
+              ​
+              <li class="page-item active"><a class="page-link">{{purchaseHistoryJson.number + 1}}</a></li>
+              ​
+              <li class="page-item" *ngIf="purchaseHistoryJson.number + 2 <= purchaseHistoryJson.totalPages">
+                <a role="button" class="page-link"
+                   (click)="gotoPage(purchaseHistoryJson.number + 1)">{{purchaseHistoryJson.number + 2}}</a>
+              </li>
+              <li class="page-item" *ngIf="purchaseHistoryJson.number + 3 <= purchaseHistoryJson.totalPages">
+                <a role="button" class="page-link"
+                   (click)="gotoPage(purchaseHistoryJson.number + 2)">{{purchaseHistoryJson.number + 3}}</a>
+              </li>
+              <li class="page-item" *ngIf="purchaseHistoryJson.number + 4 <= purchaseHistoryJson.totalPages">
+                <a role="button" class="page-link"
+                   (click)="gotoPage(purchaseHistoryJson.number + 3)">{{purchaseHistoryJson.number + 4}}</a>
+              </li>
+              <li class="page-item" *ngIf="purchaseHistoryJson.number + 5 <= purchaseHistoryJson.totalPages">
+                <a role="button" class="page-link"
+                   (click)="gotoPage(purchaseHistoryJson.number + 4)">{{purchaseHistoryJson.number + 5}}</a>
+              </li>
+              <li class="page-item" [ngClass]="purchaseHistoryJson.last ? 'disabled': ''">
+                <a role="button" class="page-link" (click)="gotoPage(purchaseHistoryJson.number + 1)">></a>
+              </li>
+              <li class="page-item" [ngClass]="purchaseHistoryJson.last ? 'disabled': ''">
+                <a role="button" class="page-link" (click)="gotoPage(purchaseHistoryJson.totalPages - 1)">Trang cuối</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>

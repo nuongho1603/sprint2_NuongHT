@@ -50,4 +50,8 @@ updateQuatity(idOrder: number, idShoes: number, qty: number) {
   removeOrderDetail(idOrder: number, idShoes: number) {
     return this.httpClient.delete(this.URL_ORDER + '/delete?idOrder='+ idOrder + '&idShoes=' + idShoes);
   }
+
+  getPurchaseHistory(idAccount: number, page: number) {
+    return this.httpClient.get(this.URL_ORDER+ '/purchase-history/'+ idAccount + '?page=' + page);
+  }
 }
