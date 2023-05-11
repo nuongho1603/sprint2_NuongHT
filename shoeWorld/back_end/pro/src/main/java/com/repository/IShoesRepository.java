@@ -16,8 +16,11 @@ import javax.transaction.Transactional;
 @Repository
 public interface IShoesRepository extends JpaRepository<Shoes, Integer> {
 
-    @Query(value = "select s.* from  `shoes` s where  s.name_product like %:nameSearch% and s.id_category = :idCategory and s.flag_delete = false order by s.id_shoes desc ", nativeQuery = true)
+    @Query(value = "select s.* from  `shoes` s where  s.name_product like %:nameSearch% and s.id_category = :idCategory and s.flag_delete = false  order by s.id_shoes desc ", nativeQuery = true)
     Page<Shoes> getShoes(@Param("idCategory") int idCategory, @Param("nameSearch") String nameSearch, Pageable pageable);
+
+    @Query(value = "select s.*,sum(od.quantity) from `shoes` s join `order_detail` od on s.id_shoes = od.id_shoes where od.flag_delete = true and s.flag_delete = false group by s.id_shoes order by sum(od.quantity) desc",nativeQuery = true)
+    Page<Shoes> productRun(Pageable pageable);
 
     @Query(value = "select * from shoes s where s.id_shoes = :idShoes and s.flag_delete = false", nativeQuery = true)
     Shoes getShoesByID(@Param("idShoes") int idShoes);

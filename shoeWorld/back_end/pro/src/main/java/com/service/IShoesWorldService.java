@@ -14,6 +14,7 @@ public interface IShoesWorldService {
     Page<Shoes> getAllShoes(Pageable pageable);
     Page<Shoes> getAllSuc(Pageable pageable);
     Page<Shoes> getShoes(int idCategory,String nameSearch, Pageable pageable);
+    Page<Shoes> productRun(Pageable pageable);
 
     Page<Shoes> getAllSearchJordan(String nameSearch,Pageable pageable);
 

@@ -5,9 +5,14 @@ import com.model.order.Orders;
 import com.service.impl.OrderDetailService;
 import com.service.impl.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+
 
 import java.util.List;
 
@@ -31,6 +36,7 @@ public class OderRestController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+
     @PostMapping("/add-order-detail")
     public ResponseEntity<?> addOrderDetail(@RequestBody OrdersDetailAdd ordersDetailAdd) {
         List<OrderDetailDto> list = orderDetailService.getOrderDetailByIdOrder(ordersDetailAdd.getIdOrder());
@@ -43,6 +49,7 @@ public class OderRestController {
         orderDetailService.addOrderDetail(ordersDetailAdd.getIdOrder(), ordersDetailAdd.getIdShoes(), ordersDetailAdd.getQuantity());
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
 
     @PostMapping("/update-cart/{idAccount}")
     public ResponseEntity<?> updateCart(@PathVariable("idAccount") Long idAccount) {
@@ -58,6 +65,7 @@ public class OderRestController {
         orderDetailService.updateQuantity(ordersDetailAdd.getIdOrder(), ordersDetailAdd.getIdShoes(), ordersDetailAdd.getQuantity());
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
 
     @GetMapping("/total/{idUser}")
     public ResponseEntity<Total> getTotalByIdOrder(@PathVariable("idUser") Integer idUser) {
@@ -81,6 +89,7 @@ public class OderRestController {
         return new ResponseEntity<>(orderDetailList, HttpStatus.OK);
     }
 
+
     @GetMapping("/total-pay/{idOrder}")
     public ResponseEntity<Total> getTotalPay(@PathVariable("idOrder") Integer idOrder) {
         Total total = orderDetailService.getTotalPay(idOrder);
@@ -94,4 +103,16 @@ public class OderRestController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+
+    @GetMapping("/purchase-history/{idAccount}")
+    public ResponseEntity<Page<PurchaseHistoryView>> getPurchasePage(@PathVariable Long idAccount,
+                                                                     @PageableDefault(size = 10) Pageable pageable) {
+        Page<PurchaseHistoryView> purchasePage;
+        purchasePage= orderDetailService.pagePurchase(idAccount, pageable);
+
+        if (purchasePage.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(purchasePage, HttpStatus.OK);
+    }
 }

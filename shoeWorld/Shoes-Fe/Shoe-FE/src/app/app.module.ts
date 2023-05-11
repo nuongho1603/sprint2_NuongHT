@@ -17,6 +17,7 @@ import { CartComponent } from './component/cart/cart.component';
 import { DetailComponent } from './component/detail/detail.component';
 import { ProfileComponent } from './component/profile/profile.component';
 import { PurchaseHistoryComponent } from './component/purchase-history/purchase-history.component';
+import { ErroComponent } from './component/erro/erro.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { PurchaseHistoryComponent } from './component/purchase-history/purchase-
     CartComponent,
     DetailComponent,
     ProfileComponent,
-    PurchaseHistoryComponent
+    PurchaseHistoryComponent,
+    ErroComponent
   ],
   imports: [
     BrowserModule,

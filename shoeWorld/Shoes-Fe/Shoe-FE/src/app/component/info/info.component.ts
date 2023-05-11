@@ -15,6 +15,7 @@ export class InfoComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllSneakers()
+    window.scroll(0,0)
   }
 
   getAllSneakers(){

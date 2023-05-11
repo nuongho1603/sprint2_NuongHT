@@ -38,4 +38,8 @@ export class ShoesService {
   getAllSneaker(): Observable<Shoes[]> {
     return this.httpClient.get<Shoes[]>('http://localhost:8080/api-shoes/sneaker' );
   }
+
+  getShoesBuyRun(totalElement: number): Observable<Page<Shoes[]>> {
+    return this.httpClient.get<Page<Shoes[]>>('http://localhost:8080/api-shoes/shoes-run?totalElement=' + totalElement);
+  }
 }

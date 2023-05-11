@@ -30,20 +30,21 @@ public class ShoesRestConntroller {
     @Autowired
     private CategoryService categoryService;
 
-//    @GetMapping("/s/{idCategory}")
-//    public ResponseEntity<Page<?>> getShoes(@PathVariable("idCategory") int idCategory,@RequestParam(defaultValue = "") String nameSearch,
-//                                            @PageableDefault(page = 0, size = 3) Pageable pageable) {
-//        Page<Shoes> shoes = shoesService.getShoes(idCategory,nameSearch,pageable);
-//        if (shoes.isEmpty()) {
-//            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-//        }
-//        return new ResponseEntity<>(shoes, HttpStatus.OK);
-//    }
     @GetMapping("/s/{idCategory}")
-    public ResponseEntity<Page<?>> getShoes(@PathVariable("idCategory") int idCategory,@RequestParam(defaultValue = "") String nameSearch,
-                                          int totalElement) {
+    public ResponseEntity<Page<?>> getShoes(@PathVariable("idCategory") int idCategory, @RequestParam(defaultValue = "") String nameSearch,
+                                            int totalElement) {
         Pageable pageable = Pageable.ofSize(totalElement);
-        Page<Shoes> shoes = shoesService.getShoes(idCategory,nameSearch,pageable);
+        Page<Shoes> shoes = shoesService.getShoes(idCategory, nameSearch, pageable);
+        if (shoes.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(shoes, HttpStatus.OK);
+    }
+
+    @GetMapping("/shoes-run")
+    public ResponseEntity<Page<?>> getShoesBuyRun(int totalElement) {
+        Pageable pageable = Pageable.ofSize(totalElement);
+        Page<Shoes> shoes = shoesService.productRun(pageable);
         if (shoes.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
@@ -58,6 +59,7 @@ public class ShoesRestConntroller {
         }
         return new ResponseEntity<>(categories, HttpStatus.OK);
     }
+
     @GetMapping("/all-shoes")
     public ResponseEntity<Page<Shoes>> getAllShoes(@PageableDefault(page = 0, size = 9) Pageable pageable) {
         Page<Shoes> shoesPage = shoesService.getAllShoes(pageable);
@@ -69,7 +71,7 @@ public class ShoesRestConntroller {
 
     @GetMapping("/search")
     public ResponseEntity<Page<Shoes>> getListNewProduct(@RequestParam(defaultValue = "") String nameSearch,
-                                                               @PageableDefault(size = 3) Pageable pageable) {
+                                                         @PageableDefault(size = 3) Pageable pageable) {
         Page<Shoes> jorPage;
         jorPage = shoesService.getAllSearchJordan(nameSearch, pageable);
         if (jorPage.isEmpty()) {
@@ -86,10 +88,49 @@ public class ShoesRestConntroller {
         }
         return new ResponseEntity<>(account, HttpStatus.OK);
     }
-//
 
-//
-//    @GetMapping("/jordan")
+
+    @GetMapping("/sneaker")
+    public ResponseEntity<Page<Shoes>> getAllSneaker(@PageableDefault(page = 0, size = 4) Pageable pageable) {
+        Page<Shoes> bootPage = shoesService.getAllSneaker(pageable);
+        if (bootPage.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(bootPage, HttpStatus.OK);
+    }
+
+
+    @GetMapping("/{idShoes}")
+    public ResponseEntity<Shoes> findShoesById(@PathVariable("idShoes") int idShoes) {
+        Shoes shoes = shoesService.getShoesByID(idShoes);
+        if (shoes == null) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(shoes, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/delete/{idShoes}")
+    public ResponseEntity<Shoes> deleteStudent(@PathVariable("idShoes") int idShoes) {
+        Shoes shoes = shoesService.getShoesByID(idShoes);
+        if (shoes == null) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        shoesService.deleteShoesById(idShoes);
+        return new ResponseEntity<>(shoes, HttpStatus.OK);
+    }
+
+
+    //    @GetMapping("/giay-suc")
+//    public ResponseEntity<Page<Shoes>> getAllBoot(@PageableDefault(page = 0, size = 9) Pageable pageable) {
+//        Page<Shoes> bootPage = shoesService.getAllSuc(pageable);
+//        if (bootPage.isEmpty()) {
+//            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//        }
+//        return new ResponseEntity<>(bootPage, HttpStatus.OK);
+//    }
+
+
+    //    @GetMapping("/jordan")
 //    public ResponseEntity<Page<Shoes>> getAllJordan(int totalElement) {
 //        Pageable pageable = Pageable.ofSize(totalElement);
 //        Page<Shoes> jordanPage = shoesService.getAllJordan(pageable);
@@ -126,42 +167,16 @@ public class ShoesRestConntroller {
 //        return new ResponseEntity<>(depPage, HttpStatus.OK);
 //    }
 //
-    @GetMapping("/sneaker")
-    public ResponseEntity<Page<Shoes>> getAllSneaker(@PageableDefault(page = 0, size = 4) Pageable pageable) {
-        Page<Shoes> bootPage = shoesService.getAllSneaker(pageable);
-        if (bootPage.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-        return new ResponseEntity<>(bootPage, HttpStatus.OK);
-    }
-//
-//    @GetMapping("/giay-suc")
-//    public ResponseEntity<Page<Shoes>> getAllBoot(@PageableDefault(page = 0, size = 9) Pageable pageable) {
-//        Page<Shoes> bootPage = shoesService.getAllSuc(pageable);
-//        if (bootPage.isEmpty()) {
+
+    //    @GetMapping("/s/{idCategory}")
+//    public ResponseEntity<Page<?>> getShoes(@PathVariable("idCategory") int idCategory,@RequestParam(defaultValue = "") String nameSearch,
+//                                            @PageableDefault(page = 0, size = 3) Pageable pageable) {
+//        Page<Shoes> shoes = shoesService.getShoes(idCategory,nameSearch,pageable);
+//        if (shoes.isEmpty()) {
 //            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 //        }
-//        return new ResponseEntity<>(bootPage, HttpStatus.OK);
+//        return new ResponseEntity<>(shoes, HttpStatus.OK);
 //    }
-
-    @GetMapping("/{idShoes}")
-    public ResponseEntity<Shoes> findShoesById(@PathVariable("idShoes") int idShoes) {
-        Shoes shoes = shoesService.getShoesByID(idShoes);
-        if (shoes == null) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-        return new ResponseEntity<>(shoes, HttpStatus.OK);
-    }
-
-    @DeleteMapping("/delete/{idShoes}")
-    public ResponseEntity<Shoes> deleteStudent(@PathVariable("idShoes") int idShoes) {
-        Shoes shoes = shoesService.getShoesByID(idShoes);
-        if (shoes == null) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-        shoesService.deleteShoesById(idShoes);
-        return new ResponseEntity<>(shoes, HttpStatus.OK);
-    }
 
     @PatchMapping("/update/{idShoes}")
     public ResponseEntity updateFoot(@PathVariable("idShoes") int idShoes, @Validated @RequestBody ShoesDto shoesDto, BindingResult bindingResult) {

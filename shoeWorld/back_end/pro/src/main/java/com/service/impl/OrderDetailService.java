@@ -2,10 +2,13 @@ package com.service.impl;
 
 import com.dto.order.IODetailDto;
 import com.dto.order.OrderDetailDto;
+import com.dto.order.PurchaseHistoryView;
 import com.dto.order.Total;
 import com.repository.IOrderDetailRepository;
 import com.service.IOrderDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -53,5 +56,10 @@ public class OrderDetailService implements IOrderDetailService {
     @Override
     public void deleteOrderDetail(Integer idOrder, Integer idShoes) {
         iOrderDetailRepository.deleteOrderDetail(idOrder, idShoes);
+    }
+
+    @Override
+    public Page<PurchaseHistoryView> pagePurchase(Long idAccount, Pageable pageable) {
+        return iOrderDetailRepository.pagePurchase(idAccount,pageable);
     }
 }

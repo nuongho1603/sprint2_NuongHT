@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ShoesService} from "../../service/shoes.service";
 import {ActivatedRoute} from "@angular/router";
 import {TokenService} from "../../service/token.service";
@@ -20,6 +20,12 @@ export class DetailComponent implements OnInit {
   idUser = 0;
   isLogin = false;
 
+  shoesRun: Shoes[] = [];
+  totalElement = 8;
+  maxElement = 0;
+  flagHidden = true;
+  flagMore = false;
+
   constructor(private productService: ShoesService,
               private activatedRoute: ActivatedRoute,
               private tokenStorageService: TokenService,
@@ -28,17 +34,12 @@ export class DetailComponent implements OnInit {
               private orderService: OrderService,
               private share: ShareService) {
     this.title.setTitle('Chi tiết sản phẩm');
-    // this.orderService.getOrderByIdAccount(parseInt(this.tokenStorageService.getId())).subscribe(next => {
-    //   this.idOrder = next.idOrder;
-    // })
-
     this.title.setTitle('Chi tiet san pham');
     this.isLogin = this.tokenStorageService.isLogger();
     this.idUser = Number(this.tokenStorageService.getId());
 
-
     this.activatedRoute.paramMap.subscribe(next => {
-      const idShoes = parseInt(<string> next.get('idShoes'));
+      const idShoes = parseInt(<string>next.get('idShoes'));
       console.log(idShoes + "idShoes neee");
       this.productService.getShoesDetail(idShoes).subscribe(next => {
         this.product = next;
@@ -51,11 +52,13 @@ export class DetailComponent implements OnInit {
     window.scroll(0, 0);
 
     this.getOrderID();
-      // this.changeQuantity();
+    // this.changeQuantity();
+
+    this.getShoesRun(8);
   }
 
 
-  addToCart(idProduct: number, nameProduct: string, qty: string){
+  addToCart(idProduct: number, nameProduct: string, qty: string) {
     if (this.isLogin) {
       this.orderService.addOrderDetailByIdOrder(this.idOrder, idProduct, parseInt(qty)).subscribe(data => {
         this.shareService.sendClickEvent();
@@ -123,5 +126,53 @@ export class DetailComponent implements OnInit {
         quantity: this.tokenStorageService.getTotalQuantity(),
       });
     }
+  }
+
+  getShoesRun( totalElement: number) {
+    this.productService.getShoesBuyRun(this.totalElement).subscribe(data => {
+      // @ts-ignore
+      this.shoesRun = data.content;
+      // console.log(data +"shoes RUn")
+      // @ts-ignore
+      this.maxElement = data.totalElements;
+    }, error => {
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Danh sách rỗng',
+        showConfirmButton: true,
+        timer: 1200,
+      },)
+    });
+  }
+
+  hidden() {
+    if (this.totalElement <= 4) {
+      this.flagMore = false;
+      this.flagHidden = true;
+    } else {
+      this.totalElement -= 4;
+      this.flagHidden = this.totalElement === 4;
+      this.flagMore = false;
+    }
+    console.log(this.flagHidden + 'aa');
+    console.log(this.totalElement + 'aa');
+
+    this.getShoesRun(this.totalElement);
+  }
+
+  loadMore() {
+    if (this.totalElement < this.maxElement) {
+      this.flagMore = false;
+      this.totalElement += 4;
+      this.flagHidden = false;
+    }
+    if (this.totalElement > this.maxElement) {
+      this.flagMore = true;
+      this.flagHidden = false;
+    }
+    console.log(this.flagMore + 'a');
+
+    this.getShoesRun(this.totalElement);
   }
 }

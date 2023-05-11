@@ -3,7 +3,10 @@ package com.service;
 
 import com.dto.order.IODetailDto;
 import com.dto.order.OrderDetailDto;
+import com.dto.order.PurchaseHistoryView;
 import com.dto.order.Total;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.query.Param;
 
 
@@ -30,4 +33,6 @@ public interface IOrderDetailService {
     void updateCart( Long idAccount);
 
     void deleteOrderDetail(Integer idOrder, Integer idShoes);
+
+    Page<PurchaseHistoryView> pagePurchase(Long idAccount, Pageable pageable);
 }

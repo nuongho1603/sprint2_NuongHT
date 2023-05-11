@@ -12,6 +12,8 @@ import {DetailComponent} from "./component/detail/detail.component";
 import {CartComponent} from "./component/cart/cart.component";
 import {ProfileComponent} from "./component/profile/profile.component";
 import {PurchaseHistoryComponent} from "./component/purchase-history/purchase-history.component";
+import {AdminGuard} from "./security/admin.guard";
+import {ErroComponent} from "./component/erro/erro.component";
 
 
 const routes: Routes = [
@@ -22,9 +24,10 @@ const routes: Routes = [
   {path:'body',component: BodyComponent},
   {path:'info',component: InfoComponent},
   {path:'detail/:idShoes',component: DetailComponent},
-  {path:'cart' ,component: CartComponent},
+  {path:'cart' ,component: CartComponent,canActivate: [AdminGuard]},
   {path:'profile' ,component: ProfileComponent},
-  {path:'purchase' ,component: PurchaseHistoryComponent}
+  {path:'purchase' ,component: PurchaseHistoryComponent},
+  {path:'**' ,component: ErroComponent}
 ];
 
 @NgModule({
